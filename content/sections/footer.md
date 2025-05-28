@@ -1,5 +1,5 @@
 ---
 title: "Footer"
-copyright_text: "Crafted with love and moonlight"
+copyright_text: "© 2025 Cassi Stuckman"
 weight: 99
 ---

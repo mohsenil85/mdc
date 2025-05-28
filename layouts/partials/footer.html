@@ -1,11 +1,6 @@
 {{ $footer := .Site.GetPage "/sections/footer" }}
 <footer>
   <p>
-    {{ .Site.Languages.en.copyright }}
-    {{ if $footer.Params.copyright_text }}
-      • {{ $footer.Params.copyright_text }}
-    {{ else }}
-      • Crafted with love and moonlight
-    {{ end }}
+      {{ $footer.Params.copyright_text }}
   </p>
 </footer>
