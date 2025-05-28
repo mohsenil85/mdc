@@ -27,7 +27,11 @@
 <rss version="2.0"  xml:lang="en-us"  xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         
+            <copyright>© Cassi Stuckman</copyright>
+        
 
+        
+            <description>A Somatic Practice</description>
         
 
         
@@ -35,7 +39,7 @@
         
 
         
-            <lastBuildDate>Tue, 27 May 2025 11:43:58 MDT</lastBuildDate>
+            <lastBuildDate>Tue, 27 May 2025 20:25:36 MDT</lastBuildDate>
         
 
         
@@ -66,62 +70,6 @@
 
         
 
-        
-            
-                <item>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-                        
-                    
-
-                    
-                    
-                    
-
-                    
-
-                    
-
-                    
-                        <guid isPermaLink="false">tag:localhost:1313,2025-05-27:/test/</guid>
-                    
-
-                    
-                        <link>http://localhost:1313/test/</link>
-                    
-
-                    
-                        
-
-                        
-
-                        <atom:link href="http://localhost:1313/test/" hreflang="en-us" rel="alternate" type="text/html"/>
-                    
-
-                    
-
-                    
-                        <pubDate>Tue, 27 May 2025 11:43:58 MDT</pubDate>
-                    
-
-                    
-                        <title>Test</title>
-                    
-                </item>
-            
         
     </channel>
 </rss>

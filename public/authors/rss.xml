@@ -51,21 +51,21 @@
         
 
         
-            <link>http://localhost:1313/categories/</link>
+            <link>http://localhost:1313/authors/</link>
         
 
         
-            <atom:link href="http://localhost:1313/categories/rss.xml" hreflang="en-us" rel="self" type="application/rss+xml"/>
+            <atom:link href="http://localhost:1313/authors/rss.xml" hreflang="en-us" rel="self" type="application/rss+xml"/>
         
 
         
             
 
-            <atom:link href="http://localhost:1313/categories/" hreflang="en-us" rel="alternate" type="text/html"/>
+            <atom:link href="http://localhost:1313/authors/" hreflang="en-us" rel="alternate" type="text/html"/>
         
             
 
-            <atom:link href="http://localhost:1313/categories/rss.xml" hreflang="en-us" rel="alternate" type="application/rss+xml"/>
+            <atom:link href="http://localhost:1313/authors/rss.xml" hreflang="en-us" rel="alternate" type="application/rss+xml"/>
         
 
         
@@ -73,7 +73,7 @@
         
 
         
-            <title>Categories · Mountain Dreamer Counseling, LLC</title>
+            <title>Authors · Mountain Dreamer Counseling, LLC</title>
         
 
         
