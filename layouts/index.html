@@ -9,14 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="hero">
-    <div class="overlay"></div>
-    <div class="hero-content">
-      <h1>{{ .Title }}</h1>
-      <p>{{ .Description }}</p>
-      <a href="#book" class="btn">Book a Session</a>
-    </div>
-  </div>
+  {{ partial "hero.html" . }}
 
   <div class="content" style="max-width: 800px; margin: 0 auto; padding: 2rem; text-align: center;">
     {{ partial "about.html" . }}

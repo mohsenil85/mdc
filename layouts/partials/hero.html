@@ -1,0 +1,21 @@
+{{ $hero := .Site.GetPage "/sections/hero" }}
+{{ if $hero }}
+<div class="hero">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1>{{ $hero.Title }}</h1>
+    <p>{{ $hero.Params.description }}</p>
+    <a href="{{ $hero.Params.button_link | default "#book" }}" class="btn">{{ $hero.Params.button_text | default "Book a Session" }}</a>
+  </div>
+</div>
+{{ else }}
+<!-- Fallback to page data if hero section doesn't exist -->
+<div class="hero">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1>{{ .Title }}</h1>
+    <p>{{ .Description }}</p>
+    <a href="#book" class="btn">Book a Session</a>
+  </div>
+</div>
+{{ end }}
