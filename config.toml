@@ -1,0 +1,19 @@
+baseURL = 'https://www.mountaindreamercounseling.com/'
+title = 'Mountain Dreamer Counseling, LLC'
+enablerobotstxt = true
+timezone = "America/Los_Angeles"
+titlecasestyle = "Go"
+
+[languages.en]
+copyright = "© Cassi Stuckman"
+languagecode = "en-us"
+languagedirection = "ltr"
+languagename = "English"
+weight = 10
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.highlight]
+noclasses = false
+style = "github"
