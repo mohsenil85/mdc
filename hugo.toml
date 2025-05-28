@@ -1,6 +1,7 @@
 baseURL = 'https://www.mountaindreamercounseling.com/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Mountain Dreamer Counseling, LLC'
+theme = "paige"
 [markup.highlight]
 noclasses = false
 style = "github"
