@@ -1,6 +1,6 @@
 {{ $hero := .Site.GetPage "/sections/hero" }}
 {{ if $hero }}
-<div class="hero">
+<div class="hero" {{ if $hero.Params.background_image }}style="background-image: url('{{ $hero.Params.background_image }}'); background-size: cover; background-position: center; background-repeat: no-repeat;"{{ end }}>
   <div class="overlay"></div>
   <div class="hero-content">
     <h1>{{ $hero.Title }}</h1>
