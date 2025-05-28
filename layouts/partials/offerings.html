@@ -1,0 +1,9 @@
+{{ $offerings := .Site.GetPage "/sections/offerings" }}
+{{ if $offerings }}
+<section class="offerings">
+  <h2>{{ $offerings.Title }}</h2>
+  <div class="offerings-content">
+    {{ $offerings.Content }}
+  </div>
+</section>
+{{ end }}

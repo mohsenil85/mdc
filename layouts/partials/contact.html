@@ -1,0 +1,24 @@
+{{ $contact := .Site.GetPage "/sections/contact" }}
+{{ if $contact }}
+<section class="cta" id="book">
+  <h2>{{ $contact.Title }}</h2>
+  <div class="contact-content">
+    {{ $contact.Content }}
+  </div>
+  
+  <div class="contact-info">
+    <p><strong>Contact Information:</strong></p>
+    {{ if $contact.Params.contact_email }}
+    <p>Email: <a href="mailto:{{ $contact.Params.contact_email }}">{{ $contact.Params.contact_email }}</a></p>
+    {{ end }}
+    {{ if $contact.Params.contact_phone }}
+    <p>Phone: <a href="tel:{{ $contact.Params.contact_phone }}">{{ $contact.Params.contact_phone }}</a></p>
+    {{ end }}
+  </div>
+  
+  <form class="contact-form">
+    <input type="email" placeholder="Your Email" required>
+    <button type="submit">Connect</button>
+  </form>
+</section>
+{{ end }}

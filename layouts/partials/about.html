@@ -1,0 +1,9 @@
+{{ $about := .Site.GetPage "/sections/about" }}
+{{ if $about }}
+<section class="about">
+  <h2>{{ $about.Title }}</h2>
+  <div class="about-content">
+    {{ $about.Content }}
+  </div>
+</section>
+{{ end }}
