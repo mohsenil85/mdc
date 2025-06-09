@@ -3,7 +3,12 @@
 <section class="about">
   <h2>{{ $about.Title }}</h2>
   <div class="about-content">
-    {{ $about.Content }}
+    <div class="about-image">
+      <img src="/images/mudra.jpg" alt="Cassi Stuckman, Mountain Dreamer Counseling therapist" />
+    </div>
+    <div class="about-text">
+      {{ $about.Content }}
+    </div>
   </div>
 </section>
 {{ end }}
