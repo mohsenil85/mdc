@@ -280,7 +280,7 @@ p {
 
 /* Contact Section */
 .cta {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(to bottom, #2c2c2c, #0f2027, #203a43, #2c5364);
   color: white;
   border-radius: 20px;
   margin: 4rem 0;
