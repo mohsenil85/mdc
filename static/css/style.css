@@ -312,23 +312,24 @@ p {
 
 /* Contact Section */
 .cta {
-  background: linear-gradient(to bottom, #2c2c2c, #0f2027, #203a43, #2c5364);
-  color: white;
+  background: #fffad6;
+  background: radial-gradient(circle, rgba(255, 250, 214, 1) 0%, rgba(235, 242, 250, 1) 100%);
+  color: var(--text-dark);
   border-radius: 20px;
   margin: 4rem 0;
   padding: 6rem 4rem;
 }
 
 .cta h2, .cta h2::after {
-  color: white;
+  color: var(--text-dark);
 }
 
 .cta h2::after {
-  background: linear-gradient(90deg, var(--accent-color), white);
+  background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
 }
 
 .cta p {
-  color: rgba(255,255,255,0.9);
+  color: var(--text-light);
 }
 
 .contact-info {
@@ -336,19 +337,19 @@ p {
 }
 
 .contact-info p {
-  color: rgba(255,255,255,0.9);
+  color: var(--text-light);
   margin: 1rem 0;
 }
 
 .contact-info a {
-  color: var(--accent-color);
+  color: var(--primary-color);
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
 }
 
 .contact-info a:hover {
-  color: white;
+  color: var(--secondary-color);
 }
 
 /* Form Styling */
@@ -399,8 +400,9 @@ button[type="submit"]:hover {
 
 /* Footer */
 footer {
-  background: var(--text-dark);
-  color: rgba(255,255,255,0.8);
+  background: #fffad6;
+  background: radial-gradient(circle, rgba(255, 250, 214, 1) 0%, rgba(235, 242, 250, 1) 100%);
+  color: var(--text-dark);
   text-align: center;
   padding: 3rem 2rem;
   margin-top: 4rem;
@@ -415,32 +417,32 @@ footer::before {
   left: 0;
   right: 0;
   bottom: 0;
-  opacity: 0.1;
+  opacity: 0.15;
   background-image: 
     /* Diamond pattern */
-    radial-gradient(circle at 25% 25%, var(--accent-color) 2px, transparent 2px),
-    radial-gradient(circle at 75% 75%, var(--accent-color) 2px, transparent 2px),
+    radial-gradient(circle at 25% 25%, var(--secondary-color) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, var(--secondary-color) 2px, transparent 2px),
     /* Hexagon pattern */
     repeating-linear-gradient(
       0deg,
       transparent,
       transparent 20px,
-      rgba(212, 175, 55, 0.3) 20px,
-      rgba(212, 175, 55, 0.3) 22px
+      rgba(44, 62, 80, 0.2) 20px,
+      rgba(44, 62, 80, 0.2) 22px
     ),
     repeating-linear-gradient(
       60deg,
       transparent,
       transparent 20px,
-      rgba(212, 175, 55, 0.2) 20px,
-      rgba(212, 175, 55, 0.2) 22px
+      rgba(44, 62, 80, 0.15) 20px,
+      rgba(44, 62, 80, 0.15) 22px
     ),
     repeating-linear-gradient(
       120deg,
       transparent,
       transparent 20px,
-      rgba(212, 175, 55, 0.2) 20px,
-      rgba(212, 175, 55, 0.2) 22px
+      rgba(44, 62, 80, 0.15) 20px,
+      rgba(44, 62, 80, 0.15) 22px
     );
   background-size: 50px 50px, 50px 50px, 60px 35px, 60px 35px, 60px 35px;
   animation: geometricFloat 20s ease-in-out infinite;
@@ -453,16 +455,16 @@ footer::after {
   left: 0;
   right: 0;
   bottom: 0;
-  opacity: 0.05;
+  opacity: 0.1;
   background-image: 
     /* Triangle pattern */
     conic-gradient(from 0deg at 50% 50%, 
       transparent 0deg, 
-      var(--accent-color) 60deg, 
+      var(--secondary-color) 60deg, 
       transparent 120deg, 
-      var(--accent-color) 180deg, 
+      var(--secondary-color) 180deg, 
       transparent 240deg, 
-      var(--accent-color) 300deg, 
+      var(--secondary-color) 300deg, 
       transparent 360deg
     );
   background-size: 40px 40px;
@@ -485,7 +487,7 @@ footer::after {
 }
 
 footer p {
-  color: rgba(255,255,255,0.8);
+  color: var(--text-light);
   margin: 0;
   font-size: 0.9rem;
   position: relative;
