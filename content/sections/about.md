@@ -1,5 +1,5 @@
 ---
-title: "Meet Your Guide"
+title: "Meet Your Therapist"
 weight: 1
 ---
 
