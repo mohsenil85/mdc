@@ -84,6 +84,7 @@ p {
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
+  background-image: var(--hero-bg-desktop);
 }
 
 .overlay {
@@ -196,7 +197,7 @@ p {
   font-size: 1.3rem;
   color: rgba(255,255,255,0.9);
   margin-bottom: 2.5rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.5px;
 }
 
@@ -510,6 +511,13 @@ footer p {
 @media (max-width: 768px) {
   .hero-content {
     padding: 1rem;
+  }
+  
+  .hero {
+    background-image: var(--hero-bg-mobile, var(--hero-bg-desktop));
+    background-attachment: scroll;
+    background-position: center 20%;
+    min-height: 80vh;
   }
   
   .about, .offerings, .cta {

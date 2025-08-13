@@ -1,6 +1,8 @@
 {{ $hero := .Site.GetPage "/sections/hero" }}
 {{ if $hero }}
-<div class="hero" {{ if $hero.Params.background_image }}style="background-image: url('{{ $hero.Params.background_image }}'); background-size: cover; background-position: center; background-repeat: no-repeat;"{{ end }}>
+{{ $bgDesktop := $hero.Params.background_image }}
+{{ $bgMobile := $hero.Params.background_image_mobile | default $bgDesktop }}
+<div class="hero" {{ if $bgDesktop }}style="--hero-bg-desktop: url('{{ $bgDesktop }}'); --hero-bg-mobile: url('{{ $bgMobile }}');"{{ end }}>
   <div class="overlay"></div>
   <div class="hero-content">
     <h1>{{ $hero.Title }}</h1>

@@ -4,5 +4,6 @@ description: "How liberating would it be to have tools to work with your dreams 
 button_text: "Book a Session"
 button_link: "#book"
 background_image: "/images/hero-background.jpg"
+background_image_mobile: "/images/hero-background-mobile.jpg"
 weight: 0
 ---
