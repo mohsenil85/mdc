@@ -2,7 +2,7 @@
 title: "Ready to Begin Your Journey?"
 weight: 3
 contact_email: "info@mountaindreamercounseling.com"
-contact_phone: "(555) 123-4567"
+contact_phone: "(303) 800-7572"
 ---
 
 **Accepting new clients starting in late August.**
