@@ -8,9 +8,18 @@
   
   <div class="contact-info">
     <p><strong>Contact Information:</strong></p>
-    {{ if $contact.Params.contact_email }}
-    <p>Email: <a href="mailto:{{ $contact.Params.contact_email }}">{{ $contact.Params.contact_email }}</a></p>
-    {{ end }}
+      {{ $email := $contact.Params.contact_email }}
+      {{ $parts := split $email "@" }}
+      {{ $local := index $parts 0 }}
+      {{ $domain := index $parts 1 }}
+    <p>Email:</p>
+    <p class="email-wrap">
+      <a class="email-address" href="mailto:{{ $email }}" data-email="{{ $email }}" >
+        <span class="local">{{ $local }}</span>
+        <span class="at">@</span>
+        <span class="domain">{{ $domain }}</span>
+      </a>
+    </p>
     {{ if $contact.Params.contact_phone }}
     <p>Phone: <a href="tel:{{ $contact.Params.contact_phone }}">{{ $contact.Params.contact_phone }}</a></p>
     {{ end }}
