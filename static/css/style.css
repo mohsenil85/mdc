@@ -79,7 +79,7 @@ p {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-attachment: fixed;
+  background-image: var(--bg-desktop);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -525,6 +525,10 @@ footer p {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .hero {
+    background-image: var(--bg-mobile);
+  }
+  
   .hero-content {
     padding: 1rem;
   }
