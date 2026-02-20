@@ -1,6 +1,13 @@
 {{ $footer := .Site.GetPage "/sections/footer" }}
 <footer>
-  <p>
-      {{ $footer.Params.copyright_text }}
-  </p>
+  <div class="footer-content">
+    <p class="footer-business">{{ .Site.Title }}</p>
+    {{ with $footer.Params.service_area }}<p class="footer-service-area">{{ . }}</p>{{ end }}
+    <p class="footer-contact">
+      {{ with $footer.Params.phone }}<a href="tel:{{ . }}">{{ . }}</a>{{ end }}
+      {{ if and $footer.Params.phone $footer.Params.email }} | {{ end }}
+      {{ with $footer.Params.email }}<a href="mailto:{{ . }}">{{ . }}</a>{{ end }}
+    </p>
+    <p class="footer-copyright">&copy; {{ now.Format "2006" }} {{ .Site.Title }}</p>
+  </div>
 </footer>

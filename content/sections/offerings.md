@@ -1,6 +1,9 @@
 ---
 title: "How I Can Help"
 weight: 2
+build:
+  render: never
+  list: never
 ---
 
 I help highly sensitive and other neuro-spicy clients find tools to navigate their relationships and environments more skillfully. My specialties include:

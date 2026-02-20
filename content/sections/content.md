@@ -1,3 +1,8 @@
+---
+build:
+  render: never
+  list: never
+---
 Accepting new clients starting in late August. In my person-centered, somatic psychotherapy practice I weave my 20-plus years of teaching yoga and 10-plus years of working as a birth doula and birth educator. I enjoy working with highly sensitive clients. I recently completed research and presented at the Fall 2024 Association for Creativity in Counseling Conference on "Dreamwork in Addiction." I have held dream circles and group therapy for the last 5 years. I work with the sober curious and folks in recovery. I am also available if you want support navigating conception, pregnancy, postpartum, or the parenting experience.
 How liberating would it be to have tools to work with your dreams and nightmares?... To be more embodied?... To set healthy boundaries with the people in your life and feel your feelings instead of exclusively thinking about them? To have a deep sense of self-acceptance, self-compassion, and self-trust? To understand and work with your sensitivities?
 I help highly sensitive and other neuro-spicy clients find tools to navigate their relationships and environments more skillfully. Become an expert on how to set boundaries, feel grounded and centered, and be your truest self. My specialties are trauma, dreamwork, pre and postnatal, and substance abuse recovery. Book a free consultation to get started!

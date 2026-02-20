@@ -7,7 +7,14 @@
       {{ $about.Content }}
     </div>
     <div class="about-image">
-      <img src="/images/therapist.jpeg" alt="Cassi Stuckman, Mountain Dreamer Counseling therapist" />
+      <picture>
+        <source srcset="/images/therapist.webp" type="image/webp">
+        <img src="/images/therapist.jpeg"
+             alt="Cassi Stuckman, LPCC — Somatic Therapist and Counselor in Boulder, Colorado"
+             loading="lazy"
+             width="600"
+             height="900" />
+      </picture>
     </div>
   </div>
 </section>

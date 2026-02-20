@@ -4,33 +4,105 @@
   <meta charset="UTF-8">
   <title>{{ .Title }} | {{ .Site.Title }}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {{ if .Description }}<meta name="description" content="{{ .Description }}">{{ end }}
+  <meta name="description" content="{{ .Description | default .Site.Params.description }}">
+  <link rel="canonical" href="{{ .Permalink }}">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="{{ .Site.Title }}">
-  <meta property="og:description" content="{{ .Description }}">
-  <meta property="og:image" content="{{ .Site.BaseURL }}images/cheetah.png">
-  <meta property="og:url" content="{{ .Site.BaseURL }}">
+  <meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}">
+  <meta property="og:description" content="{{ .Description | default .Site.Params.description }}">
+  <meta property="og:image" content="{{ .Site.BaseURL }}images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="{{ .Permalink }}">
   <meta property="og:type" content="website">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ .Site.Title }}">
-  <meta name="twitter:description" content="{{ .Description }}">
-  <meta name="twitter:image" content="{{ .Site.BaseURL }}images/cheetah.png">
+  <meta name="twitter:title" content="{{ .Title }} | {{ .Site.Title }}">
+  <meta name="twitter:description" content="{{ .Description | default .Site.Params.description }}">
+  <meta name="twitter:image" content="{{ .Site.BaseURL }}images/og-image.jpg">
+
+  <!-- Preload hero background images -->
+  <link rel="preload" as="image" href="/images/hero-background.jpg" media="(min-width: 769px)">
+  <link rel="preload" as="image" href="/images/hero-background-mobile.jpg" media="(max-width: 768px)">
 
   <!-- Preconnect to Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
-  <!-- High-quality fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
-  
+
+  <!-- Google Fonts (trimmed weights) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  
+
   <!-- Stylesheet -->
   <link rel="stylesheet" href="/css/style.css">
+
+  <!-- LocalBusiness Schema (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Counselor",
+    "name": "Mountain Dreamer Counseling",
+    "url": "https://www.mountaindreamercounseling.com/",
+    "telephone": "(303) 800-7572",
+    "email": "info@mountaindreamercounseling.com",
+    "image": "https://www.mountaindreamercounseling.com/images/therapist.jpeg",
+    "description": "Mountain Dreamer Counseling offers somatic therapy, dreamwork, perinatal support, and addiction recovery counseling in Boulder, Colorado.",
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "Boulder",
+        "containedInPlace": {
+          "@type": "State",
+          "name": "Colorado"
+        }
+      },
+      {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": 40.015,
+          "longitude": -105.2705
+        },
+        "geoRadius": "80000",
+        "description": "Colorado Front Range"
+      }
+    ],
+    "employee": {
+      "@type": "Person",
+      "name": "Cassi Stuckman",
+      "jobTitle": "Licensed Professional Counselor Candidate (LPCC)",
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "degree",
+          "name": "Master's in Clinical Mental Health Counseling",
+          "recognizedBy": {
+            "@type": "CollegeOrUniversity",
+            "name": "Naropa University"
+          }
+        }
+      ]
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Counseling Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Somatic Therapy" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dreamwork & Nightmare Processing" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Perinatal Counseling" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Addiction Recovery Counseling" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Highly Sensitive Person Support" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Dream Circles & Group Therapy" } }
+      ]
+    },
+    "sameAs": []
+  }
+  </script>
+
+  {{ partial "analytics.html" . }}
 </head>
 <body>
   {{ partial "hero.html" . }}

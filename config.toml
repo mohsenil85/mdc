@@ -1,8 +1,9 @@
 baseURL = 'https://www.mountaindreamercounseling.com/'
-title = 'Mountain Dreamer Counseling, LLC'
+title = 'Mountain Dreamer Counseling'
 enablerobotstxt = true
-timezone = "America/Los_Angeles"
+timezone = "America/Denver"
 titlecasestyle = "Go"
+disableKinds = ["taxonomy", "term"]
 
 [languages.en]
 copyright = "© Cassi Stuckman"
@@ -10,6 +11,10 @@ languagecode = "en-us"
 languagedirection = "ltr"
 languagename = "English"
 weight = 10
+
+[params]
+description = "Mountain Dreamer Counseling offers somatic therapy, dreamwork, perinatal support, and addiction recovery counseling in Boulder, Colorado. LPCC Cassi Stuckman — now accepting new clients."
+googleAnalytics = "G-XXXXXXXXXX"
 
 [markup.goldmark.renderer]
 unsafe = true

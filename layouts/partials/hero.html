@@ -4,6 +4,7 @@
   <div class="overlay"></div>
   <div class="hero-content">
     <h1>{{ $hero.Title }}</h1>
+    {{ with $hero.Params.subtitle }}<p class="hero-subtitle">{{ . }}</p>{{ end }}
     <p>{{ $hero.Params.description }}</p>
     <a href="{{ $hero.Params.button_link | default "#book" }}" class="btn">{{ $hero.Params.button_text | default "Book a Session" }}</a>
   </div>
