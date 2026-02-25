@@ -1,13 +1,2 @@
-{{ if and (eq hugo.Environment "production") .Site.Params.googleAnalytics }}
-{{ if ne .Site.Params.googleAnalytics "G-XXXXXXXXXX" }}
-<!-- Google Analytics (GA4) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalytics }}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('set', 'ads_data_redaction', true);
-  gtag('config', '{{ .Site.Params.googleAnalytics }}');
-</script>
-{{ end }}
-{{ end }}
+<!-- Umami Analytics -->
+<script defer src="https://analytics.lazyafternoon.site/script.js" data-website-id="ac590579-91d5-4e7a-bd67-0b5ace84a1e9"></script>
