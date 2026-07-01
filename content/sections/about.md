@@ -6,7 +6,7 @@ build:
   list: never
 ---
 
-I am a Licensed Professional Counselor Candidate (LPCC) with a Master's degree in Clinical Mental Health Counseling from Naropa University (2024), specializing in body-centered psychotherapy. My therapeutic practice integrates evidence-based approaches with ritual and intuition.
+I am a Licensed Professional Counselor (LPC) with a Master's degree in Clinical Mental Health Counseling from Naropa University (2024), specializing in body-centered psychotherapy. My therapeutic practice integrates evidence-based approaches with ritual and intuition.
 
 ### Specializations
 
