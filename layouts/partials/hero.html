@@ -1,24 +1,25 @@
 {{ $hero := .Site.GetPage "/sections/hero" }}
+{{ $wave := "M0,30 C240,54 480,10 720,30 C960,50 1200,58 1440,30 L1440,70 L0,70 Z" }}
 {{ if $hero }}
 <header class="hero"{{ if $hero.Params.background_image }} style="--bg-desktop: url('{{ $hero.Params.background_image }}'); --bg-mobile: url('{{ $hero.Params.background_image_mobile | default $hero.Params.background_image }}');"{{ end }}>
   <div class="overlay" aria-hidden="true"></div>
-  <div class="horizon" aria-hidden="true"></div>
   <div class="hero-content">
-    <p class="eyebrow eyebrow-dawn">Now accepting new clients</p>
+    <p class="eyebrow">Now accepting new clients</p>
     <h1>{{ $hero.Title }}</h1>
     {{ with $hero.Params.subtitle }}<p class="hero-subtitle">{{ . }}</p>{{ end }}
     <p class="hero-lede">{{ $hero.Params.description }}</p>
     <a href="{{ $hero.Params.button_link | default "#book" }}" class="btn btn-dawn">{{ $hero.Params.button_text | default "Book a Session" }}</a>
   </div>
+  <svg class="wave wave--cream hero-wave" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="{{ $wave }}"/></svg>
 </header>
 {{ else }}
 <header class="hero">
   <div class="overlay" aria-hidden="true"></div>
-  <div class="horizon" aria-hidden="true"></div>
   <div class="hero-content">
     <h1>{{ .Title }}</h1>
     <p class="hero-lede">{{ .Description }}</p>
     <a href="#book" class="btn btn-dawn">Book a Session</a>
   </div>
+  <svg class="wave wave--cream hero-wave" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="{{ $wave }}"/></svg>
 </header>
 {{ end }}
