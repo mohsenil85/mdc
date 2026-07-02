@@ -1,13 +1,15 @@
 {{ $footer := .Site.GetPage "/sections/footer" }}
+{{ $wave := "M0,30 C240,54 480,10 720,30 C960,50 1200,58 1440,30 L1440,70 L0,70 Z" }}
 <footer>
+  <svg class="wave wave--pine footer-wave" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="{{ $wave }}"/></svg>
   <div class="footer-content">
     <p class="footer-business">{{ .Site.Title }}</p>
     {{ with $footer.Params.service_area }}<p class="footer-service-area">{{ . }}</p>{{ end }}
     <p class="footer-contact">
       {{ with $footer.Params.phone }}<a href="tel:{{ . }}">{{ . }}</a>{{ end }}
-      {{ if and $footer.Params.phone $footer.Params.email }} | {{ end }}
+      {{ if and $footer.Params.phone $footer.Params.email }} <span class="footer-sep">·</span> {{ end }}
       {{ with $footer.Params.email }}<a href="mailto:{{ . }}">{{ . }}</a>{{ end }}
     </p>
-    <p class="footer-copyright">&copy; {{ now.Format "2006" }} {{ .Site.Title }}</p>
+    <p class="footer-copyright">&copy; {{ now.Format "2006" }} {{ .Site.Title }} <span class="footer-sep">·</span> Boulder, Colorado</p>
   </div>
 </footer>
