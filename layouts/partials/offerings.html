@@ -1,9 +1,14 @@
 {{ $offerings := .Site.GetPage "/sections/offerings" }}
 {{ if $offerings }}
 <section class="offerings">
-  <h2>{{ $offerings.Title }}</h2>
-  <div class="offerings-content">
-    {{ $offerings.Content }}
+  <div class="wrap offerings-inner">
+    <div class="offerings-head">
+      <p class="eyebrow">Areas of focus</p>
+      <h2>{{ $offerings.Title }}</h2>
+    </div>
+    <div class="offerings-content">
+      {{ $offerings.Content }}
+    </div>
   </div>
 </section>
 {{ end }}

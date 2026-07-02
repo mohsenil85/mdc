@@ -5,9 +5,9 @@
     {{ with $footer.Params.service_area }}<p class="footer-service-area">{{ . }}</p>{{ end }}
     <p class="footer-contact">
       {{ with $footer.Params.phone }}<a href="tel:{{ . }}">{{ . }}</a>{{ end }}
-      {{ if and $footer.Params.phone $footer.Params.email }} | {{ end }}
+      {{ if and $footer.Params.phone $footer.Params.email }} <span class="footer-sep">·</span> {{ end }}
       {{ with $footer.Params.email }}<a href="mailto:{{ . }}">{{ . }}</a>{{ end }}
     </p>
-    <p class="footer-copyright">&copy; {{ now.Format "2006" }} {{ .Site.Title }}</p>
+    <p class="footer-copyright">&copy; {{ now.Format "2006" }} {{ .Site.Title }} <span class="footer-sep">·</span> Boulder, Colorado</p>
   </div>
 </footer>

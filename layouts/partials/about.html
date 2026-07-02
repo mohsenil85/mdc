@@ -1,20 +1,26 @@
 {{ $about := .Site.GetPage "/sections/about" }}
 {{ if $about }}
 <section class="about">
-  <h2>{{ $about.Title }}</h2>
-  <div class="about-content">
-    <div class="about-text">
-      {{ $about.Content }}
+  <div class="wrap about-inner">
+    <div class="about-head">
+      <p class="eyebrow">Meet your counselor</p>
+      <h2>{{ $about.Title }}</h2>
     </div>
-    <div class="about-image">
-      <picture>
-        <source srcset="/images/therapist.webp" type="image/webp">
-        <img src="/images/therapist.jpeg"
-             alt="Cassi Stuckman, LPC — Somatic Therapist and Counselor in Boulder, Colorado"
-             loading="lazy"
-             width="600"
-             height="900" />
-      </picture>
+    <div class="about-body">
+      <div class="about-text">
+        {{ $about.Content }}
+      </div>
+      <figure class="about-image">
+        <picture>
+          <source srcset="/images/therapist.webp" type="image/webp">
+          <img src="/images/therapist.jpeg"
+               alt="Cassi Stuckman, LPC — Somatic Therapist and Counselor in Boulder, Colorado"
+               loading="lazy"
+               width="600"
+               height="900" />
+        </picture>
+        <figcaption>Cassi Stuckman, LPC</figcaption>
+      </figure>
     </div>
   </div>
 </section>
