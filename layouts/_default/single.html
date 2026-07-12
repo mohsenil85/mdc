@@ -27,14 +27,14 @@
   <nav class="blog-nav">
     <div class="wrap blog-nav-inner">
       <a href="/" class="blog-home">&larr; Mountain Dreamer Counseling</a>
-      <a href="/posts/" class="blog-journal-link">Journal</a>
+      <a href="/posts/" class="blog-journal-link">Dream Journal</a>
     </div>
   </nav>
 
   <main class="site-main">
     <article class="post wrap">
       <header class="post-header">
-        <p class="eyebrow">Journal</p>
+        <p class="eyebrow">Dream Journal</p>
         <h1>{{ .Title }}</h1>
         <p class="post-meta">
           {{ .Date.Format "January 2, 2006" }}{{ with .Params.author }} <span class="footer-sep">&middot;</span> {{ . }}{{ end }}
@@ -46,7 +46,7 @@
       </div>
 
       <footer class="post-footer">
-        <a href="/posts/" class="btn btn-dawn">More from the Journal</a>
+        <a href="/posts/" class="btn btn-dawn">More from the Dream Journal</a>
       </footer>
     </article>
   </main>

@@ -1,5 +1,5 @@
 ---
-title: "Journal"
+title: "Dream Journal"
 description: "Notes on somatic dreamwork, the nervous system, cycles, and dreaming from Cassi Stuckman, LPC — Mountain Dreamer Counseling, Boulder, Colorado."
 ---
 
