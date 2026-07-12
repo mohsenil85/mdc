@@ -1,8 +1,8 @@
 ---
-title: "Welcome to the Journal"
+title: "Welcome to the Dream Journal"
 date: 2026-07-12
 draft: false
-description: "A first note on why I'm keeping a journal here — somatic dreamwork, the nervous system, and dreaming with the body."
+description: "A first note on why I'm keeping a dream journal here — somatic dreamwork, the nervous system, and dreaming with the body."
 author: "Cassi Stuckman, LPC"
 ---
 
