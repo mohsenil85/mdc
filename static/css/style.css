@@ -549,3 +549,37 @@ footer a:hover { color: #fff; }
   transition: color 160ms ease;
 }
 .hero-topnav-link:hover { color: var(--pink); }
+
+/* ============================================================
+   Download / opt-in landing (Lunar Dream Map)
+   ============================================================ */
+.download { padding: 3.5rem 0 4.5rem; }
+.download-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: center;
+}
+.download-copy h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); margin: 0.4rem 0 1rem; }
+.download-lede { font-size: 1.2rem; color: var(--ink-soft); }
+.optin-kit { margin-top: 2rem; }
+
+.download-art img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: 0 24px 60px -28px rgba(57, 41, 66, 0.5);
+  background: #fff;
+}
+.download-caption {
+  margin-top: 0.9rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  font-style: italic;
+}
+
+@media (max-width: 760px) {
+  .download-grid { grid-template-columns: 1fr; gap: 2.2rem; }
+  .download-art { order: -1; }
+}
