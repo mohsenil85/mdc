@@ -6,7 +6,7 @@ description: "A simple morning practice for tracking your dreams, your body, and
 author: "Cassi Stuckman, LPC"
 ---
 
-The Lunar Dream Map is a circular wheel for tracking three things at once: your dreams, your body, and the moon, across one lunar cycle. It grew out of my own morning practice, and it's the tool I hand to almost everyone I work with. Here's how to use it.
+The Lunar Dream Map is a circular wheel for tracking three things at once: your dreams, your body, and the moon, across one lunar cycle. It grew out of my own morning practice, and it's the tool I hand to almost everyone I do dreamwork with. Here's how to use it.
 
 ## The three rings
 
