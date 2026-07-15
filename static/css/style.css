@@ -124,6 +124,7 @@ a:hover { color: var(--plum); }
 }
 .wave--pine { fill: var(--plum); }
 .wave--cream { fill: var(--cream); }
+.wave--rose { fill: var(--pink); }
 
 /* ============================================================
    HERO — tree photo, floating cream card
@@ -153,7 +154,7 @@ a:hover { color: var(--plum); }
 .hero-content {
   position: relative;
   z-index: 1;
-  width: min(700px, 92vw);
+  width: min(700px, 100%);
   text-align: center;
   background: var(--cream-card);
   border-radius: var(--radius);
@@ -528,27 +529,48 @@ footer a:hover { color: #fff; }
 .footer-nav a { color: var(--on-dark-soft); text-decoration: none; }
 .footer-nav a:hover { color: var(--pink); }
 
-/* ---- homepage hero: top-right Journal link ---- */
-.hero-topnav {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  z-index: 3;
-  display: flex;
-  justify-content: flex-end;
-  padding: 1.3rem clamp(1.4rem, 5vw, 3rem);
+/* ============================================================
+   INTERLUDE — dusty pink gift moment (Lunar Dream Map)
+   ============================================================ */
+.interlude {
+  position: relative;
+  background: var(--pink);
+  padding: clamp(5rem, 10vw, 7.5rem) 0 clamp(4.5rem, 9vw, 7rem);
 }
-.hero-topnav-link {
-  color: var(--on-dark);
-  text-decoration: none;
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  padding: 0.4rem 0.3rem;
-  transition: color 160ms ease;
+.interlude-wave-bottom { top: 100%; transform: scaleY(-1); }
+.interlude-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(260px, 0.95fr);
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
 }
-.hero-topnav-link:hover { color: var(--pink); }
+.interlude .eyebrow { background: var(--plum); color: var(--on-dark); }
+.interlude h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  color: var(--plum);
+  margin: 0 0 0.9rem;
+}
+.interlude-copy p:not(.eyebrow) {
+  color: var(--plum-deep);
+  max-width: 44ch;
+  font-size: clamp(1rem, 0.3vw + 0.96rem, 1.12rem);
+  line-height: 1.65;
+}
+.interlude-copy .btn { margin-top: 1.3rem; }
+.interlude-art img {
+  display: block;
+  width: min(420px, 100%);
+  aspect-ratio: 1;
+  object-fit: cover;
+  margin-inline: auto;
+  border-radius: var(--radius);
+  transform: rotate(-2.5deg);
+  filter: drop-shadow(0 30px 40px rgba(43, 31, 52, 0.35));
+}
 
 /* ============================================================
    Download / opt-in landing (Lunar Dream Map)
@@ -579,7 +601,49 @@ footer a:hover { color: #fff; }
   font-style: italic;
 }
 
+/* Kit embed: match the site's type + button language (Kit injects its own
+   inline styles, so !important is required) */
+.optin-kit .formkit-form,
+.optin-kit .formkit-form * { font-family: var(--font-body) !important; }
+.optin-kit .formkit-form[data-uid] .formkit-column:first-of-type {
+  display: block !important;
+  padding: 64px 34px !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+}
+.optin-kit .formkit-header :is(h1, h2),
+.optin-kit .formkit-header :is(h1, h2) * {
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+  font-size: clamp(1.9rem, 4.5vw, 2.6rem) !important;
+  line-height: 1.12 !important;
+}
+.optin-kit .formkit-header :is(h1, h2) { margin: 0 0 0.7rem !important; }
+.optin-kit .formkit-subheader,
+.optin-kit .formkit-subheader * {
+  font-family: var(--font-display) !important;
+  font-size: 1.35rem !important;
+  line-height: 1.45 !important;
+}
+.optin-kit .formkit-input {
+  font-size: 1rem !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--pill) !important;
+  padding: 0.85rem 1.3rem !important;
+}
+.optin-kit .formkit-submit {
+  font-weight: 700 !important;
+  background: var(--orange) !important;
+  color: #fff !important;
+  border-radius: var(--pill) !important;
+  transition: background 160ms ease !important;
+}
+.optin-kit .formkit-submit:hover { background: var(--orange-deep) !important; }
+
 @media (max-width: 760px) {
   .download-grid { grid-template-columns: 1fr; gap: 2.2rem; }
   .download-art { order: -1; }
+  .interlude-inner { grid-template-columns: 1fr; gap: 2.4rem; }
+  .interlude-art { order: -1; }
 }

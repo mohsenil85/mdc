@@ -1,0 +1,20 @@
+{{ $map := .Site.GetPage "/sections/dreammap" }}
+{{ $wave := "M0,30 C240,54 480,10 720,30 C960,50 1200,58 1440,30 L1440,70 L0,70 Z" }}
+{{ if $map }}
+<section class="interlude">
+  <div class="wrap interlude-inner">
+    <div class="interlude-copy">
+      <p class="eyebrow">A gift for your practice</p>
+      <h2>{{ $map.Title }}</h2>
+      {{ $map.Content }}
+      <a href="{{ $map.Params.button_link }}" class="btn btn-dawn">{{ $map.Params.button_text }}</a>
+    </div>
+    <div class="interlude-art">
+      <img src="{{ $map.Params.image }}"
+           alt="Illustration of a snow leopard standing among flowers beneath the phases of the moon."
+           loading="lazy">
+    </div>
+  </div>
+  <svg class="wave wave--rose interlude-wave-bottom" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="{{ $wave }}"/></svg>
+</section>
+{{ end }}
