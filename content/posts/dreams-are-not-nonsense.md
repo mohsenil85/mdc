@@ -1,7 +1,7 @@
 ---
 title: "Dreams Are Not Nonsense"
-date: 2026-07-10
-draft: true
+date: 2026-08-01
+draft: false
 description: "How I came to somatic dreamwork — and why it isn't about interpreting your dreams, but about learning to listen to them in the body."
 author: "Cassi Stuckman, LPC"
 ---

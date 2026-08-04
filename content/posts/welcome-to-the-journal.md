@@ -1,6 +1,6 @@
 ---
 title: "Welcome to the Dream Journal"
-date: 2026-07-12
+date: 2026-08-03
 draft: false
 description: "A first note on why I'm keeping a dream journal here — somatic dreamwork, the nervous system, and dreaming with the body."
 author: "Cassi Stuckman, LPC"

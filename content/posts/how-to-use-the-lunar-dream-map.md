@@ -1,7 +1,7 @@
 ---
 title: "How to Use the Lunar Dream Map"
-date: 2026-07-12
-draft: true
+date: 2026-08-03
+draft: false
 description: "A simple morning practice for tracking your dreams, your body, and the moon across a single lunar cycle — and how to make the wheel your own."
 author: "Cassi Stuckman, LPC"
 ---
@@ -34,6 +34,6 @@ Anchoring your dreams to the lunar cycle gives the practice a rhythm — a begin
 
 ## Get your own
 
-You can download the Lunar Dream Map for free and print it at home. Grab it here, print it on watercolor paper, and start tomorrow morning.
+You can download the Lunar Dream Map for free and print it at home. [Grab it here](/lunar-dream-map/), print it on watercolor paper, and start tomorrow morning.
 
 *Sweet dreams.*
