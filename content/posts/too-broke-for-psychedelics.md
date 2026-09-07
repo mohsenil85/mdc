@@ -1,6 +1,6 @@
 ---
 title: "Too Broke for Psychedelics?"
-date: 2026-08-06
+date: 2026-09-07
 draft: false
 description: "I practice both psychedelic-assisted psychotherapy and somatic dreamwork. \"Psychedelic\" means mind-manifesting — and one of these is available every night, free, without a substance."
 author: "Cassi Stuckman, LPC"
