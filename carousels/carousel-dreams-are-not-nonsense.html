@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Carousel — Dreams Are Not Nonsense</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Karla:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f7efdf; --cream-card:#fdf8ee; --plum:#392942; --plum-deep:#2b1f34;
+    --orange:#c05a20; --pink:#d4a09e; --teal:#2aa99c;
+    --ink:#33291f; --ink-soft:#5e544a; --ink-muted:#8a8172;
+    --on-dark:#f6efdd; --on-dark-soft:rgba(246,239,221,.82);
+    --display:'Cormorant Garamond',Georgia,serif;
+    --body:'Karla',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#20182a;font-family:var(--body);padding:40px 0 80px}
+
+  .howto{max-width:1080px;margin:0 auto 48px;padding:32px 40px;background:var(--cream-card);
+    border-radius:14px;color:var(--ink);font-size:15px;line-height:1.65}
+  .howto h1{font-family:var(--display);font-size:30px;margin-bottom:14px;color:var(--plum)}
+  .howto ol{margin:10px 0 0 20px} .howto li{margin-bottom:7px}
+  .howto code{background:#efe4cd;padding:1px 6px;border-radius:4px;font-size:13px}
+
+  .slide{
+    width:1080px;height:1350px;margin:0 auto 44px;position:relative;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:120px 110px;overflow:hidden;
+  }
+  .dark{background:var(--plum);color:var(--on-dark)}
+  .light{background:var(--cream);color:var(--ink)}
+  .deep{background:var(--plum-deep);color:var(--on-dark)}
+
+  .num{position:absolute;bottom:64px;right:78px;font-size:24px;letter-spacing:.16em;
+    opacity:.4;font-weight:400}
+  .mark{position:absolute;top:70px;left:110px;font-size:23px;letter-spacing:.2em;
+    text-transform:uppercase;opacity:.55;font-weight:500}
+
+  .quote{font-family:var(--display);font-style:italic;font-size:104px;line-height:1.14;
+    letter-spacing:-.01em}
+  .huge{font-family:var(--display);font-size:118px;line-height:1.08;font-weight:600;
+    letter-spacing:-.015em}
+  .big{font-family:var(--display);font-size:82px;line-height:1.2;font-weight:500}
+  .mid{font-family:var(--display);font-size:64px;line-height:1.3;font-weight:400}
+  p.t{font-size:42px;line-height:1.62;font-weight:300;max-width:19ch}
+  p.t + p.t{margin-top:38px}
+  .wide{max-width:none}
+  .em{font-style:italic;font-family:var(--display);font-size:48px}
+
+  .rule{width:96px;height:3px;background:var(--orange);margin:44px 0;border:0}
+  .rule.pink{background:var(--pink)} .rule.teal{background:var(--teal)}
+  .accent{color:var(--orange)} .accent-p{color:var(--pink)} .accent-t{color:var(--teal)}
+
+  .cta{font-size:38px;line-height:1.6;font-weight:400;opacity:.9}
+  .handle{font-size:34px;letter-spacing:.05em;margin-top:52px;opacity:.75}
+  .moon{font-size:64px;margin-bottom:40px;display:block}
+
+  /* on screen: shrink slides to fit the window (set by script below) */
+  .slide{zoom:var(--fit,1)}
+  .howto{max-width:min(1080px,calc(100vw - 48px))}
+
+  @media print{
+    body{background:none;padding:0}
+    .howto{display:none}
+    /* 4:5 page, 8.5in wide — 1080px scaled to 816px = 8.5in */
+    @page{size:8.5in 10.625in;margin:0}
+    .slide{zoom:.75556;margin:0;page-break-after:always;break-after:page}
+    .slide:last-of-type{page-break-after:auto;break-after:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="howto">
+  <h1>Carousel — “Dreams Are Not Nonsense”</h1>
+  <p>8 slides, sized 1080&times;1350 (Instagram’s 4:5 portrait). Copy is drawn from your post.</p>
+  <ol>
+    <li><strong>To export:</strong> Cmd&nbsp;+&nbsp;P → Destination <em>Save as PDF</em> → Margins <em>None</em> → uncheck headers/footers. You get one 4:5 slide per page. If your print dialog forces Letter paper, set <em>Scale</em> to <em>Fit to page</em>.</li>
+    <li><strong>Or screenshot:</strong> Cmd&nbsp;+&nbsp;Shift&nbsp;+&nbsp;4, then Space, then click a slide to capture it exactly.</li>
+    <li><strong>To edit:</strong> the text is plain HTML — change any wording directly in this file and reload.</li>
+  </ol>
+  <p style="margin-top:12px">Colors and fonts are pulled from <code>static/css/style.css</code>, so these match your site.</p>
+</div>
+
+<!-- 1 — HOOK -->
+<section class="slide deep">
+  <span class="mark">Dream Journal</span>
+  <p class="quote">“You know dreams are just&nbsp;<span class="accent-p">nonsense</span>, right?”</p>
+  <hr class="rule pink">
+  <p class="t" style="opacity:.8">That’s what the therapist said to me.</p>
+  <span class="num">1</span>
+</section>
+
+<!-- 2 — SETUP -->
+<section class="slide light">
+  <p class="t wide">I was about to turn thirty, living in Chicago, recording recurring nightmares I now understand as a symptom of post-traumatic stress.</p>
+  <hr class="rule">
+  <p class="mid accent">Confusing. Shame-filled.<br>Dysregulating.</p>
+  <p class="t wide" style="margin-top:38px">And deeply women-centered in their themes.</p>
+  <span class="num">2</span>
+</section>
+
+<!-- 3 — THE ROOM -->
+<section class="slide dark">
+  <p class="t wide">I came into her office tearful, a total mess, and handed her my dreams.</p>
+  <hr class="rule pink">
+  <p class="big">She offered me an Akashic records session instead.</p>
+  <span class="num">3</span>
+</section>
+
+<!-- 4 — THE WHISPER -->
+<section class="slide light">
+  <p class="t wide">I left feeling unseen. But with a whisper in the back of my mind —</p>
+  <p class="t wide em" style="margin-top:26px">or maybe the back of my womb —</p>
+  <hr class="rule">
+  <p class="huge accent">Dreams are not nonsense.</p>
+  <span class="num">4</span>
+</section>
+
+<!-- 5 — STAKES -->
+<section class="slide deep">
+  <p class="big">This is important work.</p>
+  <p class="big accent-p" style="margin-top:30px">And women deserve more than that.</p>
+  <hr class="rule pink">
+  <p class="t wide" style="opacity:.82">That moment is why I do this.</p>
+  <span class="num">5</span>
+</section>
+
+<!-- 6 — THE TURN -->
+<section class="slide light">
+  <span class="mark" style="color:var(--ink-muted)">Here’s the surprising part</span>
+  <p class="huge">This work is <span class="accent">not</span> about interpreting your dreams.</p>
+  <hr class="rule teal">
+  <p class="t wide">I don’t think anyone actually wants their dreams interpreted by a stranger.</p>
+  <span class="num">6</span>
+</section>
+
+<!-- 7 — WHAT HELPS -->
+<section class="slide dark">
+  <p class="t wide">What helps is learning to find meaning in your <span class="em accent-t">own</span> dreams —</p>
+  <p class="t wide" style="margin-top:32px">and learning to listen, in your body, when someone shares theirs.</p>
+  <hr class="rule teal">
+  <p class="mid">A dream is unedited material from your subconscious. It’s a language only you speak.</p>
+  <span class="num">7</span>
+</section>
+
+<!-- 8 — CTA -->
+<section class="slide light" style="text-align:center;align-items:center">
+  <span class="moon">🌙</span>
+  <p class="huge">The work is staying fluent in it across a lifetime.</p>
+  <hr class="rule" style="margin:52px auto">
+  <p class="cta">Full piece in the Dream Journal.<br>Link in bio.</p>
+  <p class="handle">@cassisoma</p>
+  <span class="num">8</span>
+</section>
+
+<script>
+  // ?only=N renders a single slide full-size, for PNG export
+  var only = new URLSearchParams(location.search).get('only');
+  if (only) {
+    document.querySelector('.howto').style.display = 'none';
+    document.body.style.padding = '0';
+    document.body.style.background = 'none';
+    document.documentElement.style.setProperty('--fit', 1);
+    document.querySelectorAll('.slide').forEach(function (s, i) {
+      if (String(i + 1) !== only) s.style.display = 'none';
+      else { s.style.margin = '0'; s.style.zoom = 1; }
+    });
+  } else {
+    (function () {
+      function fit() {
+        var z = Math.min(1, (window.innerWidth - 48) / 1080);
+        document.documentElement.style.setProperty('--fit', z);
+      }
+      fit();
+      window.addEventListener('resize', fit);
+    })();
+  }
+</script>
+</body>
+</html>

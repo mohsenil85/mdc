@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Carousel — How to Do Dreamwork on Your Own</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Karla:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f7efdf; --cream-card:#fdf8ee; --plum:#392942; --plum-deep:#2b1f34;
+    --orange:#c05a20; --pink:#d4a09e; --pink-deep:#b87a72; --teal:#2aa99c; --teal-deep:#17817a;
+    --ink:#33291f; --ink-soft:#5e544a; --ink-muted:#8a8172;
+    --on-dark:#f6efdd;
+    --display:'Cormorant Garamond',Georgia,serif;
+    --body:'Karla',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#20182a;font-family:var(--body);padding:40px 0 80px}
+
+  .howto{max-width:min(1080px,calc(100vw - 48px));margin:0 auto 48px;padding:32px 40px;
+    background:var(--cream-card);border-radius:14px;color:var(--ink);font-size:15px;line-height:1.65}
+  .howto h1{font-family:var(--display);font-size:30px;margin-bottom:14px;color:var(--plum)}
+  .howto ol{margin:10px 0 0 20px} .howto li{margin-bottom:7px}
+  .howto code{background:#efe4cd;padding:1px 6px;border-radius:4px;font-size:13px}
+
+  .slide{width:1080px;height:1350px;margin:0 auto 44px;position:relative;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:120px 110px;overflow:hidden;zoom:var(--fit,1)}
+  .dark{background:var(--plum);color:var(--on-dark)}
+  .light{background:var(--cream);color:var(--ink)}
+  .deep{background:var(--plum-deep);color:var(--on-dark)}
+
+  .num{position:absolute;bottom:64px;right:78px;font-size:24px;letter-spacing:.16em;opacity:.4}
+  .mark{position:absolute;top:70px;left:110px;font-size:23px;letter-spacing:.2em;
+    text-transform:uppercase;opacity:.55;font-weight:500}
+
+  .huge{font-family:var(--display);font-size:112px;line-height:1.08;font-weight:600;letter-spacing:-.015em}
+  .big{font-family:var(--display);font-size:80px;line-height:1.2;font-weight:500}
+  .mid{font-family:var(--display);font-size:62px;line-height:1.32}
+  p.t{font-size:42px;line-height:1.62;font-weight:300}
+  p.t + p.t{margin-top:32px}
+  .em{font-style:italic;font-family:var(--display)}
+  .sm{font-size:34px;line-height:1.55;font-weight:300;opacity:.72}
+
+  .rule{width:96px;height:3px;background:var(--orange);margin:40px 0;border:0}
+  .rule.pink{background:var(--pink)} .rule.teal{background:var(--teal)}
+  .accent{color:var(--orange)} .accent-p{color:var(--pink)} .accent-t{color:var(--teal)}
+  .light .accent-p{color:var(--pink-deep)} .light .accent-t{color:var(--teal-deep)}
+
+  .chip{display:inline-block;font-size:26px;letter-spacing:.22em;text-transform:uppercase;
+    padding:14px 30px;border-radius:999px;font-weight:500;margin-bottom:40px;align-self:flex-start}
+  .chip.a{background:var(--pink);color:var(--plum-deep)}
+  .chip.b{background:var(--teal);color:#04302c}
+  .chip.c{background:var(--orange);color:#fff2e6}
+  .chip.d{background:rgba(246,239,221,.16);color:var(--on-dark)}
+
+  .q{font-size:40px;line-height:1.5;font-weight:300;margin-top:26px;padding-left:34px;
+    border-left:3px solid var(--orange)}
+  .q.p{border-color:var(--pink)} .q.t{border-color:var(--teal)}
+
+  .cta{font-size:38px;line-height:1.6}
+  .handle{font-size:34px;letter-spacing:.05em;margin-top:48px;opacity:.75}
+  .moon{font-size:60px;margin-bottom:34px;display:block}
+
+  @media print{
+    body{background:none;padding:0}
+    .howto{display:none}
+    @page{size:8.5in 10.625in;margin:0}
+    .slide{zoom:.75556;margin:0;page-break-after:always;break-after:page}
+    .slide:last-of-type{page-break-after:auto;break-after:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="howto">
+  <h1>Carousel — “How to Do Dreamwork on Your Own”</h1>
+  <p>12 slides, 1080&times;1350. A numbered practice — the format that gets saved most.</p>
+  <ol>
+    <li><strong>PNGs:</strong> already exported to <code>carousels/images/dreamwork-on-your-own/</code>.</li>
+    <li><strong>Print:</strong> Cmd&nbsp;+&nbsp;P → <em>Save as PDF</em> → Margins <em>None</em>.</li>
+    <li><strong>Edit:</strong> plain HTML — change the wording and reload, then ask me to re-export.</li>
+  </ol>
+</div>
+
+<!-- 1 HOOK -->
+<section class="slide deep">
+  <span class="mark">Dream Journal</span>
+  <p class="huge">How to do dreamwork <span class="accent-p em">on your own</span>.</p>
+  <hr class="rule pink">
+  <p class="t" style="opacity:.82;max-width:23ch">You don’t need someone else in the room. Some of the deepest work I’ve done with my own dreams happened alone, in bed, before the house woke up.</p>
+  <span class="num">1</span>
+</section>
+
+<!-- 2 NO DICTIONARY -->
+<section class="slide light">
+  <p class="huge">First: put the dream dictionary <span class="accent">down</span>.</p>
+  <hr class="rule">
+  <p class="t" style="max-width:26ch">A book can tell you a snake means transformation. It can’t tell you what <span class="em">your</span> snake means, in your body, on this particular morning.</p>
+  <p class="t" style="max-width:26ch">That’s the only meaning that will do anything for you.</p>
+  <span class="num">2</span>
+</section>
+
+<!-- 3 INCUBATION -->
+<section class="slide dark">
+  <span class="chip a">Before bed</span>
+  <p class="big">Try some dream incubation.</p>
+  <p class="sm" style="margin-top:24px;max-width:30ch">A formal-sounding name for something simple. You ask. Put a question to the night — not a demand, an invitation:</p>
+  <p class="q p">What message am I hoping for?</p>
+  <p class="q p">What am I trying to process?</p>
+  <p class="q p">Where do I need guidance?</p>
+  <span class="num">3</span>
+</section>
+
+<!-- 4 DONT MOVE -->
+<section class="slide light">
+  <span class="chip c">On waking</span>
+  <p class="huge accent">Don’t move yet.</p>
+  <hr class="rule">
+  <p class="t" style="max-width:26ch">Stay where you are. Eyes closed. No phone, no getting up, no starting the list.</p>
+  <p class="t" style="max-width:26ch">Let the dream come back on its own — in pieces, out of order. A color before a room before a face.</p>
+  <span class="num">4</span>
+</section>
+
+<!-- 5 WRITE IT BADLY -->
+<section class="slide dark">
+  <span class="chip d">On the page</span>
+  <p class="big">Write it down badly.</p>
+  <hr class="rule pink">
+  <p class="t" style="max-width:27ch;opacity:.88">Speed over quality. Fragments are fine. Present tense keeps you inside it:</p>
+  <p class="mid accent-p em" style="margin-top:26px">I am standing in my grandmother’s kitchen and the water is rising.</p>
+  <p class="sm" style="margin-top:34px">Give it a title. “The Barn Is On Fire.”</p>
+  <span class="num">5</span>
+</section>
+
+<!-- 6 ASSOCIATIONS -->
+<section class="slide light">
+  <span class="chip b">In the body — first</span>
+  <p class="big">Start with your associations.</p>
+  <hr class="rule teal">
+  <p class="t" style="max-width:27ch">What’s happening in your life? What’s unresolved, what you avoided, what you’re dreading or hoping for.</p>
+  <p class="t" style="max-width:27ch">Then widen out — where are you in your <span class="em accent-t">greater cycles?</span></p>
+  <span class="num">6</span>
+</section>
+
+<!-- 7 TWO QUESTIONS -->
+<section class="slide dark">
+  <p class="sm" style="margin-bottom:30px">Somatic work starts with two questions, in this order:</p>
+  <p class="huge" style="font-size:86px">What am I feeling?</p>
+  <hr class="rule teal">
+  <p class="huge accent-t" style="font-size:86px">Where is that in my body?</p>
+  <p class="sm" style="margin-top:40px">Throat, chest, belly, jaw, hips, the backs of your legs.</p>
+  <span class="num">7</span>
+</section>
+
+<!-- 8 WHISPER -->
+<section class="slide deep" style="text-align:center;align-items:center">
+  <p class="huge accent-p" style="font-size:130px">It is most likely a whisper.</p>
+  <hr class="rule pink" style="margin:48px auto">
+  <p class="t" style="max-width:26ch;opacity:.85">Not a shout. A slight tightening. A small warmth. A heaviness you’d walk straight past if you weren’t listening for it.</p>
+  <span class="num">8</span>
+</section>
+
+<!-- 9 WITHOUT WORDS -->
+<section class="slide light">
+  <span class="mark" style="color:var(--ink-muted)">The question I come back to most</span>
+  <p class="huge">How would you explain this dream <span class="accent">without words?</span></p>
+  <hr class="rule">
+  <p class="t" style="max-width:27ch">If you had to get it across using only your body — a gesture, a posture, the shape your hands make — what would you do?</p>
+  <span class="num">9</span>
+</section>
+
+<!-- 10 CHARADES -->
+<section class="slide dark">
+  <p class="huge accent-p">Think dream-time charades.</p>
+  <hr class="rule pink">
+  <p class="t" style="max-width:27ch">Then actually do it. Alone in your room, no one watching. Or with a partner over morning coffee. Move it.</p>
+  <p class="mid" style="margin-top:30px">It feels silly, but the results are fascinating.</p>
+  <span class="num">10</span>
+</section>
+
+<!-- 11 WHEN TO STOP -->
+<section class="slide light">
+  <span class="chip c">Know when to stop</span>
+  <p class="t" style="max-width:28ch">If a dream floods you — shaking, numb, spun out, somewhere far from the room — stop. Feel your feet. Name what you actually see. The dream will keep.</p>
+  <hr class="rule">
+  <p class="mid">Recurring nightmares and dreams tied to trauma are not solo material.</p>
+  <p class="sm" style="margin-top:28px;max-width:32ch">That’s not a failure of your practice. It’s the point where a nervous system needs company.</p>
+  <span class="num">11</span>
+</section>
+
+<!-- 12 CTA -->
+<section class="slide deep" style="text-align:center;align-items:center">
+  <span class="moon">🌙</span>
+  <p class="big">A single dream is interesting.</p>
+  <p class="huge accent-p" style="font-size:96px;margin-top:22px">Thirty days of dreams is a map.</p>
+  <hr class="rule pink" style="margin:46px auto">
+  <p class="cta">Full practice in the Dream Journal.<br>Link in bio.</p>
+  <p class="handle">@cassisoma</p>
+  <span class="num">12</span>
+</section>
+
+<script>
+  // ?only=N renders a single slide full-size, for PNG export
+  var only = new URLSearchParams(location.search).get('only');
+  if (only) {
+    document.querySelector('.howto').style.display = 'none';
+    document.body.style.padding = '0';
+    document.body.style.background = 'none';
+    document.documentElement.style.setProperty('--fit', 1);
+    document.querySelectorAll('.slide').forEach(function (s, i) {
+      if (String(i + 1) !== only) s.style.display = 'none';
+      else { s.style.margin = '0'; s.style.zoom = 1; }
+    });
+  } else {
+    (function () {
+      function fit() {
+        var z = Math.min(1, (window.innerWidth - 48) / 1080);
+        document.documentElement.style.setProperty('--fit', z);
+      }
+      fit();
+      window.addEventListener('resize', fit);
+    })();
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Carousel — How to Cite a Dream</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Karla:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f7efdf; --cream-card:#fdf8ee; --plum:#392942; --plum-deep:#2b1f34;
+    --orange:#c05a20; --pink:#d4a09e; --pink-deep:#b87a72; --teal:#2aa99c; --teal-deep:#17817a;
+    --ink:#33291f; --ink-soft:#5e544a; --ink-muted:#8a8172; --line:#e7dcc6;
+    --on-dark:#f6efdd; --line-dark:rgba(246,239,221,.16);
+    --display:'Cormorant Garamond',Georgia,serif;
+    --body:'Karla',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#20182a;font-family:var(--body);padding:40px 0 80px}
+
+  .howto{max-width:1080px;margin:0 auto 48px;padding:32px 40px;background:var(--cream-card);
+    border-radius:14px;color:var(--ink);font-size:15px;line-height:1.65}
+  .howto h1{font-family:var(--display);font-size:30px;margin-bottom:14px;color:var(--plum)}
+  .howto h2{font-family:var(--display);font-size:22px;margin:22px 0 8px;color:var(--plum)}
+  .howto ol{margin:10px 0 0 20px} .howto li{margin-bottom:7px}
+  .howto code{background:#efe4cd;padding:1px 6px;border-radius:4px;font-size:13px}
+  .howto .cap{white-space:pre-wrap;background:#efe4cd;padding:18px 20px;border-radius:8px;
+    font-size:14px;line-height:1.7}
+
+  .slide{width:1080px;height:1350px;margin:0 auto 44px;position:relative;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:120px 110px;overflow:hidden}
+  .dark{background:var(--plum);color:var(--on-dark)}
+  .light{background:var(--cream);color:var(--ink)}
+  .deep{background:var(--plum-deep);color:var(--on-dark)}
+
+  .num{position:absolute;bottom:64px;right:78px;font-size:24px;letter-spacing:.16em;opacity:.4}
+  .mark{position:absolute;top:70px;left:110px;font-size:23px;letter-spacing:.2em;
+    text-transform:uppercase;opacity:.55;font-weight:500}
+
+  .huge{font-family:var(--display);font-size:120px;line-height:1.06;font-weight:600;letter-spacing:-.015em}
+  .big{font-family:var(--display);font-size:84px;line-height:1.18;font-weight:500}
+  .mid{font-family:var(--display);font-size:62px;line-height:1.32}
+  p.t{font-size:42px;line-height:1.62;font-weight:300}
+  p.t + p.t{margin-top:34px}
+  .em{font-style:italic;font-family:var(--display)}
+  .sm{font-size:34px;line-height:1.55;font-weight:300;opacity:.72}
+  .xs{font-size:28px;line-height:1.5;font-weight:300;opacity:.55}
+
+  .rule{width:96px;height:3px;background:var(--orange);margin:42px 0;border:0}
+  .rule.pink{background:var(--pink)} .rule.teal{background:var(--teal)}
+  .accent{color:var(--orange)} .accent-p{color:var(--pink)} .accent-t{color:var(--teal)}
+  .light .accent-p{color:var(--pink-deep)} .light .accent-t{color:var(--teal-deep)}
+
+  .chip{display:inline-block;font-size:26px;letter-spacing:.22em;text-transform:uppercase;
+    padding:14px 30px;border-radius:999px;font-weight:500;margin-bottom:44px;align-self:flex-start}
+  .chip.a{background:var(--pink);color:var(--plum-deep)}
+  .chip.b{background:var(--teal);color:#04302c}
+  .chip.c{background:var(--orange);color:#fdf3e6}
+
+  .row{display:flex;gap:26px;align-items:flex-start;margin-top:36px}
+  .row .dot{flex:none;width:15px;height:15px;border-radius:50%;background:var(--orange);margin-top:19px}
+  .row.p .dot{background:var(--pink)} .row.t .dot{background:var(--teal)}
+  .row p{font-size:40px;line-height:1.55;font-weight:300}
+  .row p .lead{font-weight:500}
+
+  .cta{font-size:38px;line-height:1.6}
+  .handle{font-size:34px;letter-spacing:.05em;margin-top:50px;opacity:.75}
+  .moon{font-size:60px;margin-bottom:36px;display:block}
+
+  /* the citation card, slides 6 & 7 */
+  .cite{border-left:4px solid var(--orange);padding:38px 0 38px 44px;margin-top:20px}
+  .dark .cite,.deep .cite{border-color:var(--pink)}
+  .cite p{font-family:var(--display);font-size:52px;line-height:1.42;font-weight:500}
+  .cite .field{display:block;font-family:var(--body);font-size:24px;letter-spacing:.18em;
+    text-transform:uppercase;font-weight:500;opacity:.5;margin-bottom:14px}
+
+  /* on screen: shrink slides to fit the window (set by script below) */
+  .slide{zoom:var(--fit,1)}
+  .howto{max-width:min(1080px,calc(100vw - 48px))}
+
+  @media print{
+    body{background:none;padding:0}
+    .howto{display:none}
+    /* 4:5 page, 8.5in wide — 1080px scaled to 816px = 8.5in */
+    @page{size:8.5in 10.625in;margin:0}
+    .slide{zoom:.75556;margin:0;page-break-after:always;break-after:page}
+    .slide:last-of-type{page-break-after:auto;break-after:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="howto">
+  <h1>Carousel — “How to Cite a Dream”</h1>
+  <p>9 slides, 1080&times;1350. Slide 3 names Amy Shawanda and her nation — that attribution is the spine of the post, please keep it on the slide rather than only in the caption.</p>
+  <ol>
+    <li><strong>Export:</strong> Cmd&nbsp;+&nbsp;P → <em>Save as PDF</em> → Margins <em>None</em>, headers/footers off. One 4:5 slide per page. If the dialog forces Letter paper, set <em>Scale</em> to <em>Fit to page</em>.</li>
+    <li><strong>Screenshot:</strong> Cmd&nbsp;+&nbsp;Shift&nbsp;+&nbsp;4, Space, click a slide.</li>
+    <li><strong>Single slide full-size:</strong> add <code>?only=3</code> to the URL.</li>
+    <li><strong>Edit:</strong> plain HTML — change the wording and reload.</li>
+  </ol>
+  <p style="margin-top:12px">Colors and fonts from <code>static/css/style.css</code>.</p>
+
+  <h2>Caption</h2>
+  <div class="cap">How do you cite a dream?
+
+Academia has an answer for everything else. A book, a lecture, a conversation in a hallway — all citable. A dream, the thing that arrived with the clearest instruction you ever got, is supposed to stay off the page.
+
+The Anishinaabe scholar Amy Shawanda built a citation guide for dreams so that Dream Knowledge can be credited in academic writing the way any other source is. Dreams, she writes, are how Anishinaabe people connect to the spiritual realm — and they deserve to be referenced without shyness about where the knowledge came from.
+
+She cites her grandmother, who inspired her research through dreams. She cites her own dream of her son, before she was pregnant, telling her he wanted to come into this world but was waiting for her.
+
+Reading her work I realized my own son deserves the same credit. His presence was known in a dream first. I woke from that dream knowing I was pregnant, took a test, and was — to my surprise — pregnant.
+
+In Shawanda's format:
+
+Stuckman-Mohseni, O. (2024). Pregnant with Baby Number 2. Prophecy/vision. Boulder, CO.
+
+Full credit to Amy Shawanda for the framework.
+
+Now yours 👇 If you had to cite one dream as a source — author, year, title, type, place — what would the line say?
+
+#dreamwork #dreamjournal #indigenousknowledge #anishinaabe #dreams #jungian #pregnancydreams #decolonizeacademia</div>
+</div>
+
+<!-- 1 HOOK -->
+<section class="slide deep">
+  <span class="mark">Dream Journal</span>
+  <p class="huge" style="font-size:150px">How do you <span class="accent-p em">cite</span> a dream?</p>
+  <hr class="rule pink" style="margin:52px 0 0">
+  <span class="num">1</span>
+</section>
+
+<!-- 2 THE PROBLEM -->
+<section class="slide light">
+  <span class="mark" style="color:var(--ink-muted)">The problem</span>
+  <p class="big" style="max-width:19ch">Academia will cite almost anything.</p>
+  <hr class="rule">
+  <p class="t" style="max-width:26ch">A book. A lecture. A conversation in a hallway. A footnote to a footnote.</p>
+  <p class="big" style="margin-top:44px">But our dreams? <span class="accent em">nope.</span></p>
+  <span class="num">2</span>
+</section>
+
+<!-- 3 SHAWANDA -->
+<section class="slide dark">
+  <span class="chip a">Someone fixed this</span>
+  <p class="big" style="max-width:20ch">Amy Shawanda, an <span class="accent-p em">Anishinaabe</span> scholar, built a citation guide for dreams.</p>
+  <hr class="rule pink">
+  <p class="t" style="max-width:28ch;opacity:.88">So that Dream Knowledge can be credited in academic writing the way any other source is.</p>
+  <span class="num">3</span>
+</section>
+
+<!-- 4 WHY -->
+<section class="slide light">
+  <span class="mark" style="color:var(--ink-muted)">Why it matters</span>
+  <p class="mid" style="max-width:24ch">Dreams, she writes, are how Anishinaabe people connect to the spiritual realm.</p>
+  <hr class="rule">
+  <p class="t" style="max-width:26ch">They deserve to be referenced <span class="em accent">without shyness</span> about where the knowledge came from.</p>
+  <span class="num">4</span>
+</section>
+
+<!-- 5 HER EXAMPLES -->
+<section class="slide dark">
+  <span class="chip a">In her own papers</span>
+  <div class="row p"><span class="dot"></span><p><span class="lead">Her grandmother,</span> who inspired the research through dreams — cited as the source she is.</p></div>
+  <div class="row p"><span class="dot"></span><p><span class="lead">Her own son,</span> in a dream before she was pregnant, telling her he wanted to come into this world — but was waiting for her.</p></div>
+  <span class="num">5</span>
+</section>
+
+<!-- 6 MINE -->
+<section class="slide light">
+  <span class="mark" style="color:var(--ink-muted)">Reading her work</span>
+  <p class="big" style="max-width:19ch">I realized my son deserves the same credit.</p>
+  <hr class="rule">
+  <p class="t" style="max-width:27ch">His presence was known in a dream first. I woke knowing I was pregnant, took a test, and was — to my surprise — pregnant.</p>
+  <span class="num">6</span>
+</section>
+
+<!-- 7 THE CITATION -->
+<section class="slide deep">
+  <span class="mark">In Shawanda's format</span>
+  <div class="cite">
+    <p>Stuckman-Mohseni, O. (2024).<br><span class="em accent-p">Pregnant with Baby Number 2.</span><br>Prophecy/vision. Boulder, CO.</p>
+  </div>
+  <p class="sm" style="margin-top:48px;max-width:30ch">The dream that announced his arrival, on the page, with a year and a place.</p>
+  <span class="num">7</span>
+</section>
+
+<!-- 8 THE FORM -->
+<section class="slide light">
+  <span class="chip b">The shape of it</span>
+  <div class="row t"><span class="dot"></span><p><span class="lead">Dreamer.</span> Whoever the dream came to.</p></div>
+  <div class="row t"><span class="dot"></span><p><span class="lead">Year, and a title.</span> What the dream was about.</p></div>
+  <div class="row t"><span class="dot"></span><p><span class="lead">Type.</span> Prophecy, vision, visitation.</p></div>
+  <div class="row t"><span class="dot"></span><p><span class="lead">Place.</span> Where you were sleeping when it found you.</p></div>
+  <p class="xs" style="margin-top:44px">Framework: Amy Shawanda.</p>
+  <span class="num">8</span>
+</section>
+
+<!-- 9 CTA -->
+<section class="slide deep" style="text-align:center;align-items:center">
+  <span class="moon">🌙</span>
+  <p class="big">If you had to cite one dream as a source —</p>
+  <p class="huge accent-p" style="font-size:88px;margin-top:24px">what would the line say?</p>
+  <hr class="rule pink" style="margin:48px auto">
+  <p class="cta">Tell me in the comments.</p>
+  <p class="handle">@cassisoma</p>
+  <span class="num">9</span>
+</section>
+
+<script>
+  // ?only=N renders a single slide full-size, for PNG export
+  var only = new URLSearchParams(location.search).get('only');
+  if (only) {
+    document.querySelector('.howto').style.display = 'none';
+    document.body.style.padding = '0';
+    document.body.style.background = 'none';
+    document.documentElement.style.setProperty('--fit', 1);
+    document.querySelectorAll('.slide').forEach(function (s, i) {
+      if (String(i + 1) !== only) s.style.display = 'none';
+      else { s.style.margin = '0'; s.style.zoom = 1; }
+    });
+  } else {
+    (function () {
+      function fit() {
+        var z = Math.min(1, (window.innerWidth - 48) / 1080);
+        document.documentElement.style.setProperty('--fit', z);
+      }
+      fit();
+      window.addEventListener('resize', fit);
+    })();
+  }
+</script>
+</body>
+</html>

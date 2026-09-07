@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Carousel — Harriet Tubman's Dreams</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Karla:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f7efdf; --cream-card:#fdf8ee; --plum:#392942; --plum-deep:#2b1f34;
+    --orange:#c05a20; --pink:#d4a09e; --pink-deep:#b87a72; --teal:#2aa99c; --teal-deep:#17817a;
+    --ink:#33291f; --ink-soft:#5e544a; --ink-muted:#8a8172; --line:#e7dcc6;
+    --on-dark:#f6efdd; --line-dark:rgba(246,239,221,.16);
+    --display:'Cormorant Garamond',Georgia,serif;
+    --body:'Karla',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#20182a;font-family:var(--body);padding:40px 0 80px}
+
+  .howto{max-width:1080px;margin:0 auto 48px;padding:32px 40px;background:var(--cream-card);
+    border-radius:14px;color:var(--ink);font-size:15px;line-height:1.65}
+  .howto h1{font-family:var(--display);font-size:30px;margin-bottom:14px;color:var(--plum)}
+  .howto h2{font-family:var(--display);font-size:22px;margin:22px 0 8px;color:var(--plum)}
+  .howto ol{margin:10px 0 0 20px} .howto li{margin-bottom:7px}
+  .howto code{background:#efe4cd;padding:1px 6px;border-radius:4px;font-size:13px}
+  .howto .cap{white-space:pre-wrap;background:#efe4cd;padding:18px 20px;border-radius:8px;
+    font-size:14px;line-height:1.7}
+
+  .slide{width:1080px;height:1350px;margin:0 auto 44px;position:relative;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:120px 110px;overflow:hidden}
+  .dark{background:var(--plum);color:var(--on-dark)}
+  .light{background:var(--cream);color:var(--ink)}
+  .deep{background:var(--plum-deep);color:var(--on-dark)}
+
+  .num{position:absolute;bottom:64px;right:78px;font-size:24px;letter-spacing:.16em;opacity:.4}
+  .mark{position:absolute;top:70px;left:110px;font-size:23px;letter-spacing:.2em;
+    text-transform:uppercase;opacity:.55;font-weight:500}
+
+  .huge{font-family:var(--display);font-size:120px;line-height:1.06;font-weight:600;letter-spacing:-.015em}
+  .big{font-family:var(--display);font-size:84px;line-height:1.18;font-weight:500}
+  .mid{font-family:var(--display);font-size:62px;line-height:1.32}
+  p.t{font-size:42px;line-height:1.62;font-weight:300}
+  p.t + p.t{margin-top:34px}
+  .em{font-style:italic;font-family:var(--display)}
+  .sm{font-size:34px;line-height:1.55;font-weight:300;opacity:.72}
+  .xs{font-size:28px;line-height:1.5;font-weight:300;opacity:.55}
+
+  .rule{width:96px;height:3px;background:var(--orange);margin:42px 0;border:0}
+  .rule.pink{background:var(--pink)} .rule.teal{background:var(--teal)}
+  .accent{color:var(--orange)} .accent-p{color:var(--pink)} .accent-t{color:var(--teal)}
+  .light .accent-p{color:var(--pink-deep)} .light .accent-t{color:var(--teal-deep)}
+
+  .chip{display:inline-block;font-size:26px;letter-spacing:.22em;text-transform:uppercase;
+    padding:14px 30px;border-radius:999px;font-weight:500;margin-bottom:44px;align-self:flex-start}
+  .chip.a{background:var(--pink);color:var(--plum-deep)}
+  .chip.b{background:var(--teal);color:#04302c}
+  .chip.c{background:var(--orange);color:#fdf3e6}
+
+  .row{display:flex;gap:26px;align-items:flex-start;margin-top:36px}
+  .row .dot{flex:none;width:15px;height:15px;border-radius:50%;background:var(--orange);margin-top:19px}
+  .row.p .dot{background:var(--pink)} .row.t .dot{background:var(--teal)}
+  .row p{font-size:40px;line-height:1.55;font-weight:300}
+  .row p .lead{font-weight:500}
+
+  .cta{font-size:38px;line-height:1.6}
+  .handle{font-size:34px;letter-spacing:.05em;margin-top:50px;opacity:.75}
+  .moon{font-size:60px;margin-bottom:36px;display:block}
+
+  /* the dream passage, slides 3 & 5 */
+  .cite{border-left:4px solid var(--orange);padding:38px 0 38px 44px;margin-top:20px}
+  .dark .cite,.deep .cite{border-color:var(--pink)}
+  .cite p{font-family:var(--display);font-size:52px;line-height:1.42;font-weight:500}
+  .cite .field{display:block;font-family:var(--body);font-size:24px;letter-spacing:.18em;
+    text-transform:uppercase;font-weight:500;opacity:.5;margin-bottom:14px}
+
+  /* on screen: shrink slides to fit the window (set by script below) */
+  .slide{zoom:var(--fit,1)}
+  .howto{max-width:min(1080px,calc(100vw - 48px))}
+
+  @media print{
+    body{background:none;padding:0}
+    .howto{display:none}
+    /* 4:5 page, 8.5in wide — 1080px scaled to 816px = 8.5in */
+    @page{size:8.5in 10.625in;margin:0}
+    .slide{zoom:.75556;margin:0;page-break-after:always;break-after:page}
+    .slide:last-of-type{page-break-after:auto;break-after:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="howto">
+  <h1>Carousel — “Harriet Tubman Dreamed She Was Flying”</h1>
+  <p>7 slides, 1080&times;1350. Tubman left no writing of her own — everything here reaches us through Sarah Bradford (1869) and Ednah Cheney (1865). The sourcing caveat lives in the caption rather than on a slide, so keep that paragraph when you post.</p>
+  <ol>
+    <li><strong>Export:</strong> Cmd&nbsp;+&nbsp;P → <em>Save as PDF</em> → Margins <em>None</em>, headers/footers off. One 4:5 slide per page. If the dialog forces Letter paper, set <em>Scale</em> to <em>Fit to page</em>.</li>
+    <li><strong>Screenshot:</strong> Cmd&nbsp;+&nbsp;Shift&nbsp;+&nbsp;4, Space, click a slide.</li>
+    <li><strong>Single slide full-size:</strong> add <code>?only=3</code> to the URL.</li>
+    <li><strong>Edit:</strong> plain HTML — change the wording and reload.</li>
+  </ol>
+  <p style="margin-top:12px">Colors and fonts from <code>static/css/style.css</code>.</p>
+
+  <h2>Caption</h2>
+  <div class="cap">Harriet Tubman dreamed she was flying.
+
+Over fields, over towns, over rivers and mountains — like a bird, she said. And then a barrier she couldn't get over. A fence, or a river. On the other side, women dressed in white, reaching out their hands to pull her across.
+
+She said she recognized places on her escape routes because she had seen them first in the dreams.
+
+The visions started after a head injury. She was about thirteen. An overseer threw a two-pound weight at another enslaved person and it struck her skull instead. For the rest of her life she had sleeping spells she couldn't control — she would drop out of a conversation mid-sentence and come back describing what she had seen.
+
+Before she ran in 1849, she dreamed of horsemen riding in and children being torn away, screaming. Days later she learned she and her brothers were to be sold south. She treated the dream as the reason to go when she went.
+
+Here's the part I want to be careful about. Tubman was illiterate and left no written account of her own. Every one of these dreams reaches us through Sarah Bradford, a white writer working from interviews years later, who put Tubman's speech in heavy dialect for a sympathetic Northern audience. She called them visions, and she understood them as God talking to her directly — continuous with her waking life, not separate from it.
+
+The epilepsy explanation you'll see everywhere is a modern guess, not a diagnosis anyone made at the time. It's plausible. It isn't documented.
+
+I first encountered this in Prentis Hemphill’s What It Takes to Heal.
+
+What stays with me is the flying dream. That she saw the far side before she reached it, and there were women there already, with their hands out.
+
+Sources: Sarah Bradford, Scenes in the Life of Harriet Tubman (1869); Kate Clifford Larson, Bound for the Promised Land; Jean Humez, Harriet Tubman: The Life and the Life Stories.
+
+#dreamwork #dreamjournal #harriettubman #blackhistory #womenshistory #dreams #visions #propheticdreams</div>
+</div>
+
+<!-- 1 HOOK -->
+<section class="slide deep">
+  <span class="mark">Dream Journal</span>
+  <p class="huge" style="font-size:132px">Harriet Tubman dreamed she was <span class="accent-p em">flying.</span></p>
+  <hr class="rule pink" style="margin:52px 0 0">
+  <span class="num">1</span>
+</section>
+
+<!-- 2 WHERE THE VISIONS CAME FROM -->
+<section class="slide light">
+  <span class="mark" style="color:var(--ink-muted)">She was about thirteen</span>
+  <p class="mid" style="max-width:24ch">Due to an act of violence she had a TBI — and after that came the sleeping spells.</p>
+  <hr class="rule">
+  <p class="t" style="max-width:27ch">She'd drop out of a conversation mid-sentence and return <span class="em accent">describing what she'd seen.</span></p>
+  <span class="num">2</span>
+</section>
+
+<!-- 3 THE FLYING DREAM -->
+<section class="slide dark">
+  <span class="chip a">The flying dream</span>
+  <div class="cite">
+    <p>Over fields, over towns, over rivers and mountains — <span class="em accent-p">like a bird.</span></p>
+  </div>
+  <p class="t" style="margin-top:48px;max-width:28ch;opacity:.9">Then a barrier she couldn't get over. A fence, or a river.</p>
+  <span class="num">3</span>
+</section>
+
+<!-- 4 THE WOMEN IN WHITE -->
+<section class="slide deep" style="justify-content:center">
+  <span class="mark">On the other side</span>
+  <p class="big" style="max-width:20ch">Women dressed in white, reaching out their hands</p>
+  <p class="huge accent-p" style="font-size:96px;margin-top:30px">to pull her across.</p>
+  <hr class="rule pink">
+  <p class="sm" style="max-width:30ch">She said she recognized places on her escape routes because she had seen them first in the dreams.</p>
+  <span class="num">4</span>
+</section>
+
+<!-- 5 THE WARNING -->
+<section class="slide light">
+  <span class="chip c">1849</span>
+  <p class="mid" style="max-width:25ch">She dreamed of horsemen riding in, and children torn away, screaming.</p>
+  <hr class="rule">
+  <p class="t" style="max-width:27ch">Days later she learned she and her brothers were to be sold south.</p>
+  <p class="big" style="margin-top:40px">She <span class="accent em">left.</span></p>
+  <span class="num">5</span>
+</section>
+
+<!-- 6 VISIONS -->
+<section class="slide dark">
+  <p class="big" style="max-width:21ch">She called them <span class="accent-t em">visions.</span></p>
+  <hr class="rule teal">
+  <p class="t" style="max-width:28ch;opacity:.9">God talking to her directly — continuous with her waking life, not sealed off in the night the way we file ours.</p>
+  <span class="num">6</span>
+</section>
+
+<!-- 7 CREDIT -->
+<section class="slide deep" style="text-align:center;align-items:center">
+  <span class="moon">🌙</span>
+  <p class="sm" style="opacity:.6">I first encountered this in</p>
+  <p class="huge accent-p" style="font-size:92px;margin-top:22px">Prentis Hemphill’s <span class="em">What It Takes to Heal</span></p>
+  <hr class="rule pink" style="margin:48px auto">
+  <p class="handle">@cassisoma</p>
+  <span class="num">7</span>
+</section>
+
+<script>
+  // ?only=N renders a single slide full-size, for PNG export
+  var only = new URLSearchParams(location.search).get('only');
+  if (only) {
+    document.querySelector('.howto').style.display = 'none';
+    document.body.style.padding = '0';
+    document.body.style.background = 'none';
+    document.documentElement.style.setProperty('--fit', 1);
+    document.querySelectorAll('.slide').forEach(function (s, i) {
+      if (String(i + 1) !== only) s.style.display = 'none';
+      else { s.style.margin = '0'; s.style.zoom = 1; }
+    });
+  } else {
+    (function () {
+      function fit() {
+        var z = Math.min(1, (window.innerWidth - 48) / 1080);
+        document.documentElement.style.setProperty('--fit', z);
+      }
+      fit();
+      window.addEventListener('resize', fit);
+    })();
+  }
+</script>
+</body>
+</html>

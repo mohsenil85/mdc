@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Carousel — Why Women Remember More Dreams</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Karla:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f7efdf; --cream-card:#fdf8ee; --plum:#392942; --plum-deep:#2b1f34;
+    --orange:#c05a20; --pink:#d4a09e; --pink-deep:#b87a72; --teal:#2aa99c; --teal-deep:#17817a;
+    --ink:#33291f; --ink-soft:#5e544a; --ink-muted:#8a8172; --line:#e7dcc6;
+    --on-dark:#f6efdd; --line-dark:rgba(246,239,221,.16);
+    --display:'Cormorant Garamond',Georgia,serif;
+    --body:'Karla',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#20182a;font-family:var(--body);padding:40px 0 80px}
+
+  .howto{max-width:1080px;margin:0 auto 48px;padding:32px 40px;background:var(--cream-card);
+    border-radius:14px;color:var(--ink);font-size:15px;line-height:1.65}
+  .howto h1{font-family:var(--display);font-size:30px;margin-bottom:14px;color:var(--plum)}
+  .howto h2{font-family:var(--display);font-size:22px;margin:22px 0 8px;color:var(--plum)}
+  .howto ol{margin:10px 0 0 20px} .howto li{margin-bottom:7px}
+  .howto code{background:#efe4cd;padding:1px 6px;border-radius:4px;font-size:13px}
+  .howto .cap{white-space:pre-wrap;background:#efe4cd;padding:18px 20px;border-radius:8px;
+    font-size:14px;line-height:1.7}
+
+  .slide{width:1080px;height:1350px;margin:0 auto 44px;position:relative;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:120px 110px;overflow:hidden}
+  .dark{background:var(--plum);color:var(--on-dark)}
+  .light{background:var(--cream);color:var(--ink)}
+  .deep{background:var(--plum-deep);color:var(--on-dark)}
+
+  .num{position:absolute;bottom:64px;right:78px;font-size:24px;letter-spacing:.16em;opacity:.4}
+  .mark{position:absolute;top:70px;left:110px;font-size:23px;letter-spacing:.2em;
+    text-transform:uppercase;opacity:.55;font-weight:500}
+
+  .huge{font-family:var(--display);font-size:120px;line-height:1.06;font-weight:600;letter-spacing:-.015em}
+  .big{font-family:var(--display);font-size:84px;line-height:1.18;font-weight:500}
+  .mid{font-family:var(--display);font-size:62px;line-height:1.32}
+  p.t{font-size:42px;line-height:1.62;font-weight:300}
+  p.t + p.t{margin-top:34px}
+  .em{font-style:italic;font-family:var(--display)}
+  .sm{font-size:34px;line-height:1.55;font-weight:300;opacity:.72}
+  .xs{font-size:28px;line-height:1.5;font-weight:300;opacity:.55}
+
+  .rule{width:96px;height:3px;background:var(--orange);margin:42px 0;border:0}
+  .rule.pink{background:var(--pink)} .rule.teal{background:var(--teal)}
+  .accent{color:var(--orange)} .accent-p{color:var(--pink)} .accent-t{color:var(--teal)}
+  .light .accent-p{color:var(--pink-deep)} .light .accent-t{color:var(--teal-deep)}
+
+  .chip{display:inline-block;font-size:26px;letter-spacing:.22em;text-transform:uppercase;
+    padding:14px 30px;border-radius:999px;font-weight:500;margin-bottom:44px;align-self:flex-start}
+  .chip.a{background:var(--pink);color:var(--plum-deep)}
+  .chip.b{background:var(--teal);color:#04302c}
+  .chip.c{background:var(--orange);color:#fdf3e6}
+
+  .row{display:flex;gap:26px;align-items:flex-start;margin-top:36px}
+  .row .dot{flex:none;width:15px;height:15px;border-radius:50%;background:var(--orange);margin-top:19px}
+  .row.p .dot{background:var(--pink)} .row.t .dot{background:var(--teal)}
+  .row p{font-size:40px;line-height:1.55;font-weight:300}
+  .row p .lead{font-weight:500}
+
+  .cta{font-size:38px;line-height:1.6}
+  .handle{font-size:34px;letter-spacing:.05em;margin-top:50px;opacity:.75}
+  .moon{font-size:60px;margin-bottom:36px;display:block}
+
+  /* on screen: shrink slides to fit the window (set by script below) */
+  .slide{zoom:var(--fit,1)}
+  .howto{max-width:min(1080px,calc(100vw - 48px))}
+
+  @media print{
+    body{background:none;padding:0}
+    .howto{display:none}
+    /* 4:5 page, 8.5in wide — 1080px scaled to 816px = 8.5in */
+    @page{size:8.5in 10.625in;margin:0}
+    .slide{zoom:.75556;margin:0;page-break-after:always;break-after:page}
+    .slide:last-of-type{page-break-after:auto;break-after:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="howto">
+  <h1>Carousel — “Why Women Remember More Dreams”</h1>
+  <p>7 slides, 1080&times;1350. Slide 7 carries the ask — it’s the whole point of the post, so don’t cut it for length.</p>
+  <ol>
+    <li><strong>Export:</strong> Cmd&nbsp;+&nbsp;P → <em>Save as PDF</em> → Margins <em>None</em>, headers/footers off. One 4:5 slide per page. If the dialog forces Letter paper, set <em>Scale</em> to <em>Fit to page</em>.</li>
+    <li><strong>Screenshot:</strong> Cmd&nbsp;+&nbsp;Shift&nbsp;+&nbsp;4, Space, click a slide.</li>
+    <li><strong>Single slide full-size:</strong> add <code>?only=3</code> to the URL.</li>
+    <li><strong>Edit:</strong> plain HTML — change the wording and reload.</li>
+  </ol>
+  <p style="margin-top:12px">Colors and fonts from <code>static/css/style.css</code>. Slides 5 and 6 are labelled <em>speculation</em> on purpose — please keep that label, it’s what makes the ask honest.</p>
+
+  <h2>Caption</h2>
+  <div class="cap">Women report remembering more dreams than men. That part is real — about 175 studies say so.
+
+Two caveats before anything else: the gap is small, and every one of those studies sorted people into two boxes. Gender is a spectrum and the research hasn’t caught up, so hold all of this loosely.
+
+Nobody knows why, either.
+
+Not the corpus callosum (that study was 14 brains in 1982 and never replicated). The honest list of maybes is on slides 5 and 6, and every one of them is a story someone told after the fact.
+
+So I want yours. 👇
+
+Which explanation do you actually buy — the light-sleeper one, the social-rehearsal one, the emotional-memory one? Or is it none of them, and it’s just that we were given permission to pay attention?
+
+And the real test: in your house or in your life, who remembers more?
+
+Tell me in the comments. I read all of them.
+
+#dreamwork #dreamjournal #dreamrecall #sleepscience #jungian #dreams #somatics #womenshealth</div>
+</div>
+
+<!-- 1 HOOK -->
+<section class="slide deep">
+  <span class="mark">Dream Journal</span>
+  <p class="huge" style="font-size:158px">Women remember more <span class="accent-p em">dreams</span>.</p>
+  <hr class="rule pink" style="margin:52px 0 0">
+  <span class="num">1</span>
+</section>
+
+<!-- 2 THE EVIDENCE -->
+<section class="slide light">
+  <span class="mark" style="color:var(--ink-muted)">The finding</span>
+  <p class="huge accent" style="font-size:180px;line-height:1">175</p>
+  <p class="mid" style="margin-top:6px;max-width:24ch">studies, pooled into one analysis.</p>
+  <hr class="rule">
+  <p class="t" style="max-width:26ch">Women report higher dream recall than men. The gap opens in adolescence, peaks in our twenties, and narrows again with age.</p>
+  <p class="xs" style="margin-top:34px">Schredl &amp; Reinhard, meta-analysis, 2008</p>
+  <span class="num">2</span>
+</section>
+
+<!-- 3 THE OVERLAP -->
+<section class="slide dark">
+  <span class="mark">Hold this loosely</span>
+  <p class="huge">The gap is an <span class="accent-p em">average</span>.</p>
+  <hr class="rule pink">
+  <p class="t" style="max-width:27ch;opacity:.88">Gender is a spectrum.</p>
+  <p class="sm" style="margin-top:36px;max-width:31ch">So take the whole finding with a grain of salt.</p>
+  <span class="num">3</span>
+</section>
+
+<!-- 4 WHAT THE BRAIN ACTUALLY SHOWS -->
+<section class="slide light">
+  <span class="chip b">What does predict recall</span>
+  <div class="row t"><span class="dot"></span><p><span class="lead">Waking briefly in the night.</span> You can only file a dream if you surface while it’s still there.</p></div>
+  <div class="row t"><span class="dot"></span><p><span class="lead">Activity at the temporoparietal junction</span> — where the sense of self in space is built.</p></div>
+  <div class="row t"><span class="dot"></span><p><span class="lead">Simply being interested.</span> The most boring finding, and the strongest one.</p></div>
+  <span class="num">4</span>
+</section>
+
+<!-- 5 EVOLUTION A -->
+<section class="slide dark">
+  <span class="chip c">Speculation begins here</span>
+  <p class="mid" style="opacity:.75;margin-bottom:10px">Why might it have gone this way?</p>
+  <div class="row p"><span class="dot"></span><p><span class="lead">The light sleeper.</span> A body built to wake for an infant wakes more often — and each surfacing is another chance to carry a dream back.</p></div>
+  <div class="row p"><span class="dot"></span><p><span class="lead">The social rehearsal.</span> If dreaming practices relationships, whoever held the group together had more to practice.</p></div>
+  <span class="num">5</span>
+</section>
+
+<!-- 6 EVOLUTION B -->
+<section class="slide dark">
+  <span class="mark">Still speculation</span>
+  <div class="row p"><span class="dot"></span><p><span class="lead">The threat drill.</span> Dreams may rehearse danger — and men and women were not braced for the same dangers.</p></div>
+  <div class="row p"><span class="dot"></span><p><span class="lead">The detailed archive.</span> Women recall waking memories with more scene and more feeling. Dreams may just ride along.</p></div>
+  <span class="num">6</span>
+</section>
+
+<!-- 7 CTA -->
+<section class="slide deep" style="text-align:center;align-items:center">
+  <span class="moon">🌙</span>
+  <p class="big">And the real test:</p>
+  <p class="huge accent-p" style="font-size:92px;margin-top:24px">in your house or in your life, who remembers more?</p>
+  <hr class="rule pink" style="margin:48px auto">
+  <p class="cta">Tell me in the comments.<br>Full write-up in the Dream Journal — link in bio.</p>
+  <p class="handle">@cassisoma</p>
+  <span class="num">7</span>
+</section>
+
+<script>
+  // ?only=N renders a single slide full-size, for PNG export
+  var only = new URLSearchParams(location.search).get('only');
+  if (only) {
+    document.querySelector('.howto').style.display = 'none';
+    document.body.style.padding = '0';
+    document.body.style.background = 'none';
+    document.documentElement.style.setProperty('--fit', 1);
+    document.querySelectorAll('.slide').forEach(function (s, i) {
+      if (String(i + 1) !== only) s.style.display = 'none';
+      else { s.style.margin = '0'; s.style.zoom = 1; }
+    });
+  } else {
+    (function () {
+      function fit() {
+        var z = Math.min(1, (window.innerWidth - 48) / 1080);
+        document.documentElement.style.setProperty('--fit', z);
+      }
+      fit();
+      window.addEventListener('resize', fit);
+    })();
+  }
+</script>
+</body>
+</html>

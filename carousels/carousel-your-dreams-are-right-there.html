@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Carousel — Your Dreams Are Right There</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Karla:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f7efdf; --cream-card:#fdf8ee; --plum:#392942; --plum-deep:#2b1f34;
+    --orange:#c05a20; --pink:#d4a09e; --pink-deep:#b87a72; --teal:#2aa99c; --teal-deep:#17817a;
+    --ink:#33291f; --ink-soft:#5e544a; --ink-muted:#8a8172;
+    --on-dark:#f6efdd;
+    --display:'Cormorant Garamond',Georgia,serif;
+    --body:'Karla',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#20182a;font-family:var(--body);padding:40px 0 80px}
+  .howto{max-width:min(1080px,calc(100vw - 48px));margin:0 auto 48px;padding:32px 40px;
+    background:var(--cream-card);border-radius:14px;color:var(--ink);font-size:15px;line-height:1.65}
+  .howto h1{font-family:var(--display);font-size:30px;margin-bottom:14px;color:var(--plum)}
+  .howto code{background:#efe4cd;padding:1px 6px;border-radius:4px;font-size:13px}
+
+  .slide{width:1080px;height:1350px;margin:0 auto 44px;position:relative;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:120px 110px;overflow:hidden;zoom:var(--fit,1)}
+  .dark{background:var(--plum);color:var(--on-dark)}
+  .light{background:var(--cream);color:var(--ink)}
+  .deep{background:var(--plum-deep);color:var(--on-dark)}
+
+  .num{position:absolute;bottom:64px;right:78px;font-size:24px;letter-spacing:.16em;opacity:.4}
+  .mark{position:absolute;top:70px;left:110px;font-size:23px;letter-spacing:.2em;
+    text-transform:uppercase;opacity:.55;font-weight:500}
+
+  .huge{font-family:var(--display);font-size:114px;line-height:1.07;font-weight:600;letter-spacing:-.015em}
+  .big{font-family:var(--display);font-size:80px;line-height:1.2;font-weight:500}
+  .mid{font-family:var(--display);font-size:62px;line-height:1.32}
+  p.t{font-size:42px;line-height:1.62;font-weight:300}
+  p.t + p.t{margin-top:32px}
+  .em{font-style:italic;font-family:var(--display)}
+  .sm{font-size:34px;line-height:1.55;font-weight:300;opacity:.72}
+
+  .rule{width:96px;height:3px;background:var(--orange);margin:40px 0;border:0}
+  .rule.pink{background:var(--pink)} .rule.teal{background:var(--teal)}
+  .accent{color:var(--orange)} .accent-p{color:var(--pink)} .accent-t{color:var(--teal)}
+  .light .accent-p{color:var(--pink-deep)} .light .accent-t{color:var(--teal-deep)}
+
+  .chip{display:inline-block;font-size:26px;letter-spacing:.22em;text-transform:uppercase;
+    padding:14px 30px;border-radius:999px;font-weight:500;margin-bottom:40px;align-self:flex-start}
+  .chip.a{background:var(--pink);color:var(--plum-deep)}
+  .chip.c{background:var(--orange);color:#fff2e6}
+
+  .cta{font-size:38px;line-height:1.6}
+  .handle{font-size:34px;letter-spacing:.05em;margin-top:48px;opacity:.75}
+  .moon{font-size:60px;margin-bottom:34px;display:block}
+
+  @media print{
+    body{background:none;padding:0}
+    .howto{display:none}
+    @page{size:8.5in 10.625in;margin:0}
+    .slide{zoom:.75556;margin:0;page-break-after:always;break-after:page}
+    .slide:last-of-type{page-break-after:auto;break-after:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="howto">
+  <h1>Carousel — “Your Dreams Are Right There”</h1>
+  <p>9 slides, 1080&times;1350. PNGs in <code>carousels/images/your-dreams-are-right-there/</code>.</p>
+  <p style="margin-top:8px">Slide 1 is the hook — if you have a photo from the camping trip, that slide would work even better as an image with the text over it.</p>
+</div>
+
+<!-- 1 -->
+<section class="slide deep">
+  <span class="mark">Dream Journal</span>
+  <p class="huge">Ten days camping in the mountains with my <span class="accent-p em">three-year-old</span>.</p>
+  <hr class="rule pink">
+  <p class="t" style="opacity:.82">(Yes, you read that right.)</p>
+  <span class="num">1</span>
+</section>
+
+<!-- 2 -->
+<section class="slide light">
+  <p class="t" style="max-width:26ch">Somewhere in there I noticed my dreams had changed.</p>
+  <hr class="rule">
+  <p class="big accent">More vivid. And I was waking with them still intact —</p>
+  <p class="t" style="max-width:26ch;margin-top:26px">not fragments, but whole dreams, easy to reach.</p>
+  <span class="num">2</span>
+</section>
+
+<!-- 3 -->
+<section class="slide dark">
+  <p class="big">Maybe it was sleeping closer to the moon.</p>
+  <p class="mid accent-p" style="margin-top:30px">I’d like that to be the answer.</p>
+  <hr class="rule pink">
+  <p class="t" style="opacity:.85">But I think it was something much more ordinary.</p>
+  <span class="num">3</span>
+</section>
+
+<!-- 4 -->
+<section class="slide light">
+  <span class="chip a">What actually happened</span>
+  <p class="t" style="max-width:27ch">My toddler slept in. So I woke slowly, to birdsong and sunlight, and then I simply lay there.</p>
+  <p class="t" style="max-width:27ch">No phone to reach for. No breakfast to make yet. Nothing asking anything of me.</p>
+  <span class="num">4</span>
+</section>
+
+<!-- 5 -->
+<section class="slide deep" style="text-align:center;align-items:center">
+  <p class="huge accent-p" style="font-size:132px">And my dreams were right there.</p>
+  <span class="num">5</span>
+</section>
+
+<!-- 6 -->
+<section class="slide light">
+  <p class="big">I don’t think I was dreaming more.</p>
+  <hr class="rule teal">
+  <p class="huge accent-t" style="font-size:90px">I think I was finally leaving enough room to notice.</p>
+  <span class="num">6</span>
+</section>
+
+<!-- 7 -->
+<section class="slide dark">
+  <p class="t" style="max-width:28ch;opacity:.88">Most mornings, the moment we open our eyes we start <span class="em">doing</span> — breakfast, the toddler, the phone before we’ve fully sat up.</p>
+  <hr class="rule pink">
+  <p class="mid">The part of us that plans and sorts comes online fast, and it crowds out the part that was still dreaming.</p>
+  <span class="num">7</span>
+</section>
+
+<!-- 8 -->
+<section class="slide light" style="text-align:center;align-items:center">
+  <p class="big">The dream doesn’t slip away because it wasn’t important.</p>
+  <hr class="rule" style="margin:44px auto">
+  <p class="huge accent" style="font-size:96px">It slips away because nothing made space for it.</p>
+  <span class="num">8</span>
+</section>
+
+<!-- 9 -->
+<section class="slide deep">
+  <span class="chip c">Bring it home</span>
+  <p class="t" style="max-width:27ch">You don’t need ten days in the mountains. You need a few minutes.</p>
+  <p class="t" style="max-width:27ch">Stay where you are. Eyes closed. Don’t chase the dream — chasing scatters it. Let it come back to you.</p>
+  <p class="sm" style="margin-top:34px;max-width:30ch">It takes patience. We’re used to quick answers. This is slower.</p>
+  <hr class="rule pink">
+  <p class="cta">Full piece in the Dream Journal. Link in bio. 🌙<br><span class="handle" style="margin:0">@cassisoma</span></p>
+  <span class="num">9</span>
+</section>
+
+<script>
+  var only = new URLSearchParams(location.search).get('only');
+  if (only) {
+    document.querySelector('.howto').style.display = 'none';
+    document.body.style.padding = '0';
+    document.body.style.background = 'none';
+    document.documentElement.style.setProperty('--fit', 1);
+    document.querySelectorAll('.slide').forEach(function (s, i) {
+      if (String(i + 1) !== only) s.style.display = 'none';
+      else { s.style.margin = '0'; s.style.zoom = 1; }
+    });
+  } else {
+    (function () {
+      function fit() {
+        var z = Math.min(1, (window.innerWidth - 48) / 1080);
+        document.documentElement.style.setProperty('--fit', z);
+      }
+      fit(); window.addEventListener('resize', fit);
+    })();
+  }
+</script>
+</body>
+</html>

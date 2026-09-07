@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Carousel — Three Percent of Reality</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Karla:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f7efdf; --cream-card:#fdf8ee; --plum:#392942; --plum-deep:#2b1f34;
+    --orange:#c05a20; --pink:#d4a09e; --pink-deep:#b87a72; --teal:#2aa99c; --teal-deep:#17817a;
+    --ink:#33291f; --ink-soft:#5e544a; --ink-muted:#8a8172;
+    --on-dark:#f6efdd;
+    --display:'Cormorant Garamond',Georgia,serif;
+    --body:'Karla',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#20182a;font-family:var(--body);padding:40px 0 80px}
+  .howto{max-width:min(1080px,calc(100vw - 48px));margin:0 auto 48px;padding:32px 40px;
+    background:var(--cream-card);border-radius:14px;color:var(--ink);font-size:15px;line-height:1.65}
+  .howto h1{font-family:var(--display);font-size:30px;margin-bottom:14px;color:var(--plum)}
+  .howto code{background:#efe4cd;padding:1px 6px;border-radius:4px;font-size:13px}
+
+  .slide{width:1080px;height:1350px;margin:0 auto 44px;position:relative;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:120px 110px;overflow:hidden;zoom:var(--fit,1)}
+  .dark{background:var(--plum);color:var(--on-dark)}
+  .light{background:var(--cream);color:var(--ink)}
+  .deep{background:var(--plum-deep);color:var(--on-dark)}
+  .void{background:#150f1c;color:var(--on-dark)}
+
+  .num{position:absolute;bottom:64px;right:78px;font-size:24px;letter-spacing:.16em;opacity:.4}
+  .mark{position:absolute;top:70px;left:110px;font-size:23px;letter-spacing:.2em;
+    text-transform:uppercase;opacity:.55;font-weight:500}
+
+  .huge{font-family:var(--display);font-size:114px;line-height:1.07;font-weight:600;letter-spacing:-.015em}
+  .big{font-family:var(--display);font-size:80px;line-height:1.2;font-weight:500}
+  .mid{font-family:var(--display);font-size:62px;line-height:1.32}
+  p.t{font-size:42px;line-height:1.62;font-weight:300}
+  p.t + p.t{margin-top:32px}
+  .em{font-style:italic;font-family:var(--display)}
+  .sm{font-size:34px;line-height:1.55;font-weight:300;opacity:.72}
+  .cite{font-size:30px;letter-spacing:.04em;opacity:.6;margin-top:36px}
+
+  .rule{width:96px;height:3px;background:var(--orange);margin:40px 0;border:0}
+  .rule.pink{background:var(--pink)} .rule.teal{background:var(--teal)}
+  .accent{color:var(--orange)} .accent-p{color:var(--pink)} .accent-t{color:var(--teal)}
+  .light .accent-p{color:var(--pink-deep)} .light .accent-t{color:var(--teal-deep)}
+
+  .quote{font-family:var(--display);font-style:italic;font-size:56px;line-height:1.36}
+  .stat{font-family:var(--display);font-size:250px;line-height:.9;font-weight:600;letter-spacing:-.03em}
+  .cta{font-size:38px;line-height:1.6}
+  .handle{font-size:34px;letter-spacing:.05em;margin-top:48px;opacity:.75}
+  .moon{font-size:60px;margin-bottom:34px;display:block}
+
+  @media print{
+    body{background:none;padding:0}
+    .howto{display:none}
+    @page{size:8.5in 10.625in;margin:0}
+    .slide{zoom:.75556;margin:0;page-break-after:always;break-after:page}
+    .slide:last-of-type{page-break-after:auto;break-after:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="howto">
+  <h1>Carousel — “Three Percent of Reality”</h1>
+  <p>10 slides, 1080&times;1350. PNGs in <code>carousels/images/three-percent-of-reality/</code>.</p>
+  <p style="margin-top:8px">Dan Siegel is credited on slide 3 — keep that attribution.</p>
+</div>
+
+<!-- 1 -->
+<section class="slide void">
+  <span class="mark">Dream Journal</span>
+  <p class="stat accent-p">97%</p>
+  <hr class="rule pink">
+  <p class="big">of what exists is dark to us.</p>
+  <p class="sm" style="margin-top:30px;max-width:28ch">We can’t sense it. We can’t measure it. We don’t understand it.</p>
+  <span class="num">1</span>
+</section>
+
+<!-- 2 -->
+<section class="slide deep">
+  <p class="quote">“Physics estimates that 97 percent of what exists is called dark matter and dark energy. Dark, meaning we in our human form cannot tap into it.”</p>
+  <hr class="rule pink">
+  <p class="quote accent-p">“So we live in bodies that allow us, in this form, to make sense of 3 percent of reality.”</p>
+  <p class="cite">— Dr. Dan Siegel</p>
+  <span class="num">2</span>
+</section>
+
+<!-- 3 -->
+<section class="slide light" style="text-align:center;align-items:center">
+  <p class="stat accent">3%</p>
+  <hr class="rule" style="margin:44px auto">
+  <p class="big">That’s the slice our senses are built to register.</p>
+  <p class="t" style="margin-top:34px;max-width:26ch">Everything else moves through us and around us — unfelt, unmeasured — while we go on making breakfast.</p>
+  <span class="num">3</span>
+</section>
+
+<!-- 4 -->
+<section class="slide dark">
+  <p class="t" style="max-width:24ch;opacity:.85">I don’t find that depressing.</p>
+  <p class="huge accent-p" style="margin-top:24px">I find it enormously relieving.</p>
+  <span class="num">4</span>
+</section>
+
+<!-- 5 -->
+<section class="slide light">
+  <span class="mark" style="color:var(--ink-muted)">The filter is doing its job</span>
+  <p class="t" style="max-width:27ch">To make sense of anything, we filter — dividing experience into categories and concepts.</p>
+  <hr class="rule">
+  <p class="mid">That isn’t a flaw. It’s what lets you cross a street, hold a conversation, get a toddler into a car seat.</p>
+  <span class="num">5</span>
+</section>
+
+<!-- 6 -->
+<section class="slide dark">
+  <p class="big">But the filter is set for waking life.</p>
+  <hr class="rule teal">
+  <p class="t" style="max-width:27ch;opacity:.88">Calibrated for tasks, for language, for the parts of experience that can be sorted into words.</p>
+  <span class="num">6</span>
+</section>
+
+<!-- 7 -->
+<section class="slide deep">
+  <span class="mark">At night</span>
+  <p class="huge accent-p" style="font-size:96px">The categories loosen.</p>
+  <hr class="rule pink">
+  <p class="t" style="max-width:27ch">Time stops behaving. People arrive as two people at once. The dead show up and it isn’t strange.</p>
+  <p class="t" style="max-width:27ch">Whatever the day-mind was sorting into boxes gets handed back to you unsorted.</p>
+  <span class="num">7</span>
+</section>
+
+<!-- 8 -->
+<section class="slide light">
+  <p class="t" style="max-width:27ch">I’m not saying dreams give you access to dark matter. That’s not a claim I can make.</p>
+  <hr class="rule teal">
+  <p class="mid">What I am saying is that the <span class="accent-t em">aperture opens</span> — and what comes through arrives in a language older than words.</p>
+  <p class="sm" style="margin-top:30px;max-width:30ch">Which is why so much of a dream is felt before it’s understood.</p>
+  <span class="num">8</span>
+</section>
+
+<!-- 9 -->
+<section class="slide void" style="text-align:center;align-items:center">
+  <p class="huge accent-p" style="font-size:126px">Dreams widen the three percent.</p>
+  <hr class="rule pink" style="margin:48px auto">
+  <p class="t" style="max-width:26ch;opacity:.85">Which is why we don’t rush them. Anything that snaps the filter back into place on waking closes the opening.</p>
+  <span class="num">9</span>
+</section>
+
+<!-- 10 -->
+<section class="slide light" style="text-align:center;align-items:center">
+  <span class="moon">🌙</span>
+  <p class="big">You’re not retrieving a file.</p>
+  <p class="huge accent" style="font-size:92px;margin-top:22px">You’re keeping a wider aperture open a little longer.</p>
+  <hr class="rule" style="margin:46px auto">
+  <p class="cta">Full piece in the Dream Journal.<br>Link in bio.</p>
+  <p class="handle">@cassisoma</p>
+  <span class="num">10</span>
+</section>
+
+<script>
+  var only = new URLSearchParams(location.search).get('only');
+  if (only) {
+    document.querySelector('.howto').style.display = 'none';
+    document.body.style.padding = '0';
+    document.body.style.background = 'none';
+    document.documentElement.style.setProperty('--fit', 1);
+    document.querySelectorAll('.slide').forEach(function (s, i) {
+      if (String(i + 1) !== only) s.style.display = 'none';
+      else { s.style.margin = '0'; s.style.zoom = 1; }
+    });
+  } else {
+    (function () {
+      function fit() {
+        var z = Math.min(1, (window.innerWidth - 48) / 1080);
+        document.documentElement.style.setProperty('--fit', z);
+      }
+      fit(); window.addEventListener('resize', fit);
+    })();
+  }
+</script>
+</body>
+</html>
