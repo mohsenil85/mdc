@@ -7,9 +7,9 @@ disableKinds = ["taxonomy", "term"]
 
 [languages.en]
 copyright = "© Cassi Stuckman"
-languagecode = "en-us"
-languagedirection = "ltr"
-languagename = "English"
+locale = "en-us"
+direction = "ltr"
+label = "English"
 weight = 10
 
 [params]

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.Language.LanguageCode | default "en" }}">
+<html lang="{{ .Site.Language.Locale | default "en" }}">
 <head>
   <meta charset="UTF-8">
   <title>{{ .Title }} | {{ .Site.Title }}</title>
@@ -8,12 +8,16 @@
   <link rel="canonical" href="{{ .Permalink }}">
 
   <!-- Open Graph -->
+  {{ $ogImage := (or .Params.image "/images/og-image.jpg") | absURL }}
   <meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}">
   <meta property="og:description" content="{{ .Description | default .Summary }}">
-  <meta property="og:image" content="{{ .Site.BaseURL }}images/og-image.jpg">
+  <meta property="og:image" content="{{ $ogImage }}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="{{ .Permalink }}">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ .Title }} | {{ .Site.Title }}">
+  <meta name="twitter:description" content="{{ .Description | default .Summary }}">
+  <meta name="twitter:image" content="{{ $ogImage }}">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

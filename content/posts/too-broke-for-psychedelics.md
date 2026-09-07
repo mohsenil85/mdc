@@ -4,6 +4,7 @@ date: 2026-09-07
 draft: false
 description: "I practice both psychedelic-assisted psychotherapy and somatic dreamwork. \"Psychedelic\" means mind-manifesting — and one of these is available every night, free, without a substance."
 author: "Cassi Stuckman, LPC"
+image: "/images/too-broke-for-psychedelics.png"
 ---
 
 ![A boy watches a dinosaur in his yard. The dinosaur says, "Too broke for psychedelics? Try somatic dreamwork."](/images/too-broke-for-psychedelics.png)
