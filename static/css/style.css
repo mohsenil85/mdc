@@ -524,6 +524,29 @@ footer a:hover { color: #fff; }
 }
 .blog-empty { color: var(--ink-muted); font-style: italic; }
 
+/* ---- homepage hero: top-right Journal link ---- */
+.hero-topnav {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: flex-end;
+  padding: 1.3rem clamp(1.4rem, 5vw, 3rem);
+}
+.hero-topnav-link {
+  color: var(--on-dark);
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.3rem;
+  text-shadow: 0 1px 12px rgba(43, 31, 52, 0.55);
+  transition: color 160ms ease;
+}
+.hero-topnav-link:hover { color: var(--pink); }
+
 /* Journal link in footer */
 .footer-nav { margin: 0.4rem 0 0; }
 .footer-nav a { color: var(--on-dark-soft); text-decoration: none; }
