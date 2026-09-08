@@ -1,0 +1,117 @@
+{{/*
+  Time-limited enrollment banner for the Dream-Centered Somatic Group.
+  Self-contained: all styles are scoped below, so this whole partial can be
+  deleted (and its line removed from layouts/index.html) once the group fills.
+  Details are read from content/sections/enrolling.md.
+*/}}
+{{ $g := .Site.GetPage "/sections/enrolling" }}
+{{ if $g }}
+{{ $contact := .Site.GetPage "/sections/contact" }}
+{{ $email := $contact.Params.contact_email }}
+{{ $phone := $contact.Params.contact_phone }}
+<style>
+  .enrolling { padding: clamp(2.4rem, 6vw, 4rem) 1.4rem; background: var(--cream, #fbf7f1); }
+  .enrolling-box {
+    width: min(880px, 100%);
+    margin-inline: auto;
+    border: 2px solid var(--plum, #2b1f34);
+    border-radius: var(--radius, 14px);
+    background: #fff;
+    padding: clamp(1.6rem, 4vw, 2.6rem);
+    text-align: center;
+  }
+  .enrolling-eyebrow {
+    display: inline-block;
+    margin: 0 0 0.9rem;
+    padding: 0.35rem 0.85rem;
+    background: var(--plum, #2b1f34);
+    color: #fff;
+    font-family: var(--font-body, system-ui, sans-serif);
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    border-radius: 999px;
+  }
+  .enrolling-box h2 {
+    font-family: var(--font-display, Georgia, serif);
+    font-weight: 600;
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+    line-height: 1.12;
+    color: var(--plum, #2b1f34);
+    margin: 0 0 0.5rem;
+  }
+  .enrolling-sub { margin: 0 0 1.4rem; color: var(--ink-muted, #6b6270); font-size: 1rem; }
+  .enrolling-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem 0.8rem;
+    margin: 0 0 1.5rem;
+    padding: 1.2rem 0;
+    border-top: 1px solid rgba(43, 31, 52, 0.16);
+    border-bottom: 1px solid rgba(43, 31, 52, 0.16);
+    text-align: center;
+  }
+  .enrolling-facts dt {
+    font-family: var(--font-body, system-ui, sans-serif);
+    font-weight: 700;
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-muted, #6b6270);
+    margin: 0 0 0.3rem;
+  }
+  .enrolling-facts dd { margin: 0; font-size: 1rem; line-height: 1.35; color: var(--plum, #2b1f34); }
+  .enrolling-facts dd .fine { display: block; font-size: 0.82rem; color: var(--ink-muted, #6b6270); }
+  .enrolling-note { margin: 0 0 1.4rem; font-size: 0.95rem; color: var(--ink-muted, #6b6270); }
+  .enrolling-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; justify-content: center; align-items: center; }
+  .enrolling-actions .btn { margin: 0; }
+  .enrolling-actions .btn-quiet {
+    background: transparent;
+    color: var(--plum, #392942);
+    border: 2px solid var(--plum, #392942);
+    transition: background 160ms ease, color 160ms ease;
+  }
+  .enrolling-actions .btn-quiet:hover { background: var(--plum, #392942); color: var(--cream, #f7efdf); }
+  .enrolling-contact { margin: 1.3rem 0 0; font-size: 0.95rem; line-height: 1.9; }
+  .enrolling-contact a { color: var(--plum, #2b1f34); font-weight: 700; }
+  .enrolling-sep { color: var(--ink-muted, #6b6270); margin: 0 0.45rem; }
+  @media (max-width: 520px) { .enrolling-sep { display: none; } .enrolling-contact a { display: block; } }
+</style>
+
+<section class="enrolling" id="dream-group" aria-labelledby="enrolling-title">
+  <div class="enrolling-box">
+    <p class="enrolling-eyebrow">Now enrolling &middot; Space is limited</p>
+    <h2 id="enrolling-title">{{ $g.Title }}</h2>
+    {{ with $g.Params.subtitle }}<p class="enrolling-sub">{{ . }}</p>{{ end }}
+
+    <dl class="enrolling-facts">
+      <div>
+        <dt>Starts</dt>
+        <dd>{{ $g.Params.start }}<span class="fine">{{ $g.Params.schedule }}</span></dd>
+      </div>
+      <div>
+        <dt>Where</dt>
+        <dd>{{ $g.Params.location }}<span class="fine">{{ $g.Params.city }}</span></dd>
+      </div>
+      <div>
+        <dt>Cost</dt>
+        <dd>{{ $g.Params.price }}<span class="fine">{{ $g.Params.price_note }}</span></dd>
+      </div>
+    </dl>
+
+    <p class="enrolling-note">{{ $g.Params.note }}</p>
+
+    <div class="enrolling-actions">
+      <a class="btn btn-dawn" href="tel:{{ $phone }}">Call to check in</a>
+      <a class="btn btn-quiet" href="{{ $g.Params.post_url }}">Read the full details</a>
+    </div>
+
+    <p class="enrolling-contact">
+      <a href="tel:{{ $phone }}">{{ $phone }}</a>
+      <span class="enrolling-sep">&middot;</span>
+      <a href="mailto:{{ $email }}?subject={{ $g.Params.email_subject | urlquery }}">{{ $email }}</a>
+    </p>
+  </div>
+</section>
+{{ end }}

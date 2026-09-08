@@ -503,6 +503,32 @@ footer a:hover { color: #fff; }
   color: var(--ink-soft);
   font-style: italic;
 }
+/* Tables in posts (e.g. group/event details) */
+.post-body .table-wrap { overflow-x: auto; margin: 1.8rem 0; }
+.post-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.8rem 0;
+  font-size: 1rem;
+}
+.post-body table th,
+.post-body table td {
+  padding: 0.75rem 0.9rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line);
+}
+.post-body table th {
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--plum);
+  white-space: nowrap;
+  width: 1%;
+}
+.post-body table tr:last-child th,
+.post-body table tr:last-child td { border-bottom: 0; }
+.post-body table thead th { border-bottom: 2px solid var(--line); }
+
 .post-footer { margin-top: 3rem; }
 
 /* Journal index */
