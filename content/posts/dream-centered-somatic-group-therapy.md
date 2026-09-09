@@ -43,7 +43,7 @@ Three movements, every week.
 
 ## Who this is for
 
-People who are curious about their dreams and tired of looking them up in a book. People who've done talk therapy and hit the place where insight stops converting into change. People in recovery, or anyone for whom a non-ordinary state has to come without a substance — [I've written about why dreams qualify](/posts/too-broke-for-psychedelics/).
+People who are curious about their dreams and tired of looking them up in a book. People who've done talk therapy and hit the place where insight stops converting into change. People in recovery, or anyone for whom a non-ordinary state has to come without a substance.
 
 You do not need to be a good dreamer. You do not need a practice already in place. You need to be willing to be curious in front of other people, which is its own kind of work.
 
