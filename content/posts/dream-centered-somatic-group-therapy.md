@@ -49,10 +49,6 @@ People who are curious about their dreams and tired of looking them up in a book
 
 You do not need to be a good dreamer. You do not need a practice already in place. You need to be willing to be curious in front of other people, which is its own kind of work.
 
-## Who this isn't for
-
-If you're in acute crisis, or actively working through fresh trauma, a group is not the right container — that deserves individual attention first. The check-in call is partly for sorting this out honestly. If the group isn't right for you right now, I'll say so, and I'll try to point you somewhere better.
-
 ## The flyer
 
 [![Dream-Centered Somatic Group Therapy — a six-week evening group. Tuesdays 6:45–8:45 PM, October 13 to November 17, at Yoga Pearl Studio in North Boulder. $650 for the full series, with payment plans and sliding scale available.](/images/somatic-dream-group-flyer.png)](/somatic-dream-group-flyer.pdf)
