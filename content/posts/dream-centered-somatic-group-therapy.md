@@ -37,7 +37,7 @@ That's the whole method. A dream you only think about stays a puzzle. A dream yo
 
 Three movements, every week.
 
-**Movement.** We start in the body. This is accessible for all bodies and mobility levels, and it needs no dance or yoga experience — I want to be very clear about that, because the word "movement" sends people running. It means finding out what the material is doing in you, not performing anything.
+**Movement.** We start in the body. This is accessible for all bodies and mobility levels, and it needs no dance or yoga experience. It means finding out what the material is doing in you, not performing anything.
 
 **Processing.** This is the working middle of the evening. We use Christine Caldwell's Moving Cycle, Polyvagal Theory, and Focusing — three frames that all take the body seriously as a source of information rather than a thing to be managed.
 
