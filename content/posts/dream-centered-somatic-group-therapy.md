@@ -5,6 +5,8 @@ draft: false
 description: "Dream-Centered Somatic Group Therapy — six Tuesday evenings in North Boulder, starting October 13. Movement, processing, and breath, in a small group. Sign-up begins with a check-in call."
 author: "Cassi Stuckman, LPC"
 image: "/images/somatic-dream-group-flyer.png"
+aliases:
+  - "/posts/too-broke-for-psychedelics/"
 ---
 
 I'm opening a small group this fall, and there are a handful of spots in it.
