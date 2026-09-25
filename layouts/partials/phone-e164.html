@@ -1,0 +1,4 @@
+{{/* site.Params.phone in E.164 form (e.g. +13038007572), for tel: links and structured data. */}}
+{{- $digits := replaceRE "\\D" "" site.Params.phone -}}
+{{- if and (eq (len $digits) 11) (hasPrefix $digits "1") }}{{ $digits = strings.TrimPrefix "1" $digits }}{{ end -}}
+{{- return printf "+1%s" $digits -}}
