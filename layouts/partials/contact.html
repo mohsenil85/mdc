@@ -8,29 +8,19 @@
     </div>
     <div class="contact-content">
       {{ $contact.Content }}
-      {{ with $contact.Params.contact_email }}
-      <a class="btn btn-dawn cta-button" href="mailto:{{ . }}?subject=Free%20consultation">Book a free consultation</a>
-      {{ end }}
+      <a class="btn btn-dawn cta-button" href="mailto:{{ site.Params.email }}?subject=Free%20consultation">Book a free consultation</a>
     </div>
 
     <aside class="contact-info">
       <p class="contact-info-title">Get in touch</p>
-      {{ $email := $contact.Params.contact_email }}
-      {{ $parts := split $email "@" }}
-      {{ $local := index $parts 0 }}
-      {{ $domain := index $parts 1 }}
       <p class="contact-line">
         <span class="contact-label">Email</span>
-        <a class="email-address" href="mailto:{{ $email }}" data-email="{{ $email }}">
-          <span class="local">{{ $local }}</span><span class="at">@</span><span class="domain">{{ $domain }}</span>
-        </a>
+        <a href="mailto:{{ site.Params.email }}">{{ site.Params.email }}</a>
       </p>
-      {{ if $contact.Params.contact_phone }}
       <p class="contact-line">
         <span class="contact-label">Phone</span>
-        <a href="tel:{{ $contact.Params.contact_phone }}">{{ $contact.Params.contact_phone }}</a>
+        <a href="tel:{{ partial "phone-e164.html" . }}">{{ site.Params.phone }}</a>
       </p>
-      {{ end }}
     </aside>
   </div>
 </section>

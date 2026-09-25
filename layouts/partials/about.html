@@ -12,12 +12,13 @@
       </div>
       <figure class="about-image">
         <picture>
-          <source srcset="/images/therapist.webp" type="image/webp">
-          <img src="/images/therapist.jpeg"
-               alt="Cassi Stuckman, LPC — Somatic Therapist and Counselor in Boulder, Colorado"
-               loading="lazy"
-               width="600"
-               height="900" />
+          {{ partial "img.html" (dict
+            "src" "/images/therapist.jpeg"
+            "alt" "Cassi Stuckman, LPC — Somatic Therapist and Counselor in Boulder, Colorado"
+            "widths" (slice 400 600)
+            "sizes" "(max-width: 920px) 340px, 380px"
+            "loading" "lazy"
+          )}}
         </picture>
         <figcaption>Cassi Stuckman, LPC</figcaption>
       </figure>

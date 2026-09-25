@@ -1,0 +1,10 @@
+{{- $opts := dict
+  "src" .Destination
+  "alt" .PlainText
+  "widths" (slice 480 800 1200)
+  "sizes" "(max-width: 845px) 90vw, 760px"
+  "quality" 80
+  "loading" "lazy"
+  "title" .Title
+-}}
+{{ partial "img.html" $opts }}

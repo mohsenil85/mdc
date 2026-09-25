@@ -1,0 +1,9 @@
+{{/* Preload hero background images (WebP variants used by the hero's inline style) */}}
+{{ $hero := .Site.GetPage "/sections/hero" }}
+{{ $heroImages := partial "hero-images.html" $hero }}
+{{ with $heroImages.desktop }}
+<link rel="preload" as="image" href="{{ . }}" media="(min-width: 761px)" type="image/webp" fetchpriority="high">
+{{ end }}
+{{ if and $heroImages.mobile (ne $heroImages.mobile $heroImages.desktop) }}
+<link rel="preload" as="image" href="{{ $heroImages.mobile }}" media="(max-width: 760px)" type="image/webp" fetchpriority="high">
+{{ end }}

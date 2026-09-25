@@ -1,70 +1,53 @@
-<!DOCTYPE html>
-<html lang="{{ .Site.Language.Locale | default "en" }}">
-<head>
-  <meta charset="UTF-8">
-  <title>{{ .Title }} | {{ .Site.Title }}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="{{ .Description | default .Site.Params.description }}">
-  <link rel="canonical" href="{{ .Permalink }}">
+{{ define "main" }}
+  <section class="download wrap">
+    <div class="download-grid">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}">
-  <meta property="og:description" content="{{ .Description | default .Site.Params.description }}">
-  <meta property="og:image" content="{{ .Site.BaseURL }}images/lunar-dream-map.png">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
+      <div class="download-copy">
+        <p class="eyebrow eyebrow-dawn">Free Download</p>
+        <h1>The Lunar Dream Map</h1>
+        <p class="download-lede">
+          A printable wheel for tracking your dreams, your body, and the moon across one
+          lunar cycle. Print it on watercolor paper and make it your own.
+        </p>
+        <p>
+          Each morning, note the dream in the outer ring, a word for your body in the inner
+          ring, and the date in between. Name the cycle in its center. That&rsquo;s the whole
+          practice &mdash; the noticing is the medicine.
+        </p>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Karla:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="stylesheet" href="/css/style.css">
-
-  {{ partial "analytics.html" . }}
-</head>
-<body>
-  <nav class="blog-nav">
-    <div class="wrap blog-nav-inner">
-      <a href="/" class="blog-home">&larr; Mountain Dreamer Counseling</a>
-      <a href="/posts/" class="blog-journal-link">Dream Journal</a>
-    </div>
-  </nav>
-
-  <main class="site-main">
-    <section class="download wrap">
-      <div class="download-grid">
-
-        <div class="download-copy">
-          <p class="eyebrow eyebrow-dawn">Free Download</p>
-          <h1>The Lunar Dream Map</h1>
-          <p class="download-lede">
-            A printable wheel for tracking your dreams, your body, and the moon across one
-            lunar cycle. Print it on watercolor paper and make it your own.
-          </p>
-          <p>
-            Each morning, note the dream in the outer ring, a word for your body in the inner
-            ring, and the date in between. Name the cycle in its center. That&rsquo;s the whole
-            practice &mdash; the noticing is the medicine.
-          </p>
-
-          <!-- Kit email sign-up form -->
-          <div class="optin-kit">
-            <script async data-uid="c7d0ebe286" src="https://mountaindreamercounseling.kit.com/c7d0ebe286/index.js"></script>
-          </div>
-
-        </div>
-
-        <div class="download-art">
-          <img src="/images/lunar-dream-map.png"
-               alt="The Lunar Dream Map — a circular wheel with rings for dreams, date, and body, marked with moon phases."
-               loading="lazy">
-          <p class="download-caption">Print on heavyweight watercolor paper for best results.</p>
+        <!-- Kit email sign-up form (native markup, enhanced by Kit's ck.5.js) -->
+        <div class="optin-kit">
+          <form action="https://app.kit.com/forms/9676628/subscriptions" method="post" class="seva-form formkit-form optin-form" data-sv-form="9676628" data-uid="c7d0ebe286" data-format="inline" data-version="5" data-options='{"version":"5","settings":{"after_subscribe":{"action":"message","success_message":"Success! Now check your email to confirm your subscription.","redirect_url":""},"recaptcha":{"enabled":false},"return_visitor":{"action":"show","custom_content":""},"powered_by":{"show":true,"url":"https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic"}}}'>
+            <div class="optin-head">
+              <h2>Get the free Lunar Dream Map</h2>
+              <p>A printable wheel for tracking your dreams, your body, and the moon. Enter your email and I&rsquo;ll send it to your inbox.</p>
+            </div>
+            <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
+            <div data-element="fields" class="seva-fields formkit-fields">
+              <label class="visually-hidden" for="optin-email">Email address</label>
+              <input class="formkit-input" id="optin-email" name="email_address" type="email" autocomplete="email" placeholder="Email address" required>
+              <button data-element="submit" class="formkit-submit btn btn-dawn"><span class="formkit-spinner" aria-hidden="true"><span></span><span></span><span></span></span><span>Send me the map</span></button>
+            </div>
+            <div class="formkit-powered-by-convertkit-container"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" data-element="powered-by" class="formkit-powered-by-convertkit" data-variant="dark" target="_blank" rel="nofollow noopener">Built with Kit</a></div>
+          </form>
+          <script src="https://f.convertkit.com/ckjs/ck.5.js" defer></script>
         </div>
 
       </div>
-    </section>
-  </main>
 
-  {{ partial "footer.html" . }}
-</body>
-</html>
+      <div class="download-art">
+        {{ partial "img.html" (dict
+          "src" "/images/lunar-dream-map.png"
+          "alt" "The Lunar Dream Map — a circular wheel with rings for dreams, date, and body, marked with moon phases."
+          "widths" (slice 480 720 960)
+          "sizes" "(max-width: 760px) 90vw, 470px"
+          "quality" 80
+          "loading" "eager"
+          "fetchpriority" "high"
+        )}}
+        <p class="download-caption">Print on heavyweight watercolor paper for best results.</p>
+      </div>
+
+    </div>
+  </section>
+{{ end }}

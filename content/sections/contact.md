@@ -1,8 +1,6 @@
 ---
 title: "Ready to Begin Your Journey?"
 weight: 3
-contact_email: "info@mountaindreamercounseling.com"
-contact_phone: "(303) 800-7572"
 build:
   render: never
   list: never

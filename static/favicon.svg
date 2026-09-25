@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Mountain Dreamer: crescent moon over mountains, in the site palette (plum, cream, dusty pink) -->
+  <defs><clipPath id="tile"><rect width="64" height="64" rx="14"/></clipPath></defs>
+  <g clip-path="url(#tile)">
+    <rect width="64" height="64" fill="#392942"/>
+    <circle cx="31" cy="25" r="15" fill="#f7efdf"/>
+    <circle cx="38" cy="19" r="13" fill="#392942"/>
+    <path d="M0 64V54l13-11 8 6 14-13 29 25v3z" fill="#d4a09e"/>
+  </g>
+</svg>
