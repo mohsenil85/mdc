@@ -61,6 +61,9 @@
        title="{{ . }}"{{ end }}{{ with $.class }}
        class="{{ . }}"{{ end }}>
 {{- else -}}
+  {{- if and (not $img) (hasPrefix $src "/images/") -}}
+    {{- warnf "image %q not found in static/images/ (check the file name)" $src -}}
+  {{- end -}}
   <img src="{{ $src }}"
        alt="{{ .alt }}"
        loading="{{ $loading }}"
