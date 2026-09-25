@@ -1,14 +1,22 @@
-  <!-- LocalBusiness Schema (JSON-LD) -->
+  <!-- LocalBusiness Schema (JSON-LD). MedicalBusiness is the closest schema.org LocalBusiness
+       subtype for a counseling practice (there is no "Counselor" type). Google requires an
+       address for local businesses; add streetAddress/postalCode here if the office goes public. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Counselor",
+    "@type": "MedicalBusiness",
     "name": "Mountain Dreamer Counseling",
     "url": "https://www.mountaindreamercounseling.com/",
     "telephone": {{ partial "phone-e164.html" . }},
     "email": {{ site.Params.email }},
     "image": "https://www.mountaindreamercounseling.com/images/therapist.jpeg",
     "description": "Mountain Dreamer Counseling offers somatic therapy, dreamwork, perinatal support, and addiction recovery counseling in Boulder, Colorado.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Boulder",
+      "addressRegion": "CO",
+      "addressCountry": "US"
+    },
     "areaServed": [
       {
         "@type": "City",
