@@ -1,7 +1,8 @@
 {{ $hero := .Site.GetPage "/sections/hero" }}
 {{ $wave := "M0,30 C240,54 480,10 720,30 C960,50 1200,58 1440,30 L1440,70 L0,70 Z" }}
 {{ if $hero }}
-<header class="hero"{{ if $hero.Params.background_image }} style="--bg-desktop: url('{{ $hero.Params.background_image }}'); --bg-mobile: url('{{ $hero.Params.background_image_mobile | default $hero.Params.background_image }}');"{{ end }}>
+{{ $heroImages := partial "hero-images.html" $hero }}
+<header class="hero"{{ if $heroImages.desktop }} style="--bg-desktop: url('{{ $heroImages.desktop }}'); --bg-mobile: url('{{ $heroImages.mobile }}');"{{ end }}>
   <div class="overlay" aria-hidden="true"></div>
   <nav class="hero-topnav" aria-label="Primary">
     <a href="/posts/" class="hero-topnav-link">Dream Journal</a>
