@@ -692,7 +692,6 @@ footer a:hover { color: #fff; }
 
 @media (max-width: 760px) {
   .download-grid { grid-template-columns: 1fr; gap: 2.2rem; }
-  .download-art { order: -1; }
   .interlude-inner { grid-template-columns: 1fr; gap: 2.4rem; }
   .interlude-art { order: -1; }
 }
