@@ -1,0 +1,59 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{{ $title := .Title }}
+{{ if eq .Kind "404" }}{{ $title = "Page not found" }}{{ end }}
+<title>{{ $title }} | {{ .Site.Title }}</title>
+{{ $desc := .Description }}
+{{ if not $desc }}
+  {{ if eq .Kind "page" }}{{ $desc = .Summary | plainify | htmlUnescape | replaceRE "\\s+" " " | strings.TrimSpace | truncate 160 }}{{ else }}{{ $desc = .Site.Params.description }}{{ end }}
+{{ end }}
+<meta name="description" content="{{ $desc }}">
+{{ if eq .Kind "404" }}
+<meta name="robots" content="noindex">
+{{ else }}
+<link rel="canonical" href="{{ .Permalink }}">
+{{ end }}
+
+<!-- Open Graph -->
+{{ $imagePath := .Params.image | default "/images/og-image.jpg" }}
+{{ $ogImage := absURL $imagePath }}
+{{ $imageResource := resources.Get (strings.TrimPrefix "/" $imagePath) }}
+<meta property="og:title" content="{{ $title }} | {{ .Site.Title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:image" content="{{ $ogImage }}">
+{{ with $imageResource }}
+<meta property="og:image:width" content="{{ .Width }}">
+<meta property="og:image:height" content="{{ .Height }}">
+{{ end }}
+{{ if ne .Kind "404" }}<meta property="og:url" content="{{ .Permalink }}">{{ end }}
+{{ $ogType := "website" }}{{ if and (eq .Kind "page") (eq .Section "posts") }}{{ $ogType = "article" }}{{ end }}
+<meta property="og:type" content="{{ $ogType }}">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }} | {{ .Site.Title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
+
+{{ if .IsHome }}
+{{ partial "head/hero-preload.html" . }}
+{{ end }}
+
+<!-- Preconnect to Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Karla:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<!-- Stylesheet -->
+<link rel="stylesheet" href="/css/style.css">
+
+{{ if .IsHome }}
+{{ partial "head/schema-business.html" . }}
+{{ end }}
+
+{{ partial "analytics.html" . }}
