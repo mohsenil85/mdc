@@ -13,7 +13,7 @@
   --plum: #392942;           /* deep plum-purple — grounding blocks + headings */
   --plum-deep: #2b1f34;
 
-  --orange: #c05a20;         /* dark / burnt orange — primary action */
+  --orange: #be5920;         /* dark / burnt orange — primary action (4.5:1 with white text) */
   --orange-deep: #a4491a;
 
   --pink: #d4a09e;           /* dusty pink — soft accent */
@@ -24,7 +24,7 @@
 
   --ink: #33291f;            /* warm body text on cream */
   --ink-soft: #5e544a;
-  --ink-muted: #8a8172;
+  --ink-muted: #746c60;      /* 4.5:1 on --cream */
   --line: #e7dcc6;
 
   --on-dark: #f6efdd;
