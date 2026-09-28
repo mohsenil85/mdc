@@ -13,7 +13,8 @@
     </div>
 
     <footer class="post-footer">
-      <a href="/posts/" class="btn btn-dawn">More from the Dream Journal</a>
+      {{ if eq .Section "posts" }}{{ partial "author-box.html" . }}{{ end }}
+      <p class="post-more"><a href="/posts/" class="post-readmore">More from the Dream Journal &rarr;</a></p>
     </footer>
   </article>
 {{ end }}

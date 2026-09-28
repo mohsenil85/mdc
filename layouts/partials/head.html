@@ -13,6 +13,9 @@
 {{ else }}
 <link rel="canonical" href="{{ .Permalink }}">
 {{ end }}
+{{ with site.GetPage "/posts" }}{{ $journal := . }}{{ with .OutputFormats.Get "rss" }}
+<link rel="alternate" type="application/rss+xml" title="{{ $journal.Title }} | {{ site.Title }}" href="{{ .Permalink }}">
+{{ end }}{{ end }}
 
 <!-- Open Graph -->
 {{ $imagePath := .Params.image | default "/images/og-image.jpg" }}
@@ -53,6 +56,9 @@
 
 {{ if .IsHome }}
 {{ partial "head/schema-business.html" . }}
+{{ end }}
+{{ if and (eq .Kind "page") (eq .Section "posts") }}
+{{ partial "head/schema-post.html" (dict "page" . "desc" $desc "image" $ogImage) }}
 {{ end }}
 
 {{ partial "analytics.html" . }}

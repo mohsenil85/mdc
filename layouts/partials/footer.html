@@ -1,6 +1,6 @@
 {{ $footer := .Site.GetPage "/sections/footer" }}
 {{ $wave := "M0,30 C240,54 480,10 720,30 C960,50 1200,58 1440,30 L1440,70 L0,70 Z" }}
-<footer>
+<footer class="site-footer">
   <svg class="wave wave--pine footer-wave" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="{{ $wave }}"/></svg>
   <div class="footer-content">
     <p class="footer-business">{{ .Site.Title }}</p>
@@ -10,7 +10,7 @@
       {{ if and site.Params.phone site.Params.email }} <span class="footer-sep">·</span> {{ end }}
       {{ with site.Params.email }}<a href="mailto:{{ . }}">{{ . }}</a>{{ end }}
     </p>
-    <p class="footer-nav"><a href="/posts/">Dream Journal</a> <span class="footer-sep">·</span> <a href="https://www.instagram.com/cassisoma/" target="_blank" rel="noopener">Instagram</a></p>
+    <p class="footer-nav"><a href="/posts/">Dream Journal</a> {{ with site.Params.social.instagram }}<span class="footer-sep">·</span> <a href="{{ . }}" target="_blank" rel="noopener">Instagram</a>{{ end }}</p>
     <p class="footer-copyright">&copy; {{ now.Format "2006" }} {{ .Site.Title }} <span class="footer-sep">·</span> Boulder, Colorado</p>
   </div>
 </footer>

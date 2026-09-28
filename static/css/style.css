@@ -452,26 +452,26 @@ a:hover { color: var(--plum); }
 /* ============================================================
    FOOTER — plum-purple, wavy top, closing the page
    ============================================================ */
-footer {
+.site-footer {
   position: relative;
   background: var(--plum);
   color: var(--on-dark-soft);
   padding: clamp(4rem, 7vw, 5rem) 0 clamp(2.5rem, 5vw, 3rem);
 }
 .footer-wave { bottom: 100%; }
-footer .footer-content { width: var(--wrap); margin-inline: auto; display: grid; gap: 0.4rem; }
-footer .footer-business {
+.site-footer .footer-content { width: var(--wrap); margin-inline: auto; display: grid; gap: 0.4rem; }
+.site-footer .footer-business {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: clamp(1.5rem, 0.6vw + 1.25rem, 1.75rem);
   color: var(--cream-card);
 }
-footer .footer-service-area,
-footer .footer-contact,
-footer .footer-copyright { margin: 0; font-size: 0.9rem; color: var(--on-dark-soft); }
-footer a { color: var(--teal); font-weight: 600; }
-footer a:hover { color: #fff; }
+.site-footer .footer-service-area,
+.site-footer .footer-contact,
+.site-footer .footer-copyright { margin: 0; font-size: 0.9rem; color: var(--on-dark-soft); }
+.site-footer a { color: var(--teal); font-weight: 600; }
+.site-footer a:hover { color: #fff; }
 .footer-sep { opacity: 0.5; }
 
 /* ============================================================
@@ -515,10 +515,13 @@ footer a:hover { color: #fff; }
 }
 .blog-nav-inner {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  gap: 0.6rem 1.2rem;
   padding: 1rem 0;
 }
+.blog-nav-links { display: flex; align-items: center; gap: 1.2rem; }
 .blog-nav a { color: var(--on-dark); text-decoration: none; font-weight: 500; }
 .blog-nav a:hover { color: var(--pink); }
 .blog-nav .blog-journal-link {
@@ -527,6 +530,15 @@ footer a:hover { color: #fff; }
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
+.blog-nav .blog-work-link {
+  padding: 0.4rem 0.95rem;
+  border-radius: var(--pill);
+  background: var(--orange);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.blog-nav .blog-work-link:hover { background: var(--orange-deep); color: #fff; }
 
 .post,
 .blog-list { padding: 3.5rem 0 4rem; max-width: min(760px, 90vw); }
@@ -578,6 +590,32 @@ footer a:hover { color: #fff; }
 .post-body table thead th { border-bottom: 2px solid var(--line); }
 
 .post-footer { margin-top: 3rem; }
+.post-more { margin: 2rem 0 0; }
+
+/* Author box at the end of posts */
+.author-box {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background: var(--cream-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.author-photo { flex: none; width: 96px; height: 96px; border-radius: 50%; }
+.author-name {
+  margin: 0 0 0.3rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.author-name a { color: var(--plum); text-decoration: none; }
+.author-name a:hover { color: var(--orange-deep); }
+.author-bio { margin: 0 0 1.1rem; color: var(--ink-soft); }
+@media (max-width: 520px) {
+  .author-box { flex-direction: column; }
+}
 
 /* Journal index */
 .blog-intro { color: var(--ink-soft); font-size: 1.1rem; margin-top: 0.6rem; }
