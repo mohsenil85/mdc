@@ -25,6 +25,14 @@ email = "info@mountaindreamercounseling.com"
 instagram = "https://www.instagram.com/cassisoma/"
 psychology_today = "https://www.psychologytoday.com/us/therapists/cassi-stuckman-longmont-co/1280630"
 
+# The Dream Journal's author: the author box at the end of each post and the posts' structured data.
+[params.author]
+name = "Cassi Stuckman"
+credential = "LPC"
+job_title = "Licensed Professional Counselor"
+image = "/images/therapist.jpeg"
+bio = "Somatic therapist in Boulder, Colorado, working with dreams and nightmares, the nervous system, and recovery."
+
 [markup.goldmark.renderer]
 unsafe = true
 

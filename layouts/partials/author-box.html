@@ -1,0 +1,17 @@
+{{/* Author box at the end of Dream Journal posts. Details come from config.toml [params.author]. */}}
+{{ with site.Params.author }}
+<aside class="author-box" aria-label="About the author">
+  {{ with resources.Get (strings.TrimPrefix "/" .image) }}
+    {{/* A square headshot: the top square of the portrait, then its center. Recheck the crop if the photo changes. */}}
+    {{ $face := (.Crop "600x600 Top").Crop "360x360 Center" }}
+    {{ $x1 := $face.Resize "96x webp q75" }}
+    {{ $x2 := $face.Resize "192x webp q75" }}
+    <img class="author-photo" src="{{ $x2.RelPermalink }}" srcset="{{ $x1.RelPermalink }} 1x, {{ $x2.RelPermalink }} 2x" width="96" height="96" alt="" loading="lazy" decoding="async">
+  {{ end }}
+  <div class="author-text">
+    <p class="author-name"><a href="/#about">{{ .name }}, {{ .credential }}</a></p>
+    <p class="author-bio">{{ .bio }}</p>
+    <a class="btn btn-dawn" href="/#book">Book a free consultation</a>
+  </div>
+</aside>
+{{ end }}

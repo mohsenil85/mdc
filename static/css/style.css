@@ -578,6 +578,32 @@ footer a:hover { color: #fff; }
 .post-body table thead th { border-bottom: 2px solid var(--line); }
 
 .post-footer { margin-top: 3rem; }
+.post-more { margin: 2rem 0 0; }
+
+/* Author box at the end of posts */
+.author-box {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  background: var(--cream-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.author-photo { flex: none; width: 96px; height: 96px; border-radius: 50%; }
+.author-name {
+  margin: 0 0 0.3rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.author-name a { color: var(--plum); text-decoration: none; }
+.author-name a:hover { color: var(--orange-deep); }
+.author-bio { margin: 0 0 1.1rem; color: var(--ink-soft); }
+@media (max-width: 520px) {
+  .author-box { flex-direction: column; }
+}
 
 /* Journal index */
 .blog-intro { color: var(--ink-soft); font-size: 1.1rem; margin-top: 0.6rem; }
