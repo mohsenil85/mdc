@@ -1,2 +1,19 @@
-<!-- Umami Analytics -->
-<script defer src="https://analytics.cowdogcat.link/script.js" data-website-id="ac590579-91d5-4e7a-bd67-0b5ace84a1e9"></script>
+<!-- Umami Analytics. data-domains limits tracking to the live site, so local previews don't count. -->
+<script defer src="https://analytics.cowdogcat.link/script.js" data-website-id="ac590579-91d5-4e7a-bd67-0b5ace84a1e9" data-domains="{{ (urls.Parse site.BaseURL).Host }}"></script>
+<script>
+  /* Umami events. "Call" and "Email" fire for every phone and email link, including links in
+     posts; "where" is the section's id, "footer", or the page path. "Dream map signup" fires
+     when the Lunar Dream Map form passes validation and is submitted. umami.track is called
+     directly because a data-umami-event attribute makes Umami hold the link until its request
+     finishes. Only the homepage's internal Dream map button uses the attribute, so that its
+     event isn't lost when the page changes. */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="tel:"], a[href^="mailto:"]');
+    if (!a || !window.umami) return;
+    var s = a.closest('.site-footer') ? { id: 'footer' } : a.closest('section[id]');
+    umami.track(a.protocol === 'tel:' ? 'Call' : 'Email', { where: s ? s.id : location.pathname });
+  });
+  document.addEventListener('submit', function (e) {
+    if (window.umami && e.target.matches('form[data-sv-form]')) umami.track('Dream map signup');
+  }, true);
+</script>

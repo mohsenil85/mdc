@@ -7,7 +7,7 @@
       <p class="eyebrow">A gift for your practice</p>
       <h2>{{ $map.Title }}</h2>
       {{ $map.Content }}
-      <a href="{{ $map.Params.button_link }}" class="btn btn-dawn">{{ $map.Params.button_text }}</a>
+      <a href="{{ $map.Params.button_link }}" class="btn btn-dawn" data-umami-event="Dream map" data-umami-event-where="home">{{ $map.Params.button_text }}</a>
     </div>
     <div class="interlude-art">
       {{ partial "img.html" (dict
