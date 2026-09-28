@@ -452,26 +452,26 @@ a:hover { color: var(--plum); }
 /* ============================================================
    FOOTER — plum-purple, wavy top, closing the page
    ============================================================ */
-footer {
+.site-footer {
   position: relative;
   background: var(--plum);
   color: var(--on-dark-soft);
   padding: clamp(4rem, 7vw, 5rem) 0 clamp(2.5rem, 5vw, 3rem);
 }
 .footer-wave { bottom: 100%; }
-footer .footer-content { width: var(--wrap); margin-inline: auto; display: grid; gap: 0.4rem; }
-footer .footer-business {
+.site-footer .footer-content { width: var(--wrap); margin-inline: auto; display: grid; gap: 0.4rem; }
+.site-footer .footer-business {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: clamp(1.5rem, 0.6vw + 1.25rem, 1.75rem);
   color: var(--cream-card);
 }
-footer .footer-service-area,
-footer .footer-contact,
-footer .footer-copyright { margin: 0; font-size: 0.9rem; color: var(--on-dark-soft); }
-footer a { color: var(--teal); font-weight: 600; }
-footer a:hover { color: #fff; }
+.site-footer .footer-service-area,
+.site-footer .footer-contact,
+.site-footer .footer-copyright { margin: 0; font-size: 0.9rem; color: var(--on-dark-soft); }
+.site-footer a { color: var(--teal); font-weight: 600; }
+.site-footer a:hover { color: #fff; }
 .footer-sep { opacity: 0.5; }
 
 /* ============================================================
