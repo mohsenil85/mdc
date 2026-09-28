@@ -515,10 +515,13 @@ footer a:hover { color: #fff; }
 }
 .blog-nav-inner {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  gap: 0.6rem 1.2rem;
   padding: 1rem 0;
 }
+.blog-nav-links { display: flex; align-items: center; gap: 1.2rem; }
 .blog-nav a { color: var(--on-dark); text-decoration: none; font-weight: 500; }
 .blog-nav a:hover { color: var(--pink); }
 .blog-nav .blog-journal-link {
@@ -527,6 +530,15 @@ footer a:hover { color: #fff; }
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
+.blog-nav .blog-work-link {
+  padding: 0.4rem 0.95rem;
+  border-radius: var(--pill);
+  background: var(--orange);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.blog-nav .blog-work-link:hover { background: var(--orange-deep); color: #fff; }
 
 .post,
 .blog-list { padding: 3.5rem 0 4rem; max-width: min(760px, 90vw); }
