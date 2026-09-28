@@ -6,9 +6,9 @@
     <p class="footer-business">{{ .Site.Title }}</p>
     {{ with $footer.Params.service_area }}<p class="footer-service-area">{{ . }}</p>{{ end }}
     <p class="footer-contact">
-      {{ with $footer.Params.phone }}<a href="tel:{{ . }}">{{ . }}</a>{{ end }}
-      {{ if and $footer.Params.phone $footer.Params.email }} <span class="footer-sep">·</span> {{ end }}
-      {{ with $footer.Params.email }}<a href="mailto:{{ . }}">{{ . }}</a>{{ end }}
+      {{ with site.Params.phone }}<a href="tel:{{ partial "phone-e164.html" . }}">{{ . }}</a>{{ end }}
+      {{ if and site.Params.phone site.Params.email }} <span class="footer-sep">·</span> {{ end }}
+      {{ with site.Params.email }}<a href="mailto:{{ . }}">{{ . }}</a>{{ end }}
     </p>
     <p class="footer-nav"><a href="/posts/">Dream Journal</a> <span class="footer-sep">·</span> <a href="https://www.instagram.com/cassisoma/" target="_blank" rel="noopener">Instagram</a></p>
     <p class="footer-copyright">&copy; {{ now.Format "2006" }} {{ .Site.Title }} <span class="footer-sep">·</span> Boulder, Colorado</p>

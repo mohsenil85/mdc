@@ -6,9 +6,9 @@
 */}}
 {{ $g := .Site.GetPage "/sections/enrolling" }}
 {{ if $g }}
-{{ $contact := .Site.GetPage "/sections/contact" }}
-{{ $email := $contact.Params.contact_email }}
-{{ $phone := $contact.Params.contact_phone }}
+{{ $email := site.Params.email }}
+{{ $phone := site.Params.phone }}
+{{ $phoneHref := partial "phone-e164.html" . }}
 <style>
   .enrolling { padding: clamp(2.4rem, 6vw, 4rem) 1.4rem; background: var(--cream, #fbf7f1); }
   .enrolling-box {
@@ -103,12 +103,12 @@
     <p class="enrolling-note">{{ $g.Params.note }}</p>
 
     <div class="enrolling-actions">
-      <a class="btn btn-dawn" href="tel:{{ $phone }}">Call to check in</a>
+      <a class="btn btn-dawn" href="tel:{{ $phoneHref }}">Call to check in</a>
       <a class="btn btn-quiet" href="{{ $g.Params.post_url }}">Read the full details</a>
     </div>
 
     <p class="enrolling-contact">
-      <a href="tel:{{ $phone }}">{{ $phone }}</a>
+      <a href="tel:{{ $phoneHref }}">{{ $phone }}</a>
       <span class="enrolling-sep">&middot;</span>
       <a href="mailto:{{ $email }}?subject={{ $g.Params.email_subject | urlquery }}">{{ $email }}</a>
     </p>

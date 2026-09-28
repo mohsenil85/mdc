@@ -10,9 +10,13 @@
       <a href="{{ $map.Params.button_link }}" class="btn btn-dawn">{{ $map.Params.button_text }}</a>
     </div>
     <div class="interlude-art">
-      <img src="{{ $map.Params.image }}"
-           alt="Illustration of a snow leopard standing among flowers beneath the phases of the moon."
-           loading="lazy">
+      {{ partial "img.html" (dict
+        "src" $map.Params.image
+        "alt" "Illustration of a snow leopard standing among flowers beneath the phases of the moon."
+        "widths" (slice 640 1200)
+        "sizes" "(max-width: 760px) 90vw, 420px"
+        "loading" "lazy"
+      )}}
     </div>
   </div>
   <svg class="wave wave--rose interlude-wave-bottom" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="{{ $wave }}"/></svg>

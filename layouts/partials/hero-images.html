@@ -1,0 +1,23 @@
+{{/*
+  Hero background images as WebP.
+
+  Context: the hero section page (may be nil). Returns dict "desktop" URL "mobile" URL.
+  Mobile falls back to desktop when background_image_mobile is unset.
+*/}}
+{{ $desktop := "" }}
+{{ $mobile := "" }}
+{{ with . }}
+  {{ with .Params.background_image }}
+    {{ $d := resources.Get (strings.TrimPrefix "/" (index (split (index (split . "?") 0) "#") 0)) }}
+    {{ with $d }}
+      {{ $desktop = (.Process "webp q70").RelPermalink }}
+    {{ end }}
+  {{ end }}
+  {{ with .Params.background_image_mobile }}
+    {{ $m := resources.Get (strings.TrimPrefix "/" (index (split (index (split . "?") 0) "#") 0)) }}
+    {{ with $m }}
+      {{ $mobile = (.Process "webp q70").RelPermalink }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ return dict "desktop" $desktop "mobile" ($mobile | default $desktop) }}

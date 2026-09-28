@@ -1,0 +1,58 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{{ $title := .Title }}
+{{ if eq .Kind "404" }}{{ $title = "Page not found" }}{{ end }}
+<title>{{ $title }} | {{ .Site.Title }}</title>
+{{ $desc := .Description }}
+{{ if not $desc }}
+  {{ if eq .Kind "page" }}{{ $desc = .Summary | plainify | htmlUnescape | replaceRE "\\s+" " " | strings.TrimSpace | truncate 160 }}{{ else }}{{ $desc = .Site.Params.description }}{{ end }}
+{{ end }}
+<meta name="description" content="{{ $desc }}">
+{{ if eq .Kind "404" }}
+<meta name="robots" content="noindex">
+{{ else }}
+<link rel="canonical" href="{{ .Permalink }}">
+{{ end }}
+
+<!-- Open Graph -->
+{{ $imagePath := .Params.image | default "/images/og-image.jpg" }}
+{{ $ogImage := absURL $imagePath }}
+{{ $imageResource := resources.Get (strings.TrimPrefix "/" $imagePath) }}
+<meta property="og:title" content="{{ $title }} | {{ .Site.Title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:image" content="{{ $ogImage }}">
+{{ with $imageResource }}
+<meta property="og:image:width" content="{{ .Width }}">
+<meta property="og:image:height" content="{{ .Height }}">
+{{ end }}
+{{ if ne .Kind "404" }}<meta property="og:url" content="{{ .Permalink }}">{{ end }}
+{{ $ogType := "website" }}{{ if and (eq .Kind "page") (eq .Section "posts") }}{{ $ogType = "article" }}{{ end }}
+<meta property="og:type" content="{{ $ogType }}">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title }} | {{ .Site.Title }}">
+<meta name="twitter:description" content="{{ $desc }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
+
+{{ if .IsHome }}
+{{ partial "head/hero-preload.html" . }}
+{{ end }}
+
+<!-- Preload above-the-fold fonts -->
+<link rel="preload" href="/fonts/karla-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/cormorant-garamond-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- Favicon (sizes on the .ico keeps Chrome from preferring it over the SVG) -->
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<!-- Stylesheet -->
+<link rel="stylesheet" href="/css/style.css">
+
+{{ if .IsHome }}
+{{ partial "head/schema-business.html" . }}
+{{ end }}
+
+{{ partial "analytics.html" . }}

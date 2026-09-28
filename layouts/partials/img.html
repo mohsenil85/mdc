@@ -1,0 +1,74 @@
+{{/*
+  Responsive image helper.
+
+  Context: dict with
+    src           image URL, e.g. "/images/x.png" (required)
+    alt           alt text (required)
+    widths        slice of candidate widths (default slice 480 800 1200)
+    sizes         srcset sizes attribute (default "100vw")
+    quality       webp quality (default 75)
+    loading       loading attribute (default "lazy")
+    fetchpriority optional
+    title         optional title attribute
+    class         optional
+*/}}
+{{- $widths := .widths | default (slice 480 800 1200) -}}
+{{- $sizes := .sizes | default "100vw" -}}
+{{- $quality := .quality | default 75 -}}
+{{- $loading := .loading | default "lazy" -}}
+{{- $src := .src -}}
+{{- $path := index (split (index (split $src "?") 0) "#") 0 -}}
+{{- $path = strings.TrimPrefix "/" $path -}}
+{{- $img := resources.Get $path -}}
+{{- if and $img (in (slice "png" "jpeg" "webp") $img.MediaType.SubType) -}}
+  {{- $candidates := slice -}}
+  {{- range $widths -}}
+    {{- if le . $img.Width -}}
+      {{- $candidates = $candidates | append . -}}
+    {{- end -}}
+  {{- end -}}
+  {{- /* Never lose the top end: if a requested width exceeded the original,
+     serve the original width instead (unless already listed). */ -}}
+  {{- $exceeded := false -}}
+  {{- range $widths -}}
+    {{- if gt . $img.Width -}}{{- $exceeded = true -}}{{- end -}}
+  {{- end -}}
+  {{- if and $exceeded (not (in $candidates $img.Width)) -}}
+    {{- $candidates = $candidates | append $img.Width -}}
+  {{- end -}}
+  {{- if not $candidates -}}
+    {{- $candidates = slice $img.Width -}}
+  {{- end -}}
+  {{- $candidates = sort $candidates -}}
+  {{- $variants := slice -}}
+  {{- range $candidates -}}
+    {{- $variants = $variants | append ($img.Resize (printf "%dx webp q%d" . $quality)) -}}
+  {{- end -}}
+  {{- $largest := index $variants (sub (len $variants) 1) -}}
+  {{- $srcset := slice -}}
+  {{- range $variants -}}
+    {{- $srcset = $srcset | append (printf "%s %dw" .RelPermalink .Width) -}}
+  {{- end -}}
+  <img src="{{ $largest.RelPermalink }}"
+       srcset="{{ delimit $srcset ", " }}"
+       sizes="{{ $sizes }}"
+       width="{{ $largest.Width }}"
+       height="{{ $largest.Height }}"
+       alt="{{ .alt }}"
+       loading="{{ $loading }}"
+       decoding="async"{{ with .fetchpriority }}
+       fetchpriority="{{ . }}"{{ end }}{{ with .title }}
+       title="{{ . }}"{{ end }}{{ with $.class }}
+       class="{{ . }}"{{ end }}>
+{{- else -}}
+  {{- if and (not $img) (hasPrefix $src "/images/") -}}
+    {{- warnf "image %q not found in static/images/ (check the file name)" $src -}}
+  {{- end -}}
+  <img src="{{ $src }}"
+       alt="{{ .alt }}"
+       loading="{{ $loading }}"
+       decoding="async"{{ with $.fetchpriority }}
+       fetchpriority="{{ . }}"{{ end }}{{ with $.title }}
+       title="{{ . }}"{{ end }}{{ with $.class }}
+       class="{{ . }}"{{ end }}>
+{{- end -}}

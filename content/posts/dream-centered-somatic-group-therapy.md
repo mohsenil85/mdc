@@ -57,7 +57,7 @@ You do not need to be a good dreamer. You do not need a practice already in plac
 
 ## To join
 
-Sign-up begins with a check-in call. Call **(303) 800-7572** or email **info@mountaindreamercounseling.com**, and we'll find twenty minutes to talk.
+Sign-up begins with a check-in call. Call **{{< phone >}}** or email **{{< email >}}**, and we'll find twenty minutes to talk.
 
 Space is limited — it's a small group on purpose.
 
