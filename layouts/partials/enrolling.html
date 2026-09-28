@@ -1,8 +1,8 @@
 {{/*
   Time-limited enrollment banner for the Dream-Centered Somatic Group.
-  Self-contained: all styles are scoped below, so this whole partial can be
-  deleted (and its line removed from layouts/index.html) once the group fills.
-  Details are read from content/sections/enrolling.md.
+  Details are read from content/sections/enrolling.md. To hide the banner,
+  set draft: true there; for the next group, update the details and set
+  draft: false. Self-contained: all styles are scoped below.
 */}}
 {{ $g := .Site.GetPage "/sections/enrolling" }}
 {{ if $g }}
