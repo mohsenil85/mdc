@@ -54,5 +54,8 @@
 {{ if .IsHome }}
 {{ partial "head/schema-business.html" . }}
 {{ end }}
+{{ if and (eq .Kind "page") (eq .Section "posts") }}
+{{ partial "head/schema-post.html" (dict "page" . "desc" $desc "image" $ogImage) }}
+{{ end }}
 
 {{ partial "analytics.html" . }}

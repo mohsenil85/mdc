@@ -1,0 +1,28 @@
+{{/* BlogPosting structured data for Dream Journal posts. Context: dict with page, desc, image.
+     Values are interpolated bare: html/template JSON-encodes them inside this script tag. */}}
+{{ $p := .page }}
+{{ $author := site.Params.author }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ $p.Title }},
+  "description": {{ .desc }},
+  "image": {{ .image }},
+  "datePublished": {{ $p.Date.Format "2006-01-02T15:04:05-07:00" }},
+  "dateModified": {{ $p.Lastmod.Format "2006-01-02T15:04:05-07:00" }},
+  "mainEntityOfPage": {{ $p.Permalink }},
+  "author": {
+    "@type": "Person",
+    "name": {{ $author.name }},
+    "jobTitle": {{ $author.job_title }},
+    "url": {{ printf "%s#about" site.Home.Permalink }},
+    "sameAs": {{ partial "same-as.html" . }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ site.Title }},
+    "url": {{ site.Home.Permalink }}
+  }
+}
+</script>
