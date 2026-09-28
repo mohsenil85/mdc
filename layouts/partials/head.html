@@ -13,6 +13,9 @@
 {{ else }}
 <link rel="canonical" href="{{ .Permalink }}">
 {{ end }}
+{{ with site.GetPage "/posts" }}{{ $journal := . }}{{ with .OutputFormats.Get "rss" }}
+<link rel="alternate" type="application/rss+xml" title="{{ $journal.Title }} | {{ site.Title }}" href="{{ .Permalink }}">
+{{ end }}{{ end }}
 
 <!-- Open Graph -->
 {{ $imagePath := .Params.image | default "/images/og-image.jpg" }}
