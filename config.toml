@@ -20,6 +20,11 @@ description = "Mountain Dreamer Counseling offers somatic therapy, dreamwork, pe
 phone = "(303) 800-7572"
 email = "info@mountaindreamercounseling.com"
 
+# Profiles elsewhere: the footer's Instagram link and the structured data's sameAs lists.
+[params.social]
+instagram = "https://www.instagram.com/cassisoma/"
+psychology_today = "https://www.psychologytoday.com/us/therapists/cassi-stuckman-longmont-co/1280630"
+
 [markup.goldmark.renderer]
 unsafe = true
 

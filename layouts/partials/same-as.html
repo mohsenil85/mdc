@@ -1,0 +1,4 @@
+{{/* The profile URLs in config.toml [params.social], as a list for structured data's sameAs. */}}
+{{- $urls := slice -}}
+{{- range site.Params.social -}}{{- $urls = $urls | append . -}}{{- end -}}
+{{- return $urls -}}
