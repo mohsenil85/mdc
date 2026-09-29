@@ -1,4 +1,7 @@
 ---
+# The homepage enrollment banner is hidden while draft is true. For the next group,
+# update the details below and set draft to false.
+draft: true
 title: "A Six-Week Dream Group in Boulder"
 subtitle: "Dream-Centered Somatic Group Therapy — movement, processing, and breath, in a small evening group."
 start: "October 13"
