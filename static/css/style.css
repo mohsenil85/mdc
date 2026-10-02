@@ -735,6 +735,8 @@ a:hover { color: var(--plum); }
   color: var(--ink-muted);
   font-style: italic;
 }
+.download-example { margin: 2.5rem 0 0; }
+.download-example img { transform: rotate(1.5deg); }
 
 /* Native Kit opt-in form (progressively enhanced by ck.5.js) */
 .optin-form {
