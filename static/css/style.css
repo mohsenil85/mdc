@@ -100,6 +100,14 @@ p { margin: 0 0 1.05rem; }
 a { color: var(--orange-deep); text-underline-offset: 0.16em; text-decoration-thickness: 1px; }
 a:hover { color: var(--plum); }
 
+/* Keyboard focus: one style everywhere, in a color that shows on each surface */
+:focus-visible { outline: 2px solid var(--orange-deep); outline-offset: 3px; }
+.hero-topnav :focus-visible,
+.offerings :focus-visible,
+.site-footer :focus-visible,
+.blog-nav :focus-visible { outline-color: var(--pink); }
+.interlude :focus-visible { outline-color: var(--plum); }
+
 .wrap { width: var(--wrap); margin-inline: auto; }
 
 /* ---- small utilities ---- */
@@ -153,12 +161,36 @@ a:hover { color: var(--plum); }
 .btn-dawn {
   background: var(--orange);
   color: #fff;
-  box-shadow: 0 12px 28px -12px rgba(192, 90, 32, 0.7);
+  box-shadow: 0 12px 28px -12px rgba(190, 89, 32, 0.7);
 }
-.btn-dawn::after { content: '\2192'; transition: transform 160ms ease; }
-.btn-dawn:hover { background: var(--orange-deep); color: #fff; transform: translateY(-2px); box-shadow: 0 20px 38px -14px rgba(192, 90, 32, 0.7); }
+.btn-dawn::after { transition: transform 160ms ease; }
+.btn-dawn:hover { background: var(--orange-deep); color: #fff; transform: translateY(-2px); box-shadow: 0 20px 38px -14px rgba(190, 89, 32, 0.7); }
 .btn-dawn:hover::after { transform: translateX(3px); }
 .btn:focus-visible { outline: 2px solid var(--plum); outline-offset: 3px; }
+
+/* ---- arrows ----
+   Neither web font has arrow glyphs, so a typed → falls back to the system font at a
+   different weight. The arrows are drawn instead: a mask filled with the text color. */
+:root {
+  --arrow-next: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15M13 6l6 6-6 6'/%3E%3C/svg%3E");
+  --arrow-back: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 12H5M11 6l-6 6 6 6'/%3E%3C/svg%3E");
+}
+.btn-dawn::after,
+.arrow::after,
+.arrow-back::before {
+  content: '';
+  flex: none;
+  width: 0.95em;
+  height: 0.95em;
+  background: currentColor;
+  -webkit-mask: var(--arrow-next) center / contain no-repeat;
+          mask: var(--arrow-next) center / contain no-repeat;
+}
+.arrow-back::before {
+  -webkit-mask-image: var(--arrow-back);
+          mask-image: var(--arrow-back);
+}
+.arrow, .arrow-back { display: inline-flex; align-items: center; gap: 0.35em; }
 
 /* ---- organic wave dividers (the signature) ---- */
 .wave {
@@ -369,12 +401,23 @@ a:hover { color: var(--plum); }
   gap: 1rem;
 }
 .offerings-content li {
-  padding: 1.15rem 1.35rem;
+  position: relative;
+  padding: 1.15rem 1.35rem 1.15rem 1.6rem;
   border-radius: var(--radius-sm);
-  border-left: 3px solid var(--teal);
   background: rgba(255, 255, 255, 0.06);
   color: var(--on-dark-soft);
   line-height: 1.5;
+}
+/* The accent bar is drawn separately: a border-left would taper around the rounded corners. */
+.offerings-content li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.1rem;
+  bottom: 1.1rem;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--teal);
 }
 .offerings-content li strong {
   font-family: var(--font-display);
@@ -445,7 +488,7 @@ a:hover { color: var(--plum); }
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--teal-deep);
+  color: var(--ink-muted);         /* 4.9:1 on --cream-card (teal-deep was 4.45:1) */
 }
 .contact-line a { font-weight: 500; overflow-wrap: anywhere; }
 
@@ -521,17 +564,22 @@ a:hover { color: var(--plum); }
   gap: 0.6rem 1.2rem;
   padding: 1rem 0;
 }
-.blog-nav-links { display: flex; align-items: center; gap: 1.2rem; }
-.blog-nav a { color: var(--on-dark); text-decoration: none; font-weight: 500; }
+.blog-nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem 1.2rem; }
+.blog-nav a { color: var(--on-dark); text-decoration: none; font-weight: 500; white-space: nowrap; }
 .blog-nav a:hover { color: var(--pink); }
-.blog-nav .blog-journal-link {
+/* ~44px tap targets; the negative margins keep the bar's height */
+.blog-nav .blog-home { padding-block: 0.5rem; margin-block: -0.5rem; }
+.blog-nav .blog-nav-link {
+  padding-block: 0.75rem;
+  margin-block: -0.75rem;
   font-family: var(--font-body);
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 .blog-nav .blog-work-link {
-  padding: 0.4rem 0.95rem;
+  padding: 0.65rem 1.1rem;
+  margin-block: -0.25rem;
   border-radius: var(--pill);
   background: var(--orange);
   color: #fff;
@@ -541,7 +589,7 @@ a:hover { color: var(--plum); }
 .blog-nav .blog-work-link:hover { background: var(--orange-deep); color: #fff; }
 
 .post,
-.blog-list { padding: 3.5rem 0 4rem; max-width: min(760px, 90vw); }
+.blog-list { padding: 3.5rem 0 4rem; max-width: min(600px, 90vw); }   /* ~68 characters a line */
 
 .post-header { margin-bottom: 2.5rem; }
 .post-header h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 0.4rem 0 0.6rem; }
@@ -552,9 +600,9 @@ a:hover { color: var(--plum); }
   letter-spacing: 0.02em;
 }
 
-.post-body { font-size: 1.08rem; }
-.post-body h2 { font-size: 1.7rem; margin: 2.2rem 0 0.8rem; }
-.post-body h3 { font-size: 1.3rem; margin: 1.8rem 0 0.6rem; }
+.post-body { font-size: clamp(1.125rem, 0.25vw + 1.05rem, 1.1875rem); }
+.post-body h2 { font-size: clamp(1.75rem, 1.2vw + 1.4rem, 2.1rem); line-height: 1.15; margin: 2.6rem 0 0.8rem; }
+.post-body h3 { font-size: clamp(1.35rem, 0.6vw + 1.2rem, 1.55rem); line-height: 1.2; margin: 2rem 0 0.6rem; }
 .post-body img { max-width: 100%; height: auto; border-radius: var(--radius-sm); }
 .post-body blockquote {
   margin: 1.6rem 0;
@@ -616,6 +664,12 @@ a:hover { color: var(--plum); }
 @media (max-width: 520px) {
   .author-box { flex-direction: column; }
 }
+/* The three nav links fit one row down to a 360px phone; narrower, the row wraps. */
+@media (max-width: 420px) {
+  .blog-nav-links { column-gap: 0.7rem; }
+  .blog-nav .blog-nav-link { letter-spacing: 0.08em; }
+  .blog-nav .blog-work-link { padding-inline: 0.85rem; }
+}
 
 /* Journal index */
 .blog-intro { color: var(--ink-soft); font-size: 1.1rem; margin-top: 0.6rem; }
@@ -653,7 +707,8 @@ a:hover { color: var(--plum); }
   font-size: 0.92rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 0.4rem 0.3rem;
+  padding: 0.6rem;
+  margin: -0.2rem -0.3rem;         /* a ~44px tap target; the text stays where it was */
   text-shadow: 0 1px 12px rgba(43, 31, 52, 0.55);
   transition: color 160ms ease;
 }
@@ -699,6 +754,7 @@ a:hover { color: var(--plum); }
 .interlude-art img {
   display: block;
   width: min(420px, 100%);
+  height: auto;                    /* lets aspect-ratio beat the img's height attribute */
   aspect-ratio: 1;
   object-fit: cover;
   margin-inline: auto;
@@ -777,7 +833,8 @@ a:hover { color: var(--plum); }
   font: inherit;
   font-size: 1rem;
   color: var(--ink);
-  border: 1px solid var(--line);
+  background: #fff;
+  border: 1px solid var(--ink-muted);   /* a field's edge needs 3:1; --line was 1.3:1 */
   border-radius: var(--pill);
 }
 .optin-form .formkit-input::placeholder { color: var(--ink-muted); opacity: 1; }
@@ -791,6 +848,13 @@ a:hover { color: var(--plum); }
   justify-content: center;
 }
 .optin-form .formkit-submit::after { content: none; }
+.optin-note {
+  margin: 0.9rem 0 0;
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--ink-muted);
+}
 .optin-form .formkit-spinner {
   display: flex;
   gap: 4px;
@@ -830,8 +894,17 @@ a:hover { color: var(--plum); }
   font-size: 0.95rem;
 }
 .optin-form .formkit-alert:empty { display: none; }
-.optin-form .formkit-alert-success { background: #d3fbeb; border: 1px solid var(--teal-deep); color: #146f69; }
-.optin-form .formkit-alert-error { background: #fde8e2; border: 1px solid #a4491a; color: #a4491a; }
+/* Success reads as a note in the form's own italic, not an alert box (the error state keeps its border) */
+.optin-form .formkit-alert-success {
+  background: color-mix(in srgb, var(--pink) 35%, var(--cream-card));
+  border: 0;
+  color: var(--plum-deep);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+.optin-form .formkit-alert-error { background: #fde8e2; border: 1px solid var(--orange-deep); color: var(--orange-deep); }
 .optin-form .formkit-powered-by-convertkit-container {
   display: flex;
   justify-content: center;
