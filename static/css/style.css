@@ -1,8 +1,8 @@
 /* ============================================================
    Mountain Dreamer Counseling
    Direction: "Organic" — warm cream, elegant serif, organic wavy
-   dividers. Palette features DUSTY PINK, DARK ORANGE, TEAL, and a
-   deep PLUM-PURPLE grounding. Inspired by Knot Springs + adrienne
+   dividers. Palette features DUSTY PINK, DARK ORANGE, and a deep
+   PLUM-PURPLE grounding, with TEAL kept to the footer links. Inspired by Knot Springs + adrienne
    maree brown: embodied, saturated, alive.
    ============================================================ */
 
@@ -53,7 +53,7 @@
   --pink: #d4a09e;           /* dusty pink — soft accent */
   --pink-deep: #b87a72;
 
-  --teal: #2aa99c;           /* teal — bright pop */
+  --teal: #2aa99c;           /* teal — footer links only, a cool note on the plum */
   --teal-deep: #17817a;
 
   --ink: #33291f;            /* warm body text on cream */
@@ -72,6 +72,14 @@
   --radius: 18px;
   --radius-sm: 12px;
   --pill: 999px;
+
+  --night: #150f1c;          /* the top of the dusk sky */
+  --dusk:
+    radial-gradient(70% 45% at 50% 100%, rgba(212, 160, 158, 0.5), transparent 70%),
+    linear-gradient(180deg, var(--night) 0%, var(--plum) 58%, var(--pink-deep) 100%);
+
+  --label-size: 0.72rem;     /* every small tracked-caps label */
+  --label-track: 0.14em;
 }
 
 * { box-sizing: border-box; }
@@ -124,23 +132,28 @@ a:hover { color: var(--plum); }
   border: 0;
 }
 
-/* ---- eyebrow pills ---- */
+/* ---- eyebrow labels: small tracked caps after an accent dot (filled pills are for actions) ---- */
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.6rem;
   margin: 0 0 1.1rem;
-  padding: 0.36rem 0.9rem;
-  border-radius: var(--pill);
-  background: var(--pink);
-  color: var(--plum);          /* dark text on dusty pink */
   font-family: var(--font-body);
   font-weight: 700;
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
+  font-size: var(--label-size);
+  letter-spacing: var(--label-track);
   text-transform: uppercase;
+  color: var(--ink-muted);
 }
-.eyebrow-dawn { background: var(--orange); color: #fff; }
+.eyebrow::before {
+  content: '';
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--orange);
+}
+.eyebrow-dawn { color: var(--orange-deep); }
 
 /* ---- buttons ---- */
 .btn {
@@ -207,7 +220,7 @@ a:hover { color: var(--plum); }
 .wave--rose { fill: var(--pink); }
 
 /* ============================================================
-   HERO — tree photo, floating cream card
+   HERO — dusk sky (or a photo), the practice name, a floating cream card
    ============================================================ */
 .hero {
   position: relative;
@@ -216,8 +229,10 @@ a:hover { color: var(--plum); }
   min-height: 100svh;
   display: grid;
   place-items: center;
+  align-content: center;           /* the name and the card stay together, centered */
+  gap: 1.1rem;
   padding: clamp(4rem, 10vh, 7rem) 1.4rem clamp(5.5rem, 11vh, 8rem);
-  background-image: var(--bg-desktop, url('/images/hero-background.jpg'));
+  background-image: var(--bg-desktop, var(--dusk));
   background-size: cover;
   background-position: center 30%;
 }
@@ -229,7 +244,35 @@ a:hover { color: var(--plum); }
     linear-gradient(180deg, rgba(57, 41, 66, 0.44), rgba(43, 31, 52, 0.56)),
     radial-gradient(120% 80% at 50% 12%, rgba(212, 160, 158, 0.32), transparent 60%);
 }
-.hero-wave { bottom: -1px; z-index: 1; }
+.hero-moon {
+  position: absolute;
+  top: clamp(4.25rem, 11vh, 6.5rem);
+  left: calc(50% + min(16rem, 28vw));
+  width: clamp(56px, 7vw, 96px);
+  color: var(--cream);
+  filter: drop-shadow(0 0 24px rgba(247, 239, 223, 0.35));
+}
+.hero-ridge {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  z-index: 1;
+  width: 100%;
+  height: clamp(56px, 7.5vw, 108px);
+  fill: var(--cream);
+  pointer-events: none;
+}
+.hero-wordmark {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.3rem, 0.8vw + 1.05rem, 1.65rem);
+  letter-spacing: 0.01em;
+  color: var(--on-dark);
+  text-shadow: 0 1px 14px rgba(43, 31, 52, 0.6);
+}
 
 .hero-content {
   position: relative;
@@ -241,24 +284,33 @@ a:hover { color: var(--plum); }
   padding: clamp(2.1rem, 5vw, 3.5rem) clamp(1.6rem, 4vw, 3.2rem);
   box-shadow: 0 44px 90px -44px rgba(43, 31, 52, 0.6);
 }
-.hero-content .eyebrow { margin-inline: auto; background: var(--teal-deep); color: #fff; }
+.hero-content .eyebrow { margin-inline: auto; }
 .hero-content h1 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(2.5rem, 6vw, 4.3rem);
-  line-height: 1.0;
-  letter-spacing: -0.01em;
-  color: var(--plum);
-  margin: 0 0 0.4rem;
+  display: grid;
+  gap: 0.6rem;
+  margin: 0 0 1rem;
 }
-.hero-subtitle {
+.hero-word {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 500;
-  font-size: clamp(1.55rem, 4vw, 2.45rem);
-  line-height: 1;
-  color: var(--orange);
-  margin: 0 0 1.25rem;
+  font-size: clamp(3.6rem, 11vw, 6.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.015em;
+  color: var(--orange);            /* 4.3:1 on the card; display size needs 3:1 */
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.45rem, 1vw + 1.1rem, 2.1rem);
+  line-height: 1.15;
+  color: var(--plum);
+  text-wrap: balance;
+}
+.hero-byline {
+  margin: 0 0 1.2rem;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
 }
 .hero-lede {
   max-width: 48ch;
@@ -330,10 +382,10 @@ a:hover { color: var(--plum); }
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--teal);
+  background: var(--pink-deep);
 }
 
-.about-image { margin: 0; }
+.about-image { margin: 0; position: sticky; top: 2rem; }   /* stays beside the text as it scrolls */
 .about-image picture {
   position: relative;
   display: block;
@@ -359,9 +411,9 @@ a:hover { color: var(--plum); }
 .about-image figcaption {
   margin-top: 1.1rem;
   font-family: var(--font-body);
-  font-size: 0.74rem;
+  font-size: var(--label-size);
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: var(--label-track);
   text-transform: uppercase;
   color: var(--ink-muted);
 }
@@ -375,10 +427,12 @@ a:hover { color: var(--plum); }
   color: var(--on-dark);
   padding: clamp(4.5rem, 9vw, 7rem) 0;
 }
-.offerings-wave-top { bottom: 100%; }
-.offerings-wave-bottom { top: 100%; transform: scaleY(-1); }
+/* The waves overlap their section by 1px (no hairline seams) and are flipped so no two match. */
+.offerings-wave-top { bottom: calc(100% - 1px); transform: scaleX(-1); }
+.offerings-wave-bottom { top: calc(100% - 1px); transform: scaleY(-1); }
 .offerings-head { margin-bottom: clamp(1.5rem, 3vw, 2.3rem); }
-.offerings .eyebrow { background: var(--orange); color: #fff; }
+.offerings .eyebrow { color: var(--on-dark-soft); }
+.offerings .eyebrow::before { background: var(--pink); }
 .offerings h2 {
   font-family: var(--font-display);
   font-weight: 600;
@@ -417,7 +471,7 @@ a:hover { color: var(--plum); }
   bottom: 1.1rem;
   width: 3px;
   border-radius: 2px;
-  background: var(--teal);
+  background: var(--pink);
 }
 .offerings-content li strong {
   font-family: var(--font-display);
@@ -484,9 +538,9 @@ a:hover { color: var(--plum); }
 .contact-label {
   display: block;
   margin-bottom: 0.15rem;
-  font-size: 0.68rem;
+  font-size: var(--label-size);
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: var(--label-track);
   text-transform: uppercase;
   color: var(--ink-muted);         /* 4.9:1 on --cream-card (teal-deep was 4.45:1) */
 }
@@ -501,7 +555,7 @@ a:hover { color: var(--plum); }
   color: var(--on-dark-soft);
   padding: clamp(4rem, 7vw, 5rem) 0 clamp(2.5rem, 5vw, 3rem);
 }
-.footer-wave { bottom: 100%; }
+.footer-wave { bottom: calc(100% - 1px); height: 44px; }   /* lower and gentler: the page settling */
 .site-footer .footer-content { width: var(--wrap); margin-inline: auto; display: grid; gap: 0.4rem; }
 .site-footer .footer-business {
   margin: 0;
@@ -532,16 +586,19 @@ a:hover { color: var(--plum); }
 @media (max-width: 920px) {
   .about-body,
   .cta-inner { grid-template-columns: 1fr; }
-  .about-image { max-width: 340px; }
+  .about-image { position: static; max-width: 340px; order: -1; }   /* the portrait before the story */
   .offerings-content ul { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 760px) {
   .hero {
     min-height: 92svh;
-    background-image: var(--bg-mobile, var(--bg-desktop, url('/images/hero-background-mobile.jpg')));
+    background-image: var(--bg-mobile, var(--bg-desktop, var(--dusk)));
   }
+  /* On phones the moon moves to the top-left corner, level with the Dream Journal link */
+  .hero-moon { top: 1.1rem; left: clamp(1.4rem, 5vw, 3rem); width: 44px; }
   .wave { height: 40px; }
+  .footer-wave { height: 30px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -573,8 +630,8 @@ a:hover { color: var(--plum); }
   padding-block: 0.75rem;
   margin-block: -0.75rem;
   font-family: var(--font-body);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
+  font-size: var(--label-size);
+  letter-spacing: var(--label-track);
   text-transform: uppercase;
 }
 .blog-nav .blog-work-link {
@@ -727,14 +784,15 @@ a:hover { color: var(--plum); }
   background: var(--pink);
   padding: clamp(5rem, 10vw, 7.5rem) 0 clamp(4.5rem, 9vw, 7rem);
 }
-.interlude-wave-bottom { top: 100%; transform: scaleY(-1); }
+.interlude-wave-bottom { top: calc(100% - 1px); transform: scale(-1, -1); }
 .interlude-inner {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(260px, 0.95fr);
   gap: clamp(2rem, 5vw, 4rem);
   align-items: center;
 }
-.interlude .eyebrow { background: var(--plum); color: var(--on-dark); }
+.interlude .eyebrow { color: var(--plum-deep); }
+.interlude .eyebrow::before { background: var(--plum); }
 .interlude h2 {
   font-family: var(--font-display);
   font-weight: 600;
@@ -751,16 +809,12 @@ a:hover { color: var(--plum); }
   line-height: 1.65;
 }
 .interlude-copy .btn { margin-top: 1.3rem; }
+/* The cheetah is plum ink on a transparent PNG, printed straight onto the pink like the map's line art */
 .interlude-art img {
   display: block;
-  width: min(420px, 100%);
-  height: auto;                    /* lets aspect-ratio beat the img's height attribute */
-  aspect-ratio: 1;
-  object-fit: cover;
+  width: min(440px, 100%);
+  height: auto;
   margin-inline: auto;
-  border-radius: var(--radius);
-  transform: rotate(-2.5deg);
-  filter: drop-shadow(0 30px 40px rgba(43, 31, 52, 0.35));
 }
 
 /* ============================================================

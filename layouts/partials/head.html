@@ -18,7 +18,7 @@
 {{ end }}{{ end }}
 
 <!-- Open Graph -->
-{{ $imagePath := .Params.image | default "/images/og-image.jpg" }}
+{{ $imagePath := .Params.image | default "/images/share.jpg" }}
 {{ $ogImage := absURL $imagePath }}
 {{ $imageResource := resources.Get (strings.TrimPrefix "/" $imagePath) }}
 <meta property="og:title" content="{{ $title }} | {{ .Site.Title }}">
@@ -40,6 +40,7 @@
 
 {{ if .IsHome }}
 {{ partial "head/hero-preload.html" . }}
+<link rel="preload" href="/fonts/cormorant-garamond-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
 {{ end }}
 
 <!-- Preload above-the-fold fonts -->

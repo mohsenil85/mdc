@@ -1,32 +1,34 @@
 {{ $hero := .Site.GetPage "/sections/hero" }}
-{{ $wave := "M0,30 C240,54 480,10 720,30 C960,50 1200,58 1440,30 L1440,70 L0,70 Z" }}
-{{ if $hero }}
+{{/* The hero's lower edge: a mountain ridge in the page's cream. It keeps its proportions
+     (slice) and is cropped at the sides on narrow screens. */}}
+{{ $ridge := "M0,120 L0,80 L70,70 L130,56 L180,62 L240,40 L285,47 L340,28 L395,45 L445,39 L510,60 L570,50 L630,31 L675,38 L730,19 L790,36 L850,30 L910,50 L970,43 L1030,59 L1090,38 L1140,45 L1200,26 L1250,40 L1310,33 L1370,55 L1440,47 L1440,120 Z" }}
+{{/* With a background_image in content/sections/hero.md, a photo sits behind the card under
+     the plum overlay. Without one, the sky is the dusk gradient (--dusk in style.css) with a
+     crescent moon in the favicon's shape. */}}
 {{ $heroImages := partial "hero-images.html" $hero }}
-<header class="hero"{{ if $heroImages.desktop }} style="--bg-desktop: url('{{ $heroImages.desktop }}'); --bg-mobile: url('{{ $heroImages.mobile }}');"{{ end }}>
+<header class="hero"{{ with $heroImages.desktop }} style="--bg-desktop: url('{{ . }}'); --bg-mobile: url('{{ $heroImages.mobile }}');"{{ end }}>
+  {{ if $heroImages.desktop }}
   <div class="overlay" aria-hidden="true"></div>
+  {{ else }}
+  <svg class="hero-moon" viewBox="0 0 64 64" aria-hidden="true"><mask id="hero-moon-cut"><rect width="64" height="64" fill="#fff"/><circle cx="40.4" cy="24.8" r="15.6"/></mask><circle cx="32" cy="32" r="18" fill="currentColor" mask="url(#hero-moon-cut)"/></svg>
+  {{ end }}
   <nav class="hero-topnav" aria-label="Primary">
     <a href="/posts/" class="hero-topnav-link">Dream Journal</a>
   </nav>
+  <p class="hero-wordmark">{{ site.Title }}</p>
   <div class="hero-content">
+    {{ with $hero }}
     <p class="eyebrow">Now accepting new clients</p>
-    <h1>{{ $hero.Title }}</h1>
-    {{ with $hero.Params.subtitle }}<p class="hero-subtitle">{{ . }}</p>{{ end }}
-    <p class="hero-lede">{{ $hero.Params.description }}</p>
-    <a href="{{ $hero.Params.button_link | default "#book" }}" class="btn btn-dawn">{{ $hero.Params.button_text | default "Book a Session" }}</a>
-  </div>
-  <svg class="wave wave--cream hero-wave" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="{{ $wave }}"/></svg>
-</header>
-{{ else }}
-<header class="hero">
-  <div class="overlay" aria-hidden="true"></div>
-  <nav class="hero-topnav" aria-label="Primary">
-    <a href="/posts/" class="hero-topnav-link">Dream Journal</a>
-  </nav>
-  <div class="hero-content">
-    <h1>{{ .Title }}</h1>
+    {{/* "awake." is the display line; the search-facing title stays inside the h1 beneath it */}}
+    <h1>{{ with .Params.subtitle }}<span class="hero-word">{{ . }}</span> {{ end }}<span class="hero-title">{{ .Title }}</span></h1>
+    {{ with site.Params.author }}<p class="hero-byline">with {{ .name }}, {{ .credential }}</p>{{ end }}
+    <p class="hero-lede">{{ .Params.description }}</p>
+    <a href="{{ .Params.button_link | default "#book" }}" class="btn btn-dawn">{{ .Params.button_text | default "Book a free consultation" }}</a>
+    {{ else }}
+    <h1><span class="hero-title">{{ .Title }}</span></h1>
     <p class="hero-lede">{{ .Description }}</p>
-    <a href="#book" class="btn btn-dawn">Book a Session</a>
+    <a href="#book" class="btn btn-dawn">Book a free consultation</a>
+    {{ end }}
   </div>
-  <svg class="wave wave--cream hero-wave" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="{{ $wave }}"/></svg>
+  <svg class="hero-ridge" viewBox="0 0 1440 120" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><path d="{{ $ridge }}"/></svg>
 </header>
-{{ end }}
