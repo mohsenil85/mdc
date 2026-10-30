@@ -163,10 +163,34 @@ a:hover { color: var(--plum); }
   color: #fff;
   box-shadow: 0 12px 28px -12px rgba(192, 90, 32, 0.7);
 }
-.btn-dawn::after { content: '\2192'; transition: transform 160ms ease; }
+.btn-dawn::after { transition: transform 160ms ease; }
 .btn-dawn:hover { background: var(--orange-deep); color: #fff; transform: translateY(-2px); box-shadow: 0 20px 38px -14px rgba(192, 90, 32, 0.7); }
 .btn-dawn:hover::after { transform: translateX(3px); }
 .btn:focus-visible { outline: 2px solid var(--plum); outline-offset: 3px; }
+
+/* ---- arrows ----
+   Neither web font has arrow glyphs, so a typed → falls back to the system font at a
+   different weight. The arrows are drawn instead: a mask filled with the text color. */
+:root {
+  --arrow-next: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15M13 6l6 6-6 6'/%3E%3C/svg%3E");
+  --arrow-back: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 12H5M11 6l-6 6 6 6'/%3E%3C/svg%3E");
+}
+.btn-dawn::after,
+.arrow::after,
+.arrow-back::before {
+  content: '';
+  flex: none;
+  width: 0.95em;
+  height: 0.95em;
+  background: currentColor;
+  -webkit-mask: var(--arrow-next) center / contain no-repeat;
+          mask: var(--arrow-next) center / contain no-repeat;
+}
+.arrow-back::before {
+  -webkit-mask-image: var(--arrow-back);
+          mask-image: var(--arrow-back);
+}
+.arrow, .arrow-back { display: inline-flex; align-items: center; gap: 0.35em; }
 
 /* ---- organic wave dividers (the signature) ---- */
 .wave {
