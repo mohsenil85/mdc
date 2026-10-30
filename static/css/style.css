@@ -383,8 +383,9 @@ a:hover { color: var(--plum); }
   color: var(--on-dark);
   padding: clamp(4.5rem, 9vw, 7rem) 0;
 }
-.offerings-wave-top { bottom: 100%; }
-.offerings-wave-bottom { top: 100%; transform: scaleY(-1); }
+/* The waves overlap their section by 1px (no hairline seams) and are flipped so no two match. */
+.offerings-wave-top { bottom: calc(100% - 1px); transform: scaleX(-1); }
+.offerings-wave-bottom { top: calc(100% - 1px); transform: scaleY(-1); }
 .offerings-head { margin-bottom: clamp(1.5rem, 3vw, 2.3rem); }
 .offerings .eyebrow { color: var(--on-dark-soft); }
 .offerings .eyebrow::before { background: var(--pink); }
@@ -510,7 +511,7 @@ a:hover { color: var(--plum); }
   color: var(--on-dark-soft);
   padding: clamp(4rem, 7vw, 5rem) 0 clamp(2.5rem, 5vw, 3rem);
 }
-.footer-wave { bottom: 100%; }
+.footer-wave { bottom: calc(100% - 1px); height: 44px; }   /* lower and gentler: the page settling */
 .site-footer .footer-content { width: var(--wrap); margin-inline: auto; display: grid; gap: 0.4rem; }
 .site-footer .footer-business {
   margin: 0;
@@ -551,6 +552,7 @@ a:hover { color: var(--plum); }
     background-image: var(--bg-mobile, var(--bg-desktop, url('/images/hero-background-mobile.jpg')));
   }
   .wave { height: 40px; }
+  .footer-wave { height: 30px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -736,7 +738,7 @@ a:hover { color: var(--plum); }
   background: var(--pink);
   padding: clamp(5rem, 10vw, 7.5rem) 0 clamp(4.5rem, 9vw, 7rem);
 }
-.interlude-wave-bottom { top: 100%; transform: scaleY(-1); }
+.interlude-wave-bottom { top: calc(100% - 1px); transform: scale(-1, -1); }
 .interlude-inner {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(260px, 0.95fr);
