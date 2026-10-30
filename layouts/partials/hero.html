@@ -23,11 +23,11 @@
     <h1>{{ with .Params.subtitle }}<span class="hero-word">{{ . }}</span> {{ end }}<span class="hero-title">{{ .Title }}</span></h1>
     {{ with site.Params.author }}<p class="hero-byline">with {{ .name }}, {{ .credential }}</p>{{ end }}
     <p class="hero-lede">{{ .Params.description }}</p>
-    <a href="{{ .Params.button_link | default "#book" }}" class="btn btn-dawn">{{ .Params.button_text | default "Book a Session" }}</a>
+    <a href="{{ .Params.button_link | default "#book" }}" class="btn btn-dawn">{{ .Params.button_text | default "Book a free consultation" }}</a>
     {{ else }}
     <h1><span class="hero-title">{{ .Title }}</span></h1>
     <p class="hero-lede">{{ .Description }}</p>
-    <a href="#book" class="btn btn-dawn">Book a Session</a>
+    <a href="#book" class="btn btn-dawn">Book a free consultation</a>
     {{ end }}
   </div>
   <svg class="hero-ridge" viewBox="0 0 1440 120" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><path d="{{ $ridge }}"/></svg>
