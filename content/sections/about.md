@@ -6,7 +6,9 @@ build:
   list: never
 ---
 
-I am a Licensed Professional Counselor (LPC) with a Master's degree in Clinical Mental Health Counseling from Naropa University (2024), specializing in body-centered psychotherapy. My therapeutic practice integrates evidence-based approaches with ritual and intuition.
+When I was living in Chicago, about to turn thirty, I began recording my recurring nightmares and brought them to a well-known therapist, who promptly said, "You know dreams are just nonsense, right?" I left feeling unseen, but with a whisper in the back of my mind: *dreams are not nonsense.* That experience is what propelled me into this work.
+
+Today I am a Licensed Professional Counselor (LPC) with a Master's degree in Clinical Mental Health Counseling from Naropa University (2024), specializing in body-centered psychotherapy. My therapeutic practice integrates evidence-based approaches with ritual and intuition.
 
 ### Specializations
 

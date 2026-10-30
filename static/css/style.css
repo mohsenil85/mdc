@@ -385,7 +385,7 @@ a:hover { color: var(--plum); }
   background: var(--pink-deep);
 }
 
-.about-image { margin: 0; }
+.about-image { margin: 0; position: sticky; top: 2rem; }   /* stays beside the text as it scrolls */
 .about-image picture {
   position: relative;
   display: block;
@@ -586,7 +586,7 @@ a:hover { color: var(--plum); }
 @media (max-width: 920px) {
   .about-body,
   .cta-inner { grid-template-columns: 1fr; }
-  .about-image { max-width: 340px; }
+  .about-image { position: static; max-width: 340px; order: -1; }   /* the portrait before the story */
   .offerings-content ul { grid-template-columns: 1fr; }
 }
 
