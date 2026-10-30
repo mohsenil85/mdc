@@ -1,8 +1,8 @@
 /* ============================================================
    Mountain Dreamer Counseling
    Direction: "Organic" — warm cream, elegant serif, organic wavy
-   dividers. Palette features DUSTY PINK, DARK ORANGE, TEAL, and a
-   deep PLUM-PURPLE grounding. Inspired by Knot Springs + adrienne
+   dividers. Palette features DUSTY PINK, DARK ORANGE, and a deep
+   PLUM-PURPLE grounding, with TEAL kept to the footer links. Inspired by Knot Springs + adrienne
    maree brown: embodied, saturated, alive.
    ============================================================ */
 
@@ -53,7 +53,7 @@
   --pink: #d4a09e;           /* dusty pink — soft accent */
   --pink-deep: #b87a72;
 
-  --teal: #2aa99c;           /* teal — bright pop */
+  --teal: #2aa99c;           /* teal — footer links only, a cool note on the plum */
   --teal-deep: #17817a;
 
   --ink: #33291f;            /* warm body text on cream */
@@ -338,7 +338,7 @@ a:hover { color: var(--plum); }
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--teal);
+  background: var(--pink-deep);
 }
 
 .about-image { margin: 0; }
@@ -426,7 +426,7 @@ a:hover { color: var(--plum); }
   bottom: 1.1rem;
   width: 3px;
   border-radius: 2px;
-  background: var(--teal);
+  background: var(--pink);
 }
 .offerings-content li strong {
   font-family: var(--font-display);
