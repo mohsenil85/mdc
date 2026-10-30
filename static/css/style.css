@@ -564,12 +564,12 @@ a:hover { color: var(--plum); }
   gap: 0.6rem 1.2rem;
   padding: 1rem 0;
 }
-.blog-nav-links { display: flex; align-items: center; gap: 1.2rem; }
-.blog-nav a { color: var(--on-dark); text-decoration: none; font-weight: 500; }
+.blog-nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem 1.2rem; }
+.blog-nav a { color: var(--on-dark); text-decoration: none; font-weight: 500; white-space: nowrap; }
 .blog-nav a:hover { color: var(--pink); }
 /* ~44px tap targets; the negative margins keep the bar's height */
 .blog-nav .blog-home { padding-block: 0.5rem; margin-block: -0.5rem; }
-.blog-nav .blog-journal-link {
+.blog-nav .blog-nav-link {
   padding-block: 0.75rem;
   margin-block: -0.75rem;
   font-family: var(--font-body);
@@ -663,6 +663,12 @@ a:hover { color: var(--plum); }
 .author-bio { margin: 0 0 1.1rem; color: var(--ink-soft); }
 @media (max-width: 520px) {
   .author-box { flex-direction: column; }
+}
+/* The three nav links fit one row down to a 360px phone; narrower, the row wraps. */
+@media (max-width: 420px) {
+  .blog-nav-links { column-gap: 0.7rem; }
+  .blog-nav .blog-nav-link { letter-spacing: 0.08em; }
+  .blog-nav .blog-work-link { padding-inline: 0.85rem; }
 }
 
 /* Journal index */
@@ -842,6 +848,13 @@ a:hover { color: var(--plum); }
   justify-content: center;
 }
 .optin-form .formkit-submit::after { content: none; }
+.optin-note {
+  margin: 0.9rem 0 0;
+  text-align: center;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--ink-muted);
+}
 .optin-form .formkit-spinner {
   display: flex;
   gap: 4px;
