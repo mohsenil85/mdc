@@ -73,6 +73,11 @@
   --radius-sm: 12px;
   --pill: 999px;
 
+  --night: #150f1c;          /* the top of the dusk sky */
+  --dusk:
+    radial-gradient(70% 45% at 50% 100%, rgba(212, 160, 158, 0.5), transparent 70%),
+    linear-gradient(180deg, var(--night) 0%, var(--plum) 58%, var(--pink-deep) 100%);
+
   --label-size: 0.72rem;     /* every small tracked-caps label */
   --label-track: 0.14em;
 }
@@ -215,7 +220,7 @@ a:hover { color: var(--plum); }
 .wave--rose { fill: var(--pink); }
 
 /* ============================================================
-   HERO — tree photo, floating cream card
+   HERO — dusk sky (or a photo), the practice name, a floating cream card
    ============================================================ */
 .hero {
   position: relative;
@@ -224,8 +229,10 @@ a:hover { color: var(--plum); }
   min-height: 100svh;
   display: grid;
   place-items: center;
+  align-content: center;           /* the name and the card stay together, centered */
+  gap: 1.1rem;
   padding: clamp(4rem, 10vh, 7rem) 1.4rem clamp(5.5rem, 11vh, 8rem);
-  background-image: var(--bg-desktop, url('/images/hero-background.jpg'));
+  background-image: var(--bg-desktop, var(--dusk));
   background-size: cover;
   background-position: center 30%;
 }
@@ -237,7 +244,35 @@ a:hover { color: var(--plum); }
     linear-gradient(180deg, rgba(57, 41, 66, 0.44), rgba(43, 31, 52, 0.56)),
     radial-gradient(120% 80% at 50% 12%, rgba(212, 160, 158, 0.32), transparent 60%);
 }
-.hero-wave { bottom: -1px; z-index: 1; }
+.hero-moon {
+  position: absolute;
+  top: clamp(4.25rem, 11vh, 6.5rem);
+  left: calc(50% + min(16rem, 28vw));
+  width: clamp(56px, 7vw, 96px);
+  color: var(--cream);
+  filter: drop-shadow(0 0 24px rgba(247, 239, 223, 0.35));
+}
+.hero-ridge {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  z-index: 1;
+  width: 100%;
+  height: clamp(56px, 7.5vw, 108px);
+  fill: var(--cream);
+  pointer-events: none;
+}
+.hero-wordmark {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.3rem, 0.8vw + 1.05rem, 1.65rem);
+  letter-spacing: 0.01em;
+  color: var(--on-dark);
+  text-shadow: 0 1px 14px rgba(43, 31, 52, 0.6);
+}
 
 .hero-content {
   position: relative;
@@ -251,22 +286,31 @@ a:hover { color: var(--plum); }
 }
 .hero-content .eyebrow { margin-inline: auto; }
 .hero-content h1 {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: clamp(2.5rem, 6vw, 4.3rem);
-  line-height: 1.0;
-  letter-spacing: -0.01em;
-  color: var(--plum);
-  margin: 0 0 0.4rem;
+  display: grid;
+  gap: 0.6rem;
+  margin: 0 0 1rem;
 }
-.hero-subtitle {
+.hero-word {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 500;
-  font-size: clamp(1.55rem, 4vw, 2.45rem);
-  line-height: 1;
-  color: var(--orange);
-  margin: 0 0 1.25rem;
+  font-size: clamp(3.6rem, 11vw, 6.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.015em;
+  color: var(--orange);            /* 4.3:1 on the card; display size needs 3:1 */
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.45rem, 1vw + 1.1rem, 2.1rem);
+  line-height: 1.15;
+  color: var(--plum);
+  text-wrap: balance;
+}
+.hero-byline {
+  margin: 0 0 1.2rem;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
 }
 .hero-lede {
   max-width: 48ch;
@@ -549,8 +593,10 @@ a:hover { color: var(--plum); }
 @media (max-width: 760px) {
   .hero {
     min-height: 92svh;
-    background-image: var(--bg-mobile, var(--bg-desktop, url('/images/hero-background-mobile.jpg')));
+    background-image: var(--bg-mobile, var(--bg-desktop, var(--dusk)));
   }
+  /* On phones the moon moves to the top-left corner, level with the Dream Journal link */
+  .hero-moon { top: 1.1rem; left: clamp(1.4rem, 5vw, 3rem); width: 44px; }
   .wave { height: 40px; }
   .footer-wave { height: 30px; }
 }
