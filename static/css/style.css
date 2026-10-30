@@ -161,10 +161,10 @@ a:hover { color: var(--plum); }
 .btn-dawn {
   background: var(--orange);
   color: #fff;
-  box-shadow: 0 12px 28px -12px rgba(192, 90, 32, 0.7);
+  box-shadow: 0 12px 28px -12px rgba(190, 89, 32, 0.7);
 }
 .btn-dawn::after { transition: transform 160ms ease; }
-.btn-dawn:hover { background: var(--orange-deep); color: #fff; transform: translateY(-2px); box-shadow: 0 20px 38px -14px rgba(192, 90, 32, 0.7); }
+.btn-dawn:hover { background: var(--orange-deep); color: #fff; transform: translateY(-2px); box-shadow: 0 20px 38px -14px rgba(190, 89, 32, 0.7); }
 .btn-dawn:hover::after { transform: translateX(3px); }
 .btn:focus-visible { outline: 2px solid var(--plum); outline-offset: 3px; }
 
@@ -401,12 +401,23 @@ a:hover { color: var(--plum); }
   gap: 1rem;
 }
 .offerings-content li {
-  padding: 1.15rem 1.35rem;
+  position: relative;
+  padding: 1.15rem 1.35rem 1.15rem 1.6rem;
   border-radius: var(--radius-sm);
-  border-left: 3px solid var(--teal);
   background: rgba(255, 255, 255, 0.06);
   color: var(--on-dark-soft);
   line-height: 1.5;
+}
+/* The accent bar is drawn separately: a border-left would taper around the rounded corners. */
+.offerings-content li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.1rem;
+  bottom: 1.1rem;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--teal);
 }
 .offerings-content li strong {
   font-family: var(--font-display);
@@ -737,6 +748,7 @@ a:hover { color: var(--plum); }
 .interlude-art img {
   display: block;
   width: min(420px, 100%);
+  height: auto;                    /* lets aspect-ratio beat the img's height attribute */
   aspect-ratio: 1;
   object-fit: cover;
   margin-inline: auto;
@@ -869,8 +881,17 @@ a:hover { color: var(--plum); }
   font-size: 0.95rem;
 }
 .optin-form .formkit-alert:empty { display: none; }
-.optin-form .formkit-alert-success { background: #d3fbeb; border: 1px solid var(--teal-deep); color: #146f69; }
-.optin-form .formkit-alert-error { background: #fde8e2; border: 1px solid #a4491a; color: #a4491a; }
+/* Success reads as a note in the form's own italic, not an alert box (the error state keeps its border) */
+.optin-form .formkit-alert-success {
+  background: color-mix(in srgb, var(--pink) 35%, var(--cream-card));
+  border: 0;
+  color: var(--plum-deep);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+.optin-form .formkit-alert-error { background: #fde8e2; border: 1px solid var(--orange-deep); color: var(--orange-deep); }
 .optin-form .formkit-powered-by-convertkit-container {
   display: flex;
   justify-content: center;
