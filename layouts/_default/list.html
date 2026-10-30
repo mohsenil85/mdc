@@ -12,8 +12,8 @@
       {{ range $posts.ByDate.Reverse }}
       <li class="post-card">
         <p class="post-meta">{{ .Date.Format "January 2, 2006" }}</p>
-        <h2 class="post-card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-        <p class="post-summary">{{ .Description | default (.Summary | plainify | htmlUnescape | replaceRE "\\s+" " " | strings.TrimSpace | truncate 160) }}</p>
+        <h2 class="post-card-title"><a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a></h2>
+        <p class="post-summary">{{ .Description | default (.Summary | plainify | htmlUnescape | replaceRE "\\s+" " " | strings.TrimSpace | truncate 160) | markdownify }}</p>
         <a href="{{ .RelPermalink }}" class="post-readmore arrow">Read</a>
       </li>
       {{ end }}

@@ -589,7 +589,7 @@ a:hover { color: var(--plum); }
 .blog-nav .blog-work-link:hover { background: var(--orange-deep); color: #fff; }
 
 .post,
-.blog-list { padding: 3.5rem 0 4rem; max-width: min(760px, 90vw); }
+.blog-list { padding: 3.5rem 0 4rem; max-width: min(600px, 90vw); }   /* ~68 characters a line */
 
 .post-header { margin-bottom: 2.5rem; }
 .post-header h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 0.4rem 0 0.6rem; }
@@ -600,9 +600,9 @@ a:hover { color: var(--plum); }
   letter-spacing: 0.02em;
 }
 
-.post-body { font-size: 1.08rem; }
-.post-body h2 { font-size: 1.7rem; margin: 2.2rem 0 0.8rem; }
-.post-body h3 { font-size: 1.3rem; margin: 1.8rem 0 0.6rem; }
+.post-body { font-size: clamp(1.125rem, 0.25vw + 1.05rem, 1.1875rem); }
+.post-body h2 { font-size: clamp(1.75rem, 1.2vw + 1.4rem, 2.1rem); line-height: 1.15; margin: 2.6rem 0 0.8rem; }
+.post-body h3 { font-size: clamp(1.35rem, 0.6vw + 1.2rem, 1.55rem); line-height: 1.2; margin: 2rem 0 0.6rem; }
 .post-body img { max-width: 100%; height: auto; border-radius: var(--radius-sm); }
 .post-body blockquote {
   margin: 1.6rem 0;

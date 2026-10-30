@@ -2,7 +2,7 @@
   <article class="post wrap">
     <header class="post-header">
       <p class="eyebrow">Dream Journal</p>
-      <h1>{{ .Title }}</h1>
+      <h1>{{ .Title | markdownify }}</h1>
       <p class="post-meta">
         {{ .Date.Format "January 2, 2006" }}{{ with .Params.author }} <span class="footer-sep">&middot;</span> {{ . }}{{ end }}
       </p>
