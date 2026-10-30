@@ -809,16 +809,12 @@ a:hover { color: var(--plum); }
   line-height: 1.65;
 }
 .interlude-copy .btn { margin-top: 1.3rem; }
+/* The cheetah is plum ink on a transparent PNG, printed straight onto the pink like the map's line art */
 .interlude-art img {
   display: block;
-  width: min(420px, 100%);
-  height: auto;                    /* lets aspect-ratio beat the img's height attribute */
-  aspect-ratio: 1;
-  object-fit: cover;
+  width: min(440px, 100%);
+  height: auto;
   margin-inline: auto;
-  border-radius: var(--radius);
-  transform: rotate(-2.5deg);
-  filter: drop-shadow(0 30px 40px rgba(43, 31, 52, 0.35));
 }
 
 /* ============================================================
